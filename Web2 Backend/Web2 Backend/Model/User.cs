@@ -14,8 +14,9 @@ namespace Web2_Backend.Model
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
         public string Address { get; set; }
-        
-
-
+        public bool AdminNeedApproved { get; set; }
+        public UserType UserType { get; set; }
+        public UserType NewUserType { get; set; }
     }
+   
 }
