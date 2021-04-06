@@ -3,7 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Web2_Backend.Model;
+using Web2_Backend.Service;
 
 namespace Web2_Backend.Controllers
 {
@@ -11,39 +12,41 @@ namespace Web2_Backend.Controllers
     [Route("[controller]")]
     public class SolutionController : Controller
     {
+        public SolutionService solutionService = new SolutionService();
+
         [Route("/api/solutions/{id}")]
         [HttpGet]
         public async Task<IActionResult> Get(int id)
         {
-            return Ok();
+            return Ok(solutionService.Get(id));
         }
 
         [Route("/api/solutions")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return null;
+            return Ok(solutionService.GetAll());
         }
 
         [Route("/api/solutions")]
         [HttpPost]
-        public async Task<IActionResult> Add()
+        public async Task<IActionResult> Add(Solution solution)
         {
-            return Ok();
+            return Ok(solutionService.Add(solution));
         }
 
         [Route("/api/solutions/{id}")]
         [HttpPut]
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(int id, Solution solution)
         {
-            return Ok();
+            return Ok(solutionService.Edit(id, solution));
         }
 
         [Route("/api/solutions/{id}")]
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
-            return Ok();
+            return Ok(solutionService.Delete(id));
         }
     }
 }
