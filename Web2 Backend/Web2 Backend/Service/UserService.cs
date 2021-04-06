@@ -108,5 +108,34 @@ namespace Web2_Backend.Service
 
             return true;
         }
+
+        public bool Add(User user) 
+        {
+            try
+            {
+                using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context())) 
+                {
+                    User userDB = new User();
+
+                    userDB.Address = user.Address;
+                    userDB.BirthDate = user.BirthDate;
+                    userDB.LastName = user.LastName;
+                    userDB.Email = user.Email;
+                    userDB.Name = user.Name;
+                    userDB.Username = user.Username;
+                    userDB.Password = user.Password;
+                    userDB.UserType = user.UserType;
+
+                    unitOfWork.Users.Add(userDB);
+                    unitOfWork.Complete();
+                }
+            }
+            catch (Exception e) 
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

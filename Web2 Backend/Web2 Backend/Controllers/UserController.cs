@@ -31,9 +31,9 @@ namespace Web2_Backend.Controllers
 
         [Route("/api/users")]
         [HttpPost]
-        public async Task<IActionResult> Add()
+        public async Task<IActionResult> Add(User user)
         {
-            return Ok();
+            return Ok(userService.Add(user));
         }
 
         [Route("/api/users/{id}")]
