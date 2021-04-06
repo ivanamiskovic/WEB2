@@ -15,6 +15,7 @@ namespace Web2_Backend.Repository
         public IIncidentRepository Incidents { get; private set; }
         public ISolutionRepository Solutions { get; private set; }
         public ICallsRepository Calls { get; private set; }
+        public ISafetyDocumentRepository SafetyDocument { get; private set; }
 
         public UnitOfWork(Web2Context context) 
         {
@@ -23,6 +24,7 @@ namespace Web2_Backend.Repository
             Incidents = new IncidentRepository(this.context);
             Solutions = new SolutionRepository(this.context);
             Calls = new CallsRepository(this.context);
+            SafetyDocument = new SafetyDocumentRepository(this.context);
         }
 
         public Web2Context Context
