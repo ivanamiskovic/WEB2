@@ -18,20 +18,20 @@ Web2 Backend/*.userosscache
 Web2 Backend/*.sln.docstates
 
 # Build results
-Web2 Backend/[Dd]ebug/
-Web2 Backend/[Dd]ebugPublic/
-Web2 Backend/[Rr]elease/
-Web2 Backend/[Rr]eleases/
-Web2 Backend/x64/
-Web2 Backend/x86/
-Web2 Backend/build/
-Web2 Backend/bld/
-Web2 Backend/[Bb]in/
-Web2 Backend/[Oo]bj/
-Web2 Backend/[Oo]ut/
-Web2 Backend/msbuild.log
-Web2 Backend/msbuild.err
-Web2 Backend/msbuild.wrn
+Web2 Backend/Web2 Backend/[Dd]ebug/
+Web2 Backend/Web2 Backend/[Dd]ebugPublic/
+Web2 Backend/Web2 Backend/[Rr]elease/
+Web2 Backend/Web2 Backend/[Rr]eleases/
+Web2 Backend/Web2 Backend/x64/
+Web2 Backend/Web2 Backend/x86/
+Web2 Backend/Web2 Backend/build/
+Web2 Backend/Web2 Backend/bld/
+Web2 Backend/Web2 Backend/[Bb]in/
+Web2 Backend/Web2 Backend/[Oo]bj/
+Web2 Backend/Web2 Backend/[Oo]ut/
+Web2 Backend/Web2 Backend/msbuild.log
+Web2 Backend/Web2 Backend/msbuild.err
+Web2 Backend/Web2 Backend/msbuild.wrn
 
 # Visual Studio 2015
 Web2 Backend/.vs/
