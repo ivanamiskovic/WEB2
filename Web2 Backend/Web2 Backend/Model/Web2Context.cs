@@ -5,10 +5,8 @@ namespace Web2_Backend.Model
 {
     public class Web2Context : DbContext
     {
-        public Web2Context() 
-        {
+        public Web2Context() { }
 
-        }
         public Web2Context(DbContextOptions<Web2Context> context) : base(context) 
         {
 
