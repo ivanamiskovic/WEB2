@@ -57,6 +57,13 @@ namespace Web2_Backend.Controllers
             return Ok(userService.AdminNeedApproved(request));
         }
 
+        [Route("/api/users/change-user-status")]
+        [HttpPut]
+        public async Task<IActionResult> ChangeUserStatus(ChangeUserStatusRequest request)
+        {
+            return Ok(userService.ChangeUserStatus(request));
+        }
+
         [Route("/api/users/{id}")]
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)

@@ -10,6 +10,9 @@ namespace Web2_Backend.Service
 {
     public class UserService
     {
+
+        private EmailService emailService = new EmailService();
+
         public UserService() 
         {
 
@@ -125,12 +128,43 @@ namespace Web2_Backend.Service
                     userDB.Username = user.Username;
                     userDB.Password = user.Password;
                     userDB.UserType = user.UserType;
+                    userDB.UserStatus = UserStatus.PROCESSING;
 
                     unitOfWork.Users.Add(userDB);
                     unitOfWork.Complete();
                 }
             }
             catch (Exception e) 
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool ChangeUserStatus(ChangeUserStatusRequest request)
+        {
+            try
+            {
+                using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
+                {
+                    User userDB = unitOfWork.Users.Get(request.Id);
+
+                    if (userDB == null)
+                    {
+                        return false;
+                    }
+
+                    unitOfWork.Users.Update(userDB);
+
+                    userDB.UserStatus = request.UserStatus;
+
+                    unitOfWork.Complete();
+
+                    emailService.SendMessage(userDB.Email, "Status changed", "");
+                }
+            }
+            catch (Exception e)
             {
                 return false;
             }
