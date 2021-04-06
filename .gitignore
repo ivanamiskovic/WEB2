@@ -1,0 +1,37 @@
+Web2 Backend/*.swp
+*.*~
+Web2 Backend/project.lock.json
+Web2 Backend/.DS_Store
+Web2 Backend/*.pyc
+Web2 Backend/nupkg/
+
+# Visual Studio Code
+Web2 Backend/.vscode
+
+# Rider
+Web2 Backend/.idea
+
+# User-specific files
+Web2 Backend/*.suo
+Web2 Backend/*.user
+Web2 Backend/*.userosscache
+Web2 Backend/*.sln.docstates
+
+# Build results
+Web2 Backend/[Dd]ebug/
+Web2 Backend/[Dd]ebugPublic/
+Web2 Backend/[Rr]elease/
+Web2 Backend/[Rr]eleases/
+Web2 Backend/x64/
+Web2 Backend/x86/
+Web2 Backend/build/
+Web2 Backend/bld/
+Web2 Backend/[Bb]in/
+Web2 Backend/[Oo]bj/
+Web2 Backend/[Oo]ut/
+Web2 Backend/msbuild.log
+Web2 Backend/msbuild.err
+Web2 Backend/msbuild.wrn
+
+# Visual Studio 2015
+Web2 Backend/.vs/
