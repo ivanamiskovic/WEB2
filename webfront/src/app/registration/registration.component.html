@@ -1,0 +1,52 @@
+<mat-card>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h2>Registration</h2>
+        <mat-error *ngIf="registrationInvalid">
+          The username and password were not recognized
+        </mat-error>
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="Email" formControlName="email" required>
+          <mat-error>
+            Please provide a valid email address
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input">
+            <input matInput placeholder="Username" formControlName="username" required>
+            <mat-error>
+              Please provide a valid username
+            </mat-error>
+          </mat-form-field>
+        
+          <mat-form-field class="full-width-input">
+            <input matInput placeholder="First Name" formControlName="firstName" required>
+            <mat-error>
+              Please provide a valid name and surname
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width-input">
+            <input matInput placeholder="Last Name" formControlName="lastName" required>
+            <mat-error>
+              Please provide a valid name and surname
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width-input">
+            <input matInput placeholder="Address" formControlName="username" required>
+            <mat-error>
+              Please provide a valid address
+            </mat-error>
+          </mat-form-field>
+
+        <mat-form-field class="full-width-input">
+          <input matInput type="password" placeholder="Password" formControlName="password" required>
+          <mat-error>
+            Please provide a valid password
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Register</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
