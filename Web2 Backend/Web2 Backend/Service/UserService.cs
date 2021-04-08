@@ -17,6 +17,42 @@ namespace Web2_Backend.Service
         {
 
         }
+
+        public User GetUserWithEmail(string email) 
+        {
+            try
+            {
+                using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context())) 
+                {
+                    return unitOfWork.Users.GetUserWithEmail(email);
+                }
+            }
+            catch (Exception e) 
+            {
+                return null;
+            }
+
+            return null;
+        }
+
+        public User GetUserWithEmailAndPassword(string email, string password)
+        {
+            try
+            {
+                using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
+                {
+                    return unitOfWork.Users.GetUserWithUsernameAndPassword(email, password);
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
+            return null;
+        }
+
+
         //2.3
         public bool Edit(int id, User user) 
         {

@@ -8,5 +8,8 @@ namespace Web2_Backend.Core
 {
     public interface IUserRepository : IRepository<User>
     {
+        User GetUserWithEmail(string email);
+
+        User GetUserWithUsernameAndPassword(string email, string password);
     }
 }

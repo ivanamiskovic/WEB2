@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Web2_Backend.Configuration;
 using Web2_Backend.Model;
 
 namespace Web2_Backend
@@ -64,7 +65,12 @@ namespace Web2_Backend
                 x.UseSqlServer(Configuration["ProjectConfiguration:DatabaseConfiguration:ConnectionString"]);
                 x.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             });
-            
+
+            var config = new ProjectConfiguration();
+            Configuration.Bind("ProjectConfiguration", config);
+
+            services.AddSingleton(config);
+       
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
