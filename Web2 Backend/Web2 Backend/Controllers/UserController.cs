@@ -31,9 +31,9 @@ namespace Web2_Backend.Controllers
 
         [Route("/api/users")]
         [HttpPost]
-        public async Task<IActionResult> Add()
+        public async Task<IActionResult> Add(User user)
         {
-            return Ok();
+            return Ok(userService.Add(user));
         }
 
         [Route("/api/users/{id}")]
@@ -55,6 +55,13 @@ namespace Web2_Backend.Controllers
         public async Task<IActionResult> AdminNeedApproved(AdminNeedApprovedRequest request)
         {
             return Ok(userService.AdminNeedApproved(request));
+        }
+
+        [Route("/api/users/change-user-status")]
+        [HttpPut]
+        public async Task<IActionResult> ChangeUserStatus(ChangeUserStatusRequest request)
+        {
+            return Ok(userService.ChangeUserStatus(request));
         }
 
         [Route("/api/users/{id}")]

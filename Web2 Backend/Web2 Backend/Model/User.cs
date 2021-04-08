@@ -17,6 +17,7 @@ namespace Web2_Backend.Model
         public bool AdminNeedApproved { get; set; }
         public UserType UserType { get; set; }
         public UserType NewUserType { get; set; }
+        public UserStatus UserStatus { get; set; } 
     }
    
 }
