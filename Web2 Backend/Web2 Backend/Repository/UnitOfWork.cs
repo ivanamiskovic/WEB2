@@ -13,6 +13,7 @@ namespace Web2_Backend.Repository
 
         public IUserRepository Users { get; private set; }
         public IIncidentRepository Incidents { get; private set; }
+        public ISwitchingPlanRepository SwitchingPlans { get; private set; }
         public ISolutionRepository Solutions { get; private set; }
         public ICallsRepository Calls { get; private set; }
 
@@ -21,6 +22,7 @@ namespace Web2_Backend.Repository
             this.context = context;
             Users = new UserRepository(this.context);
             Incidents = new IncidentRepository(this.context);
+            SwitchingPlans = new SwitchingPlanRepository(this.context);
             Solutions = new SolutionRepository(this.context);
             Calls = new CallsRepository(this.context);
         }
