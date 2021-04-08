@@ -35,3 +35,61 @@ Web2 Backend/Web2 Backend/msbuild.wrn
 
 # Visual Studio 2015
 Web2 Backend/.vs/
+
+webfront/.DS_STORE
+
+webfront//dist/
+webfront//bazel-out
+webfront//integration/bazel/bazel-*
+webfront/*.log
+webfront/node_modules
+
+# Include when developing application packages.
+webfront/pubspec.lock
+webfront/.c9
+webfront/.idea/
+webfront/.devcontainer/*
+webfront/!.devcontainer/README.md
+webfront/!.devcontainer/recommended-devcontainer.json
+webfront/!.devcontainer/recommended-Dockerfile
+webfront/.settings/
+webfront/.vscode/launch.json
+webfront/.vscode/settings.json
+webfront/.vscode/tasks.json
+webfront/*.swo
+webfront/*.swp
+webfront/modules/.settings
+webfront/modules/.vscode
+webfront/.vimrc
+webfront/.nvimrc
+
+# Don't check in secret files
+webfront/*secret.js
+
+# Ignore npm/yarn debug log
+webfront/npm-debug.log
+webfront/yarn-error.log
+
+# build-analytics
+webfront/.build-analytics
+
+# rollup-test output
+/modules/rollup-test/dist/
+
+# User specific bazel settings
+webfront/.bazelrc.user
+
+# User specific ng-dev settings
+webfront/.ng-dev.user*
+
+webfront/.notes.md
+webfront/baseline.json
+
+# Ignore .history for the xyz.local-history VSCode extension
+webfront/.history
+
+# CLDR data
+webfront/tools/gulp-tasks/cldr/cldr-data/
+
+# Husky
+webfront/.husky/_
