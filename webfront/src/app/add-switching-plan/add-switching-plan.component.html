@@ -1,0 +1,36 @@
+<mat-card>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h2>SwitchingPlan</h2>
+        <mat-error *ngIf="switchingPlanInvalide">
+          The username and password were not recognized
+        </mat-error>
+        <mat-form-field class="full-width-input">
+            <input matInput placeholder="Add" formControlName="name" required>
+            <mat-error>
+              Please provide a valid name
+            </mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="primary">Add</button>
+
+        </form>
+
+        <div class="instructions">
+            <div class="instruction" *ngFor="let instruction of instructions">
+                <p>{{ instruction.name }}</p> <button mat-raised-button color="primary">Execute</button> <button (click)="onDelete(instruction.id)" mat-raised-button color="primary">Delete</button>
+            </div>
+        </div>
+
+
+
+
+        
+
+
+
+
+
+
+    </mat-card-content>
+</mat-card>
+

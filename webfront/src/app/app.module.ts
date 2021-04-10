@@ -21,12 +21,14 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AddSwitchingPlanComponent } from './add-switching-plan/add-switching-plan.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    AddSwitchingPlanComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,23 @@
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+  }
+  
+  mat-form-field {
+    display: block;
+  }
+
+  .instructions {
+      .instruction {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+
+          p {
+              width: calc(100% - 150px);
+              margin: 0;
+            }
+      }
+  }
