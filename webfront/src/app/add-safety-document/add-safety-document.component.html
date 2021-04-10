@@ -1,0 +1,90 @@
+<mat-card>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h2>AddSafetyDocument</h2>
+        <mat-error *ngIf="addSafetyDocumentInvalid">
+          The username and password were not recognized
+        </mat-error>
+        <mat-form-field class="full-width-input">
+        <label>Type:</label>
+        <select matNativeControl required required>
+
+        </select>
+          <mat-error>
+            Please provide a valid type
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input">
+            <label>Status:</label>
+            <select matNativeControl required required>
+
+            </select>
+            <mat-error>
+              Please provide a valid status
+            </mat-error>
+          </mat-form-field>
+        
+          <!-- <mat-form-field class="full-width-input">
+            <input matInput placeholder="Switching plan" formControlName="switchingPlan" required>
+            <mat-error>
+              Please provide a valid switching plan
+            </mat-error>
+          </mat-form-field> -->
+
+          <mat-form-field class="full-width-input">
+              <label>Document type:</label>
+            <select matNativeControl required>
+
+            </select>
+            <mat-error>
+              Please provide a valid safety doc type
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Date and time</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <!-- <mat-form-field class="full-width-input">
+            <input matInput type="" formControlName="createdBy" required>
+            <mat-error>
+              Please provide a valid name and last name
+            </mat-error>
+          </mat-form-field> -->
+
+          <mat-form-field class="full-width-input">
+            <input matInput placeholder="Details" formControlName="details" required>
+            <mat-error>
+              Please provide a valid details
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width-input">
+            <input matInput placeholder="Notes" formControlName="notes" required>
+            <mat-error>
+              Please provide a valid notes
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width-input">
+            <input matInput placeholder="Phone Number" formControlName="phoneNumber" required>
+            <mat-error>
+              Please provide a valid phone number
+            </mat-error>
+          </mat-form-field>
+
+          <!-- <mat-form-field class="full-width-input">
+            <input matInput placeholder="Field crew" formControlName="fieldCrew" required>
+            <mat-error>
+              Please provide a valid field crew
+            </mat-error>
+          </mat-form-field> -->
+
+          <button mat-raised-button color="dark">AddSafetyDocument</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
