@@ -31,13 +31,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
+import { AddSwitchingPlanComponent } from './add-switching-plan/add-switching-plan.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    AddWorkingPlanComponent
+    AddWorkingPlanComponent,
+    AddSwitchingPlanComponent
   ],
   imports: [
     MatCheckboxModule,
