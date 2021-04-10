@@ -27,6 +27,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { SafetyDocumentViewComponent } from './safety-document-view/safety-document-view.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { AddWorkingPlanComponent } from './add-working-plan/add-working-plan.component';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
+import { AddSwitchingPlanComponent } from './add-switching-plan/add-switching-plan.component';
 
 @NgModule({
   declarations: [
@@ -34,10 +41,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     LoginComponent,
     RegistrationComponent,
     AddSafetyDocumentComponent,
-    SafetyDocumentViewComponent
+    SafetyDocumentViewComponent,
+    AddWorkingPlanComponent,
+    AddSwitchingPlanComponent
   ],
   imports: [
     MatPaginatorModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
     BrowserModule,
@@ -61,6 +72,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatOptionModule,
     MatProgressSpinnerModule
 ],
+exports: [ MatFormFieldModule, MatInputModule ],
   providers: [],
   bootstrap: [AppComponent]
 })
