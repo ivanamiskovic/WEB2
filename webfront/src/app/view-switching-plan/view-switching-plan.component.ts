@@ -9,7 +9,7 @@ export class ViewSwitchingPlanComponent implements OnInit {
   dataSource: any;
   displayedColumns: string[] = ['street', 'startOfWork', 'endOfWork', 'notes', 'company','number','createDocument','point','userCreate','team'];
 
-  constructor() { }
+  constructor() {this.dataSource = []; }
 
   ngOnInit(): void {
   }

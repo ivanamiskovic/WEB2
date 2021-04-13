@@ -6,6 +6,7 @@ import { AddSwitchingPlanComponent } from './add-switching-plan/add-switching-pl
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { SafetyDocumentViewComponent } from './safety-document-view/safety-document-view.component';
+import { ViewWorkingPlanComponent } from './view-working-plan/view-working-plan.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'add-safety-document', component: AddSafetyDocumentComponent },
   { path: 'view-safety-document', component: SafetyDocumentViewComponent },
   { path: 'add-working-plan', component: AddWorkingPlanComponent },
+  { path: 'view-working-plan', component: ViewWorkingPlanComponent },
   { path: 'add-switchinng-plan', component: AddSwitchingPlanComponent },
 ];
 
