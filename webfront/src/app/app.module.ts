@@ -36,6 +36,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AddSwitchingPlanComponent } from './add-switching-plan/add-switching-plan.component';
 import { IncidentsViewComponent } from './incidents-view/incidents-view.component';
 import { AddIncidentComponent } from './add-incident/add-incident.component';
+import { ViewSwitchingPlanComponent } from './view-switching-plan/view-switching-plan.component';
+import { ViewWorkingPlanComponent } from './view-working-plan/view-working-plan.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { AddIncidentComponent } from './add-incident/add-incident.component';
     AddWorkingPlanComponent,
     AddSwitchingPlanComponent,
     IncidentsViewComponent,
-    AddIncidentComponent
+    AddIncidentComponent,
+    ViewSwitchingPlanComponent,
+    ViewWorkingPlanComponent
   ],
   imports: [
     MatPaginatorModule,

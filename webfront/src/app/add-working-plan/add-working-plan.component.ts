@@ -20,9 +20,9 @@ export class AddWorkingPlanComponent implements OnInit {
     private router: Router,
   ) {
     this.form = this.fb.group({
-      plannedWork: ['', Validators.required],
+      type: ['', Validators.required],
       status: ['', Validators.required],
-      equipment: ['', Validators.required],
+      typeOfWork: ['', Validators.required],
       createdBy: ['', Validators.required],
       purpose: ['', Validators.required],
       details: ['', Validators.required],

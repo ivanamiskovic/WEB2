@@ -33,6 +33,16 @@
             </mat-error>
           </mat-form-field>
 
+          <mat-form-field appearance="fill">
+            <mat-label>BirthDate</mat-label>
+            <input matInput [matDatepicker]="pickerBirth">
+            <mat-datepicker-toggle matSuffix [for]="pickerBirth"></mat-datepicker-toggle>
+            <mat-datepicker #pickerBirth></mat-datepicker>
+            <mat-error>
+              Please provide a valid date.
+            </mat-error>
+        </mat-form-field>
+
           <mat-form-field class="full-width-input">
             <input matInput placeholder="Address" formControlName="username" required>
             <mat-error>
