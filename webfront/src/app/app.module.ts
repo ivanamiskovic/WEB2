@@ -34,6 +34,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AddSwitchingPlanComponent } from './add-switching-plan/add-switching-plan.component';
+import { IncidentsViewComponent } from './incidents-view/incidents-view.component';
+import { AddIncidentComponent } from './add-incident/add-incident.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { AddSwitchingPlanComponent } from './add-switching-plan/add-switching-pl
     AddSafetyDocumentComponent,
     SafetyDocumentViewComponent,
     AddWorkingPlanComponent,
-    AddSwitchingPlanComponent
+    AddSwitchingPlanComponent,
+    IncidentsViewComponent,
+    AddIncidentComponent
   ],
   imports: [
     MatPaginatorModule,

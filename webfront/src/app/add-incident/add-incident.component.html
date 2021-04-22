@@ -1,0 +1,99 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <h2>AddIncident</h2>
+            <mat-error *ngIf="addIncidentInvalid">
+                The username and password were not recognized
+            </mat-error>
+            <mat-form-field class="full-width-input">
+            <label>Type:</label>
+            <select matNativeControl required required>
+    
+            </select>
+            <mat-error>
+                Please provide a valid type
+            </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <label>Priority:</label>
+                <select matNativeControl required required>
+        
+                </select>
+                <mat-error>
+                    Please provide a valid type
+                </mat-error>
+            </mat-form-field>
+
+            <section class="emergency" required>
+                <mat-checkbox matInput class="example-margin">Confirm</mat-checkbox>
+            </section>
+
+            <mat-form-field class="full-width-input">
+                <input matInput placeholder="Description" formControlName="details" required>
+                <mat-error>
+                  Please provide a valid details
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>ETA</mat-label>
+                <input matInput [matDatepicker]="pickerETA">
+                <mat-datepicker-toggle matSuffix [for]="pickerETA"></mat-datepicker-toggle>
+                <mat-datepicker #pickerETA></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>ATA</mat-label>
+                <input matInput [matDatepicker]="pickerATA">
+                <mat-datepicker-toggle matSuffix [for]="pickerATA"></mat-datepicker-toggle>
+                <mat-datepicker #pickerATA></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <input matInput placeholder="Affected customers" formControlName="details" required>
+                <mat-error>
+                  Please provide a valid details
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Outage</mat-label>
+                <input matInput [matDatepicker]="pickerOutage">
+                <mat-datepicker-toggle matSuffix [for]="pickerOutage"></mat-datepicker-toggle>
+                <mat-datepicker #pickerOutage></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>ETR</mat-label>
+                <input matInput [matDatepicker]="pickerETR">
+                <mat-datepicker-toggle matSuffix [for]="pickerETR"></mat-datepicker-toggle>
+                <mat-datepicker #pickerETR></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <input matInput placeholder="Calls" formControlName="details" required>
+                <mat-error>
+                  Please provide a valid details
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <input matInput placeholder="Voltage" formControlName="details" required>
+                <mat-error>
+                  Please provide a valid details
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Scheduled time</mat-label>
+                <input matInput [matDatepicker]="pickerScheduled">
+                <mat-datepicker-toggle matSuffix [for]="pickerScheduled"></mat-datepicker-toggle>
+                <mat-datepicker #pickerScheduled></mat-datepicker>
+            </mat-form-field>
+
+            <button mat-raised-button color="dark">Add</button>
+
+        </form>
+    </mat-card-content>
+</mat-card>

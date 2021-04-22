@@ -1,37 +1,37 @@
 <mat-card>
     <mat-card-content>
         <div class="controls">
-          <div class="left">
-            <button mat-raised-button color="primary" class="margin">New</button>
-            <button mat-raised-button color="primary">All</button>
-            <button mat-raised-button color="primary">Mine</button>
-        </div>
+            <div class="left">
+                <button mat-raised-button color="primary" class="margin">New</button>
+                <button mat-raised-button color="primary">All</button>
+                <button mat-raised-button color="primary">Mine</button>
+            </div>
 
-        <div class="right">
-            <button mat-raised-button color="primary">Filter</button>
-        </div>
+            <div class="right">
+                <button mat-raised-button color="primary">Filter</button>
+            </div>
         </div>
         <div class="mat-elevation-z8">
             <table mat-table [dataSource]="dataSource">
-          
-              <!-- Id Column -->
-              <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef> Id </th>
-                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-              </ng-container>
-          
-              <!-- Start Date Column -->
+
+                <!--Id Column-->
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> Id </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <!-- Start Date Column -->
               <ng-container matColumnDef="startDate">
                 <th mat-header-cell *matHeaderCellDef> Start Date </th>
                 <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
               </ng-container>
-          
+
               <!-- Phone Number Column -->
               <ng-container matColumnDef="phoneNumber">
                 <th mat-header-cell *matHeaderCellDef> Phone Number </th>
                 <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
               </ng-container>
-          
+
               <!-- Status Column -->
               <ng-container matColumnDef="status">
                 <th mat-header-cell *matHeaderCellDef> Status </th>
@@ -43,15 +43,15 @@
                 <th mat-header-cell *matHeaderCellDef> Address </th>
                 <td mat-cell *matCellDef="let element"> {{element.address}} </td>
               </ng-container>
-          
+
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
           
             <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-          </div>
+        </div>
 
-          <div class="controls">
+        <div class="controls">
             <div class="left">
                 <button mat-raised-button color="primary">Older</button>
             </div>
@@ -60,7 +60,7 @@
                 <button mat-raised-button color="primary">Newer</button>
             </div>
         </div>
-        
+
     </mat-card-content>
 </mat-card>
 

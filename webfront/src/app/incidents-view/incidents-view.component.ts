@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-safety-document-view',
-  templateUrl: './safety-document-view.component.html',
-  styleUrls: ['./safety-document-view.component.scss']
+  selector: 'app-incidents-view',
+  templateUrl: './incidents-view.component.html',
+  styleUrls: ['./incidents-view.component.scss']
 })
-export class SafetyDocumentViewComponent implements OnInit {
+export class IncidentsViewComponent implements OnInit {
 
   dataSource: any;
   displayedColumns: string[] = ['id', 'startDate', 'phoneNumber', 'status', 'address'];
@@ -36,6 +36,7 @@ export class SafetyDocumentViewComponent implements OnInit {
         'status': 'wtf',
         'address': 'adresa trafsdvh'
       }
+
 
     ];
   }
