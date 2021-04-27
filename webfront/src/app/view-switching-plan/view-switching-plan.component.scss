@@ -7,3 +7,19 @@ mat-card {
   mat-form-field {
     display: block;
   }
+
+  .controls {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .margin {
+      margin: 10px;
+    }
+
+    button {
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+  }

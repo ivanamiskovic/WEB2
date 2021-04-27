@@ -1,8 +1,16 @@
 <mat-card>
     <mat-card-content>
         <div class="controls">
+          <div class="left">
+              <button mat-raised-button color="primary" class="margin" (click)="onNew()">New</button>
+              <button mat-raised-button color="primary">All</button>
+              <button mat-raised-button color="primary">Mine</button>
+          </div>
 
-        </div>
+          <div class="right">
+              <button mat-raised-button color="primary">Filter</button>
+          </div>
+      </div>
         <div class="mat-elevation-z8">
             <table mat-table [dataSource]="dataSource">
           
