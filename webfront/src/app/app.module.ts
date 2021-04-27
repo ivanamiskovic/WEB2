@@ -40,9 +40,9 @@ import { ViewSwitchingPlanComponent } from './view-switching-plan/view-switching
 import { ViewWorkingPlanComponent } from './view-working-plan/view-working-plan.component';
 import { AddConsumerComponent } from './add-consumer/add-consumer.component';
 import { ViewConsumersComponent } from './view-consumers/view-consumers.component';
-
-
-
+import { AddCrewComponent } from './add-crew/add-crew.component';
+import { AddCrewMemberComponent } from './add-crew-member/add-crew-member.component';
+import { ViewCrewComponent } from './view-crew/view-crew.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +58,10 @@ import { ViewConsumersComponent } from './view-consumers/view-consumers.componen
     ViewSwitchingPlanComponent,
     ViewWorkingPlanComponent,
     AddConsumerComponent,
-    ViewConsumersComponent
+    ViewConsumersComponent,
+    AddCrewComponent,
+    AddCrewMemberComponent,
+    ViewCrewComponent
   ],
   imports: [
     MatPaginatorModule,

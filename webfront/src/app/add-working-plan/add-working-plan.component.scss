@@ -1,9 +1,36 @@
 mat-card {
-    max-width: 400px;
+    max-width: 90%;
     margin: 2em auto;
     text-align: center;
   }
   
   mat-form-field {
     display: block;
+  }
+
+  .page {
+    display: flex;
+    flex-direction: row;
+
+    .navigation {
+      width: 20%;
+      padding-right: 15px;
+      a {
+        display: block;
+        background: rgba(0,0,0, .1);
+        margin: 5px;
+        padding: 7px;
+        cursor: pointer;
+        transition: .15s;
+
+        &:hover {
+          background: rgba(0,0,0, .2);
+          transition: .15s;
+        }
+      }
+    }
+
+    .content {
+      width: 80%;
+    }
   }
