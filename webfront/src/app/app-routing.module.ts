@@ -3,12 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddSafetyDocumentComponent } from './add-safety-document/add-safety-document.component';
 import { AddWorkingPlanComponent } from './add-working-plan/add-working-plan.component';
 import { AddSwitchingPlanComponent } from './add-switching-plan/add-switching-plan.component';
+import { ViewSwitchingPlanComponent } from './view-switching-plan/view-switching-plan.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { SafetyDocumentViewComponent } from './safety-document-view/safety-document-view.component';
 import { IncidentsViewComponent } from './incidents-view/incidents-view.component';
 import { AddIncidentComponent } from './add-incident/add-incident.component';
 import { ViewWorkingPlanComponent } from './view-working-plan/view-working-plan.component';
+import { AddCrewComponent} from './add-crew/add-crew.component';
+import {ViewCrewComponent} from './view-crew/view-crew.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,9 +20,12 @@ const routes: Routes = [
   { path: 'view-safety-document', component: SafetyDocumentViewComponent },
   { path: 'add-working-plan', component: AddWorkingPlanComponent },
   { path: 'view-working-plan', component: ViewWorkingPlanComponent },
-  { path: 'add-switchinng-plan', component: AddSwitchingPlanComponent },
+  { path: 'add-switching-plan', component: AddSwitchingPlanComponent },
+  { path: 'view-switching-plan', component: ViewSwitchingPlanComponent },
   { path: 'incidents', component: IncidentsViewComponent },
   { path: 'add-incidents', component: AddIncidentComponent },
+  { path: 'add-crew', component: AddCrewComponent},
+  { path: 'view-crew', component:ViewCrewComponent}
 ];
 
 @NgModule({

@@ -5,6 +5,11 @@
         <mat-error *ngIf="registrationInvalid">
           The username and password were not recognized
         </mat-error>
+
+        <img src="/assets/placeholder.jpg">
+          <input #csvInput hidden="true" type="file" onclick="this.value=null" accept=".jpg"/>
+          <button mat-flat-button color="primary" >Choose image</button>
+
         <mat-form-field class="full-width-input">
           <input matInput placeholder="Email" formControlName="email" required>
           <mat-error>
@@ -56,6 +61,14 @@
             Please provide a valid password
           </mat-error>
         </mat-form-field>
+
+        <mat-form-field class="full-width-input">
+          <input matInput type="password" placeholder="Password confirm" formControlName="passwordConfirm" required>
+          <mat-error>
+            Please provide a valid password
+          </mat-error>
+        </mat-form-field>
+
         <button mat-raised-button color="primary">Register</button>
       </form>
     </mat-card-content>

@@ -38,6 +38,9 @@ import { IncidentsViewComponent } from './incidents-view/incidents-view.componen
 import { AddIncidentComponent } from './add-incident/add-incident.component';
 import { ViewSwitchingPlanComponent } from './view-switching-plan/view-switching-plan.component';
 import { ViewWorkingPlanComponent } from './view-working-plan/view-working-plan.component';
+import { AddCrewComponent } from './add-crew/add-crew.component';
+import { AddCrewMemberComponent } from './add-crew-member/add-crew-member.component';
+import { ViewCrewComponent } from './view-crew/view-crew.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,10 @@ import { ViewWorkingPlanComponent } from './view-working-plan/view-working-plan.
     IncidentsViewComponent,
     AddIncidentComponent,
     ViewSwitchingPlanComponent,
-    ViewWorkingPlanComponent
+    ViewWorkingPlanComponent,
+    AddCrewComponent,
+    AddCrewMemberComponent,
+    ViewCrewComponent
   ],
   imports: [
     MatPaginatorModule,

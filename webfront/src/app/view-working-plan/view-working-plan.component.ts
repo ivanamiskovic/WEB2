@@ -11,7 +11,21 @@ export class ViewWorkingPlanComponent implements OnInit {
   
   constructor()
   { 
-    this.dataSource = [];
+    this.dataSource = [{
+      'id' : 1,
+      'startDate': '1.1.2021.',
+      'phoneNumber': '123',
+      'status': 'Draft',
+      'address': 'Danila K'
+    },
+
+    {
+      'id' : 2,
+      'startDate': '7.5.2021.',
+      'phoneNumber': '+456',
+      'status': 'Submitted',
+      'address': 'Brace R'
+    }];
   }
 
 
