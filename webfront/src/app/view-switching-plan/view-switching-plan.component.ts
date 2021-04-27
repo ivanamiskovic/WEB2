@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-view-switching-plan',
@@ -9,9 +11,13 @@ export class ViewSwitchingPlanComponent implements OnInit {
   dataSource: any;
   displayedColumns: string[] = ['street', 'startOfWork', 'endOfWork', 'notes', 'company','number','createDocument','point','userCreate','team'];
 
-  constructor() {this.dataSource = []; }
+  constructor(private router: Router) {this.dataSource = []; }
 
   ngOnInit(): void {
+  }
+
+  onNew() {
+    this.router.navigateByUrl('/add-switchinng-plan');
   }
 
 }

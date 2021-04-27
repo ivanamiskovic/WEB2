@@ -10,6 +10,7 @@ import { SafetyDocumentViewComponent } from './safety-document-view/safety-docum
 import { IncidentsViewComponent } from './incidents-view/incidents-view.component';
 import { AddIncidentComponent } from './add-incident/add-incident.component';
 import { ViewWorkingPlanComponent } from './view-working-plan/view-working-plan.component';
+import { AddConsumerComponent } from './add-consumer/add-consumer.component';
 import { AddCrewComponent} from './add-crew/add-crew.component';
 import {ViewCrewComponent} from './view-crew/view-crew.component';
 
@@ -24,6 +25,8 @@ const routes: Routes = [
   { path: 'view-switching-plan', component: ViewSwitchingPlanComponent },
   { path: 'incidents', component: IncidentsViewComponent },
   { path: 'add-incidents', component: AddIncidentComponent },
+  { path: 'view-switching-plans', component: ViewSwitchingPlanComponent },
+  { path: 'add-consumer', component: AddConsumerComponent },
   { path: 'add-crew', component: AddCrewComponent},
   { path: 'view-crew', component:ViewCrewComponent}
 ];

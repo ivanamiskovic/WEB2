@@ -38,6 +38,8 @@ import { IncidentsViewComponent } from './incidents-view/incidents-view.componen
 import { AddIncidentComponent } from './add-incident/add-incident.component';
 import { ViewSwitchingPlanComponent } from './view-switching-plan/view-switching-plan.component';
 import { ViewWorkingPlanComponent } from './view-working-plan/view-working-plan.component';
+import { AddConsumerComponent } from './add-consumer/add-consumer.component';
+import { ViewConsumersComponent } from './view-consumers/view-consumers.component';
 import { AddCrewComponent } from './add-crew/add-crew.component';
 import { AddCrewMemberComponent } from './add-crew-member/add-crew-member.component';
 import { ViewCrewComponent } from './view-crew/view-crew.component';
@@ -55,6 +57,8 @@ import { ViewCrewComponent } from './view-crew/view-crew.component';
     AddIncidentComponent,
     ViewSwitchingPlanComponent,
     ViewWorkingPlanComponent,
+    AddConsumerComponent,
+    ViewConsumersComponent,
     AddCrewComponent,
     AddCrewMemberComponent,
     ViewCrewComponent

@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AddSwitchingPlanComponent implements OnInit {
 
   form: FormGroup;
-  public switchingPlanInvalide = false;
+  public addSwitchingPlanInvalid = false;
   instructions: any
 
   constructor(
@@ -17,9 +17,20 @@ export class AddSwitchingPlanComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
   ) 
+
+
+
   {
     this.form = this.fb.group({
-      name: ['', Validators.required],
+      type: ['', Validators.required],
+      status: ['', Validators.required],
+      typeOfWork: ['', Validators.required],     
+      createdBy: ['', Validators.required],
+      purpose: ['', Validators.required],
+      details: ['', Validators.required],
+      notes: ['', Validators.required],
+      company: ['', Validators.required],
+      phone: ['', Validators.required],
     });
 
     this.instructions = [
