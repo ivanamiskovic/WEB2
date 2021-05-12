@@ -12,15 +12,16 @@ using Web2_Backend.Model;
 
 namespace Web2_Backend.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class TokenController : DefaultController
     {
-        public TokenController() { }
-
         public TokenController(ProjectConfiguration configuration) : base(configuration) 
         {
            
         }
 
+        [Route("/api/token")]
         [HttpPost]
         public async Task<IActionResult> Post(User userData) 
         {
@@ -37,7 +38,7 @@ namespace Web2_Backend.Controllers
             }
 
             var claims = new[] {
-                new Claim(JwtRegisteredClaimNames.Sub, configuration.Jwt.Subject),
+                new Claim(JwtRegisteredClaimNames.Sub, "daxbvcbvcbcvbcvbcvbcvbcvbcvbcvbcbcvbcvbcvbcsdsadasd"),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
                 new Claim("Id", user.Id.ToString()),
@@ -46,10 +47,10 @@ namespace Web2_Backend.Controllers
                 new Claim("Email", user.Email)
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.Jwt.Key));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("daxbvcbvcbcvbcvbcvbcvbcvbcvbcvbcbcvbcvbcvbcsdsadasd"));
 
             var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var token = new JwtSecurityToken(configuration.Jwt.Issuer, configuration.Jwt.Audience, expires: DateTime.UtcNow.AddDays(60), signingCredentials: signIn);
+            var token = new JwtSecurityToken("daxbvcbvcbcvbcvbcvbcvbcvbcvbcvbcbcvbcvbcvbcsdsadasd", "daxbvcbvcbcvbcvbcvbcvbcvbcvbcvbcbcvbcvbcvbcsdsadasd", expires: DateTime.UtcNow.AddDays(60), signingCredentials: signIn);
 
             return Ok(new JwtSecurityTokenHandler().WriteToken(token));
         }

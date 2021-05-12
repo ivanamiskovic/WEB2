@@ -60,17 +60,17 @@ namespace Web2_Backend
                        .AllowAnyHeader();
             }));
 
-            /*services.AddDbContext<Web2Context>(x =>
+            services.AddDbContext<Web2Context>(x =>
             {
-                x.UseSqlServer(Configuration["ProjectConfiguration:DatabaseConfiguration:ConnectionString"]);
+                x.UseSqlServer("Server=DESKTOP-EIKEFC4\\SQLEXPRESS;Database=WEB2;Trusted_Connection=True;");
                 x.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
-            });*/
+            });
 
             var config = new ProjectConfiguration();
             Configuration.Bind("ProjectConfiguration", config);
 
             services.AddSingleton(config);
-       
+     
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

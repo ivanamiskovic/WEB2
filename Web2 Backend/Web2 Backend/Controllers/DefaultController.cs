@@ -9,8 +9,6 @@ using Web2_Backend.Service;
 
 namespace Web2_Backend.Controllers
 {
-    [Route("api[controller]")]
-    [ApiController]
     public class DefaultController : Controller
     {
         protected UserService userService = new UserService();
