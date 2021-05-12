@@ -24,7 +24,7 @@ namespace Web2_Backend.Model
                 return;
             }
 
-            optionsBuilder.UseSqlServer("");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-TJ9PUSD\\SQLEXPRESS;Database=WEB2;Trusted_Connection=True;");
         }
     }
 }

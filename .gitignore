@@ -93,3 +93,5 @@ webfront/tools/gulp-tasks/cldr/cldr-data/
 
 # Husky
 webfront/.husky/_
+
+Web2 Backend/obj/

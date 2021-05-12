@@ -60,11 +60,11 @@ namespace Web2_Backend
                        .AllowAnyHeader();
             }));
 
-            services.AddDbContext<Web2Context>(x =>
+            /*services.AddDbContext<Web2Context>(x =>
             {
                 x.UseSqlServer(Configuration["ProjectConfiguration:DatabaseConfiguration:ConnectionString"]);
                 x.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
-            });
+            });*/
 
             var config = new ProjectConfiguration();
             Configuration.Bind("ProjectConfiguration", config);

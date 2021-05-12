@@ -1,25 +1,36 @@
 mat-card {
-    max-width: 90%;
-    margin: 2em auto;
+  max-width: 90%;
+  margin: 2em auto;
+  text-align: center;
+}
+
+mat-form-field {
+  display: block;
+}
+
+table {
+  width: 100%;
+
+  th {
     text-align: center;
   }
-  
-  mat-form-field {
-    display: block;
+}
+
+.controls {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .margin {
+    margin: 10px;
   }
 
-  .controls {
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    .margin {
-      margin: 10px;
-    }
-
-    button {
-      margin-bottom: 10px;
-      margin-top: 10px;
-    }
+  button {
+    margin-bottom: 10px;
+    margin-top: 10px;
   }
+
+
+}
+
