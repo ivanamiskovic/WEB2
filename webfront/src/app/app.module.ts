@@ -43,6 +43,7 @@ import { ViewConsumersComponent } from './view-consumers/view-consumers.componen
 import { AddCrewComponent } from './add-crew/add-crew.component';
 import { AddCrewMemberComponent } from './add-crew-member/add-crew-member.component';
 import { ViewCrewComponent } from './view-crew/view-crew.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { ViewCrewComponent } from './view-crew/view-crew.component';
     MatSlideToggleModule,
     MatSelectModule,
     MatOptionModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    HttpClientModule
 ],
 exports: [ MatFormFieldModule, MatInputModule ],
   providers: [],

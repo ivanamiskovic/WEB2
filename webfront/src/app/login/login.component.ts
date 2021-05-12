@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private api: ApiService
   ) {
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
 
@@ -38,6 +40,14 @@ export class LoginComponent implements OnInit {
       try {
         const username = this.form.get('username')?.value;
         const password = this.form.get('password')?.value;
+
+        this.api.login({
+          email: username,
+          password: password
+        }).subscribe(response => {
+          console.log(response);
+        });
+
       } catch (err) {
         this.loginInvalid = true;
       }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from '../api.service';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -17,6 +18,7 @@ export class RegistrationComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private api: ApiService
   ) {
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
 
@@ -38,15 +40,24 @@ export class RegistrationComponent implements OnInit {
   async onSubmit(): Promise<void> {
     this.registrationInvalid = false;
     this.formSubmitAttempt = false;
-    if (this.form.valid) {
+    // if (this.form.valid) {
       try {
-        const username = this.form.get('username')?.value;
-        const password = this.form.get('password')?.value;
+
+        this.api.registration({
+          username: this.form.get('username')?.value,
+          email: this.form.get('email')?.value,
+          name: this.form.get('firstName')?.value,
+          lastName: this.form.get('lastName')?.value,
+          password: this.form.get('password')?.value
+        }).subscribe(response => {
+          console.log(response);
+        });
+
       } catch (err) {
         this.registrationInvalid = true;
       }
-    } else {
-      this.formSubmitAttempt = true;
-    }
+    // } else {
+    //   this.formSubmitAttempt = true;
+    // }
   }
 }
