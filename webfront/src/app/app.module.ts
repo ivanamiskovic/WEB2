@@ -45,6 +45,9 @@ import { AddCrewMemberComponent } from './add-crew-member/add-crew-member.compon
 import { ViewCrewComponent } from './view-crew/view-crew.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './auth/token.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,7 +96,13 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
 ],
 exports: [ MatFormFieldModule, MatInputModule ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
