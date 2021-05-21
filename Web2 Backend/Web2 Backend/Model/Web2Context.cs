@@ -17,6 +17,8 @@ namespace Web2_Backend.Model
         public DbSet<Solution> Solutions { get; set; }
         public DbSet<Calls> Calls { get; set; }
 
+        public DbSet<Cosumer> Cosumers { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
         {
             if (optionsBuilder.IsConfigured) 
@@ -24,7 +26,7 @@ namespace Web2_Backend.Model
                 return;
             }
 
-            optionsBuilder.UseSqlServer("Server=DESKTOP-EIKEFC4\\SQLEXPRESS;Database=WEB2;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-TJ9PUSD\SQLEXPRESS;Database=WEB2;Trusted_Connection=True;");
         }
     }
 }
