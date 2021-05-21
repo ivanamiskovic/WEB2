@@ -16,6 +16,8 @@ namespace Web2_Backend.Model
         public DbSet<Incident> Incidents { get; set; }
         public DbSet<Solution> Solutions { get; set; }
         public DbSet<Calls> Calls { get; set; }
+        public DbSet<WorkingPlan> WorkingPlans { get; set; }
+        public DbSet<Crew> Crews { get; set; }
 
         public DbSet<Cosumer> Cosumers { get; set; }
 
