@@ -1,23 +1,36 @@
 mat-card {
-    max-width: 400px;
-    margin: 2em auto;
-    text-align: center;
-  }
-  
-  mat-form-field {
-    display: block;
-  }
+  max-width: 90%;
+  margin: 2em auto;
+  text-align: center;
+}
 
-  .instructions {
-      .instruction {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: center;
+mat-form-field {
+  display: block;
+}
 
-          p {
-              width: calc(100% - 150px);
-              margin: 0;
-            }
+.page {
+  display: flex;
+  flex-direction: row;
+
+  .navigation {
+    width: 20%;
+    padding-right: 15px;
+    a {
+      display: block;
+      background: rgba(0,0,0, .1);
+      margin: 5px;
+      padding: 7px;
+      cursor: pointer;
+      transition: .15s;
+
+      &:hover {
+        background: rgba(0,0,0, .2);
+        transition: .15s;
       }
+    }
   }
+
+  .content {
+    width: 80%;
+  }
+}

@@ -37,10 +37,10 @@ export class ApiService {
     return this.httpClient.post(this.REST_API_SERVER + '/api/users', data);
   }  */
   public addSwitchingPlan(data: any) {
-    return this.httpClient.post(this.REST_API_SERVER + '/api/users', data)
+    return this.httpClient.post(this.REST_API_SERVER + '/api/switchingPlans', data)
   }
   public addSafetyDocument(data: any) {
-    return this.httpClient.post(this.REST_API_SERVER + '/api/users', data)
+    return this.httpClient.post(this.REST_API_SERVER + '/api/safetyDocuments', data)
   }
   public addCosumerComponent(data: any) {
     return this.httpClient.post(this.REST_API_SERVER + '/api/users', data)
