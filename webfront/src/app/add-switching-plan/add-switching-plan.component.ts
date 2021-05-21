@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+//import { ApiService } from '../api.service';
+
 @Component({
   selector: 'app-add-switching-plan',
   templateUrl: './add-switching-plan.component.html',
@@ -16,6 +18,7 @@ export class AddSwitchingPlanComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+   // private api: ApiService
   ) 
 
 
@@ -46,7 +49,23 @@ export class AddSwitchingPlanComponent implements OnInit {
     this.instructions.push({
       id: this.instructions.length + 1,
       name: this.form.value.name
+
+     
     });
+   /* this.api.AddSwitchingPlan({
+      type: this.form.get('type')?.value,
+      status: this.form.get('status')?.value,
+      typeOfWork: this.form.get('typeOfWork')?.value,
+      createdBy: this.form.get('createdBy')?.value,
+      purpose: this.form.get('purpose')?.value,
+      details: this.form.get('details')?.value,
+      notes: this.form.get('notes')?.value,
+      company: this.form.get('company')?.value,
+      phone: this.form.get('phone')?.value
+    }).subscribe((response: any) => {
+      console.log(response);
+    });
+*/
   }
 
   public onDelete(id:any) {

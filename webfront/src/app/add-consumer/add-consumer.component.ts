@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from '../api.service';
+
 @Component({
   selector: 'app-add-consumer',
   templateUrl: './add-consumer.component.html',
@@ -15,6 +17,7 @@ export class AddConsumerComponent implements OnInit {
       private fb: FormBuilder,
       private route: ActivatedRoute,
       private router: Router,
+     private api: ApiService
     ) 
 
   {
@@ -33,12 +36,21 @@ export class AddConsumerComponent implements OnInit {
     ]
   }
 
+  onSubmit() {
+  this.api.addCosumerComponent({
+      name: this.form.get('name')?.value,
+      location: this.form.get('location')?.value,
+      priority: this.form.get('priority')?.value,
+      lastName: this.form.get('lastName')?.value,
+      phonenumber: this.form.get('phonenumber')?.value,
+      id: this.form.get('id')?.value,
+      type: this.form.get('type')?.value
+    }).subscribe(response => {
+      console.log(response);
+    });
 
 
-
-
-
-  onSubmit() {}
+  }
 
   ngOnInit(): void {
   }
