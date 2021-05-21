@@ -52,7 +52,7 @@ namespace Web2_Backend.Controllers
             var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var token = new JwtSecurityToken("daxbvcbvcbcvbcvbcvbcvbcvbcvbcvbcbcvbcvbcvbcsdsadasd", "daxbvcbvcbcvbcvbcvbcvbcvbcvbcvbcbcvbcvbcvbcsdsadasd", expires: DateTime.UtcNow.AddDays(60), signingCredentials: signIn);
 
-            return Ok(new JwtSecurityTokenHandler().WriteToken(token));
+            return Ok( new { Token = new JwtSecurityTokenHandler().WriteToken(token) });
         }
     }
 }

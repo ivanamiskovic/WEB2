@@ -17,6 +17,8 @@ namespace Web2_Backend.Repository
         public ISolutionRepository Solutions { get; private set; }
         public ICallsRepository Calls { get; private set; }
         public ISafetyDocumentRepository SafetyDocument { get; private set; }
+        public IWorkingPlanRepository WorkingPlans { get; private set; }
+        public ICrewRepository Crews { get; private set; }
 
         public UnitOfWork(Web2Context context) 
         {
@@ -27,6 +29,8 @@ namespace Web2_Backend.Repository
             Solutions = new SolutionRepository(this.context);
             Calls = new CallsRepository(this.context);
             SafetyDocument = new SafetyDocumentRepository(this.context);
+            WorkingPlans = new WorkingPlanRepository(this.context);
+            Crews = new CrewRepository(this.context);
         }
 
         public Web2Context Context
