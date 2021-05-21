@@ -15,6 +15,23 @@ export class ApiService {
   }
 
   public registration(data: any) {
-    return this.httpClient.post(this.REST_API_SERVER + '/api/users', data)
+    return this.httpClient.post(this.REST_API_SERVER + '/api/users', data);
   }
+
+   public addWorkingPlan(data: any) {
+    return this.httpClient.post(this.REST_API_SERVER + '/api/token', data); //
+  } 
+
+   public addCrew(data: any) {
+    return this.httpClient.post(this.REST_API_SERVER + '/api/token', data); //
+  } 
+
+  /*  public viewWorkingPlan(data: any) {
+    return this.httpClient.post(this.REST_API_SERVER + '/api/users', data);
+  } 
+
+   public viewCrew(data: any) {
+    return this.httpClient.post(this.REST_API_SERVER + '/api/users', data);
+  }  */
+
 }

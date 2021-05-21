@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-add-crew',
@@ -10,13 +11,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AddCrewComponent implements OnInit {
 
   form: FormGroup;
-  public registrationInvalid = false;
+  public addCrewInvalid = false;
   private formSubmitAttempt = false;
   private returnUrl: string;
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router,) { this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
+    private router: Router,
+    private api: ApiService)
+    
+    { this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
 
     this.form = this.fb.group({
       name: ['', Validators.email],
@@ -29,16 +34,26 @@ export class AddCrewComponent implements OnInit {
   }
 
   async onSubmit(): Promise<void> {
-    
+    this.addCrewInvalid = false;
     this.formSubmitAttempt = false;
     if (this.form.valid) {
       try {
         const name = this.form.get('name')?.value;
         const id = this.form.get('id')?.value;
+
+        this.api.addCrew({
+          name: name,
+          id: id
+        }).subscribe(response => {
+          console.log(response);
+        });
+
       } catch (err) {
-        this.formSubmitAttempt = true;
+        this.addCrewInvalid = true;
       }
-  }
+  }  else {
+      this.formSubmitAttempt = true;
+    }
   
   }
 }

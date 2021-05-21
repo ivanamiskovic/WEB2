@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private api: ApiService
   ) {
+    
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
 
     this.form = this.fb.group({

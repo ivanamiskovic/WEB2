@@ -48,7 +48,10 @@ export class RegistrationComponent implements OnInit {
           email: this.form.get('email')?.value,
           name: this.form.get('firstName')?.value,
           lastName: this.form.get('lastName')?.value,
-          password: this.form.get('password')?.value
+          password: this.form.get('password')?.value,
+          passwordConfirm: this.form.get('passwordConfirm')?.value,
+          address: this.form.get('address')?.value
+
         }).subscribe(response => {
           console.log(response);
         });
