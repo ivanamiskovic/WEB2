@@ -45,8 +45,11 @@ export class LoginComponent implements OnInit {
         this.api.login({
           email: username,
           password: password
-        }).subscribe(response => {
-          console.log(response);
+        }).subscribe((response : any) => {
+
+          localStorage.setItem('token', response.token);
+
+          this.router.navigateByUrl('/');
         });
 
       } catch (err) {

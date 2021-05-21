@@ -53,7 +53,7 @@ export class RegistrationComponent implements OnInit {
           address: this.form.get('address')?.value
 
         }).subscribe(response => {
-          console.log(response);
+          this.router.navigateByUrl('/login');
         });
 
       } catch (err) {
