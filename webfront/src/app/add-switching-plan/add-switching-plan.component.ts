@@ -13,6 +13,7 @@ export class AddSwitchingPlanComponent implements OnInit {
   form: FormGroup;
   public addSwitchingPlanInvalid = false;
   instructions: any
+  user: any
 
   constructor(
     private fb: FormBuilder,
@@ -35,12 +36,22 @@ export class AddSwitchingPlanComponent implements OnInit {
       company: ['', Validators.required],
       phone: ['', Validators.required],
     });
+    this.form.controls['status'].disable();
+    this.form.controls['createdBy'].disable();
 
     this.instructions = [
     ]
   }
 
   ngOnInit(): void {
+
+    this.api.getCurrentUser().subscribe(response => {
+      console.log(response);  
+      this.user = response;
+    });
+
+
+    
   }
 
   async onSubmit(): Promise<void> {
@@ -65,6 +76,9 @@ export class AddSwitchingPlanComponent implements OnInit {
     }).subscribe((response: any) => {
       console.log(response);
     });
+
+
+
 
   }
 

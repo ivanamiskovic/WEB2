@@ -21,8 +21,11 @@ export class ApiService {
     return this.httpClient.post(this.REST_API_SERVER + '/api/users', data);
   }
 
+  public getCurrentUser() {
+    return this.httpClient.get(this.REST_API_SERVER + '/api/users/current');
+  }
    public addWorkingPlan(data: any) {
-    return this.httpClient.post(this.REST_API_SERVER + '/api/token', data); //
+    return this.httpClient.post(this.REST_API_SERVER + '/api/token', data); 
   } 
 
    public addCrew(data: any) {
