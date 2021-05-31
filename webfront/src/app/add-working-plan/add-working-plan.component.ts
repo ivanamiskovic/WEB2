@@ -16,6 +16,8 @@ export class AddWorkingPlanComponent implements OnInit {
   public addWorkingPlanInvalid = false;
   private formSubmitAttempt = false;
   private returnUrl: string;
+  instructions: any;
+  user:any
 
   constructor(
     private fb: FormBuilder,
@@ -37,15 +39,20 @@ export class AddWorkingPlanComponent implements OnInit {
       urgent: ['', Validators.required],
       company: ['', Validators.required],
       phone: ['', Validators.required],
-      address: ['', Validators.required]
+      address: ['', Validators.required],
+      date:['', Validators.required]
     });
 
     this.form.controls['status'].disable();
     this.form.controls['createdBy'].disable();
+    this.form.controls['date'].disable();
    }
 
   ngOnInit(): void {
-    
+    this.api.getCurrentUser().subscribe(response =>{
+      console.log(response);
+      this.user = response;
+    })
   }
 
   async onSubmit(): Promise<void> {
@@ -65,6 +72,7 @@ export class AddWorkingPlanComponent implements OnInit {
       const company = this.form.get('company')?.value;
       const phone = this.form.get('phone')?.value;
       const address = this.form.get('address')?.value;
+      const date = this.form.get('date')?.value;
 
 
       this.api.addWorkingPlan({
@@ -78,7 +86,8 @@ export class AddWorkingPlanComponent implements OnInit {
         urgent:urgent,
         company:company,
         phone:phone,
-        address:address
+        address:address,
+        date:date
 
       }).subscribe(response => {
         console.log(response);
