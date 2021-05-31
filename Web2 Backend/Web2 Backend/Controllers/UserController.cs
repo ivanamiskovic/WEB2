@@ -11,13 +11,22 @@ namespace Web2_Backend.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UserController : Controller
+    public class UserController : DefaultController
     {
         private UserService userService = new UserService();
 
-        [Route("/api/users/{id}")]
+
+        [Route("/api/users/current")]
         [HttpGet]
         public async Task<IActionResult> Get(int id)
+        {
+            return Ok(GetCurrentUser());
+        }
+
+
+        [Route("/api/users/{id}")]
+        [HttpGet]
+        public async Task<IActionResult> GetCurrent(int id)
         {
             return Ok();
         }
