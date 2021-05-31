@@ -19,7 +19,8 @@
           <mat-form-field class="full-width-input">
               <label>Type</label>
               <select matNativeControl required>
-                  
+                  <option value = "1">Planned</option>
+                  <option value = "2">Not planned</option>
               </select>
               <mat-error>
                   Please provide a valid type
@@ -28,6 +29,7 @@
   
           <mat-form-field class="full-width-input">
               <input matInput placeholder="Status" formControlName="status" required>
+              <option value = "Draft">Draft</option>
               <mat-error>
                 Please provide a valid status
               </mat-error>
@@ -40,15 +42,7 @@
               </mat-error>
             </mat-form-field>
   
-          <mat-form-field class="full-width-input">
-              <label>TypeOfWork</label>
-              <select matNativeControl required>
-                  
-              </select>
-              <mat-error>
-                  Please provide a valid type of work
-              </mat-error>
-          </mat-form-field>
+         
   
           <mat-form-field appearance="fill">
               <mat-label>StartDate</mat-label>
@@ -118,6 +112,16 @@
               </mat-error>
             </mat-form-field>
   
+
+            <mat-form-field appearance="fill">
+              <mat-label>DateCreated</mat-label>
+              <input matInput [matDatepicker]="pickerEnd">
+              <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+              <mat-datepicker #pickerEnd></mat-datepicker>
+              <mat-error>
+                Please provide a valid date.
+              </mat-error>
+          </mat-form-field>
             
   
             <button mat-raised-button color="dark">AddWorkingPlan</button>

@@ -23,6 +23,11 @@ namespace Web2_Backend.Controllers
         }
 
         [Route("/api/users/{id}")]
+
+
+
+
+        [Route("/api/users/{id}")]
         [HttpGet]
         public async Task<IActionResult> Get(int id)
         {
