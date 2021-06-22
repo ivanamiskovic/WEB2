@@ -1,0 +1,56 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Name" formControlName="name" required>
+        <mat-error>
+          Please provide a valid name
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Address" formControlName="address" required>
+        <mat-error>
+          Please provide a valid lastname
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input">
+        <label>Type</label>
+        <mat-select matNativeControl required formControlName="type">
+          <mat-option value="Switch">Switch</mat-option>
+          <mat-option value="Breaker">Breaker</mat-option>
+          <mat-option value="Disconnector">Disconnector</mat-option>
+          <mat-option value="Transformation">Transformation</mat-option>
+        </mat-select>
+        <mat-error>
+          Please provide a valid type
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="full-width-input">
+        <input matInput type="number" placeholder="Lat" formControlName="lat" required>
+        <mat-error>
+          Please provide a valid priority
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Lng" formControlName="lng" required>
+        <mat-error>
+          Please provide a valid location
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary">Add</button>
+
+    </form>
+
+
+
+  </mat-card-content>
+</mat-card>
+

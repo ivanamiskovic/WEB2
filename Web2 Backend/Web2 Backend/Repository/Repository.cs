@@ -42,7 +42,7 @@ namespace Web2_Backend.Repository
             return Context.Set<TEntity>().Where(predicate);
         }
 
-        public TEntity Get(int id)
+        public TEntity Get(long id)
         {
             return Context.Set<TEntity>().Find(id);
         }

@@ -1,15 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
+using Web2_Backend.Configuration;
 
 namespace Web2_Backend.Model
 {
     public class Web2Context : DbContext
-    {
+    { 
+        public static ProjectConfiguration Configuration;
+
         public Web2Context() { }
 
-        public Web2Context(DbContextOptions<Web2Context> context) : base(context) 
-        {
+        public Web2Context(DbContextOptions<Web2Context> context, ProjectConfiguration configuration) : base(context) {
 
+            if (configuration != null)
+            {
+                Web2Context.Configuration = configuration;
+            }
         }
 
         public DbSet<User> Users { get; set; }
@@ -18,6 +23,8 @@ namespace Web2_Backend.Model
         public DbSet<Calls> Calls { get; set; }
         public DbSet<WorkingPlan> WorkingPlans { get; set; }
         public DbSet<Crew> Crews { get; set; }
+        public DbSet<Device> Devices { get; set; }
+        public DbSet<WorkRequest> WorkRequests { get; set; }
 
         public DbSet<Cosumer> Cosumers { get; set; }
 
@@ -28,9 +35,7 @@ namespace Web2_Backend.Model
                 return;
             }
 
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-EIKEFC4\SQLEXPRESS;Database=WEB2;Trusted_Connection=True;");
-
-           // optionsBuilder.UseSqlServer(@"Server=DESKTOP-TJ9PUSD\SQLEXPRESS;Database=WEB2;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(Web2Context.Configuration.DatabaseConfiguration.ConnectionString);
         }
     }
 }

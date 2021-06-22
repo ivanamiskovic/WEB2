@@ -8,12 +8,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'webfront';
-  isUserLogin = false
+  isUserLogin = false;
+  public name = '';
 
-  constructor(private router: Router) 
+  constructor(private router: Router)
   {
     router.events.subscribe((val) => {
-      // see also 
+      // see also
       this.checIfUserLogin();
   });
   }
@@ -33,10 +34,17 @@ export class AppComponent implements OnInit {
     let token = localStorage.getItem('token');
 
     if(token) {
-      this.isUserLogin = true
+      this.isUserLogin = true;
     }
     else {
-      this.isUserLogin = false
+      this.isUserLogin = false;
+    }
+
+    let userString = localStorage.getItem('user');
+    let user = null
+    if(userString != null) {
+      user = JSON.parse(userString);
+      this.name = user.name + ' ' + user.lastName;
     }
 
   }

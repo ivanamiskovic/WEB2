@@ -23,7 +23,8 @@ namespace Web2_Backend.Controllers
 
         [Route("/api/solutions")]
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery(Name = "page")] int page, [FromQuery(Name = "perPage")] int perPage,
+            [FromQuery(Name = "search")] string search)
         {
             return Ok(solutionService.GetAll());
         }

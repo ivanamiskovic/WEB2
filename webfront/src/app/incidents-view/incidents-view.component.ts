@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ApiService} from '../api.service';
 
 @Component({
   selector: 'app-incidents-view',
@@ -8,40 +10,42 @@ import { Component, OnInit } from '@angular/core';
 export class IncidentsViewComponent implements OnInit {
 
   dataSource: any;
-  displayedColumns: string[] = ['id', 'startDate', 'phoneNumber', 'status', 'address'];
+  displayedColumns: string[] = ['description', 'eta', 'etr', 'ata', 'calls', 'affectedCustomers', 'id'];
 
-  constructor() 
-  {
-    this.dataSource = [
-      {
-        'id' : 1,
-        'startDate': '1.1.2021.',
-        'phoneNumber': '08956',
-        'status': 'dkjfg',
-        'address': 'adresa sokdo'
-      },
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private api: ApiService
+  ) {
 
-      {
-        'id' : 2,
-        'startDate': '7.5.2021.',
-        'phoneNumber': '+38123476',
-        'status': 'omg',
-        'address': 'adresa sdfyrfbhbv'
-      },
+  }
 
-      {
-        'id' : 3,
-        'startDate': '12.12.2021.',
-        'phoneNumber': '+385679476',
-        'status': 'wtf',
-        'address': 'adresa trafsdvh'
-      }
+  onNew(): void {
+    this.router.navigateByUrl('/add-incidents');
+  }
 
+  edit(id: number): void {
+    this.router.navigateByUrl('/add-incidents?id=' + id);
+  }
 
-    ];
+  delete(id: number): void {
+    this.api.deleteIncident(id).subscribe(response => {
+      this.fetch();
+    });
+  }
+
+  fetch(): void {
+    this.api.getIncidents().subscribe((response: any) => {
+      this.dataSource = response ? response.entities : [];
+    });
+  }
+
+  onSearchChange(searhcValue: any): void {
+    console.log(searhcValue);
   }
 
   ngOnInit(): void {
+    this.fetch();
   }
-
 }
+

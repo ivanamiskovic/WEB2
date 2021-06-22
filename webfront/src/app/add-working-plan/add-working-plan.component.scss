@@ -1,36 +1,69 @@
 mat-card {
-    max-width: 90%;
-    margin: 2em auto;
-    text-align: center;
-  }
-  
-  mat-form-field {
-    display: block;
-  }
+  max-width: 80%;
+  margin: 2em auto;
+  text-align: center;
 
-  .page {
+  .form-container {
     display: flex;
     flex-direction: row;
 
     .navigation {
-      width: 20%;
-      padding-right: 15px;
+      width: 300px;
+      padding: 0 10px;
+
       a {
         display: block;
-        background: rgba(0,0,0, .1);
-        margin: 5px;
-        padding: 7px;
+        padding: 15px 10px;
+        text-align: left;
+        background: rgba(0,0,0, 0.05);
+        width: calc(100% - 30px);
         cursor: pointer;
         transition: .15s;
 
+        &.disabled {
+          opacity: .3;
+          pointer-events: none;
+        }
+
         &:hover {
-          background: rgba(0,0,0, .2);
+          background: white;
           transition: .15s;
         }
       }
     }
 
-    .content {
-      width: 80%;
+    .form-content {
+      width: calc(100% - 300px);
     }
   }
+}
+
+mat-form-field {
+  display: block;
+}
+
+
+table {
+  width: 100%;
+
+  th {
+    text-align: center;
+  }
+}
+
+.controls {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .margin {
+    margin: 10px;
+  }
+
+  button {
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+}

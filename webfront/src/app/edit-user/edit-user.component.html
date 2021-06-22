@@ -1,0 +1,55 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <h2>Registration</h2>
+      <mat-error *ngIf="registrationInvalid">
+        The username and password were not recognized
+      </mat-error>
+
+      <img src="/assets/placeholder.jpg">
+      <input #csvInput hidden="true" type="file" onclick="this.value=null" accept=".jpg"/>
+      <button mat-flat-button color="primary" >Choose image</button>
+
+
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Email" formControlName="email" required>
+        <mat-error>
+          Please provide a valid email address
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="First Name" formControlName="firstName" required>
+        <mat-error>
+          Please provide a valid name and surname
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Last Name" formControlName="lastName" required>
+        <mat-error>
+          Please provide a valid name and surname
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Address" formControlName="address" required>
+        <mat-error>
+          Please provide a valid address
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="userType">
+          <mat-option value="1">Crew Member</mat-option>
+          <mat-option value="2">Dispatcher</mat-option>
+          <mat-option value="3">Worker</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary">Edit</button>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -48,243 +48,329 @@ namespace Web2_Backend.Migrations
 
             modelBuilder.Entity("Web2_Backend.Model.Cosumer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cosumers");
                 });
-                    modelBuilder.Entity("Web2_Backend.Model.Crew", b =>
-                        {
-                            b.Property<string>("Id")
-                                .HasColumnType("nvarchar(450)");
 
-                            b.Property<bool>("Deleted")
-                                .HasColumnType("bit");
+            modelBuilder.Entity("Web2_Backend.Model.Crew", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                            b.Property<string>("LastName")
-                                .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
 
-                            b.Property<string>("Location")
-                                .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
-                            b.Property<string>("Name")
-                                .HasColumnType("nvarchar(max)");
+                    b.HasKey("Id");
 
-                            b.Property<string>("PhoneNumber")
-                                .HasColumnType("nvarchar(max)");
+                    b.ToTable("Crews");
+                });
 
-                            b.Property<int>("Priority")
-                                .HasColumnType("int");
+            modelBuilder.Entity("Web2_Backend.Model.Device", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                            b.Property<string>("Type")
-                                .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
 
-                            b.HasKey("Id");
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
 
-                            b.ToTable("Cosumers");
-                            b.Property<string>("Name")
-                                .HasColumnType("nvarchar(max)");
+                    b.Property<double>("Lat")
+                        .HasColumnType("float");
 
-                            b.HasKey("Id");
+                    b.Property<double>("Lng")
+                        .HasColumnType("float");
 
-                            b.ToTable("Crews");
-                        });
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
 
-                    modelBuilder.Entity("Web2_Backend.Model.Incident", b =>
-                        {
-                            b.Property<long>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("bigint")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.HasKey("Id");
 
-                            b.Property<DateTime>("ATA")
-                                .HasColumnType("datetime2");
+                    b.ToTable("Devices");
+                });
 
-                            b.Property<int>("AffectedCustomers")
-                                .HasColumnType("int");
+            modelBuilder.Entity("Web2_Backend.Model.Incident", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                            b.Property<int>("Calls")
-                                .HasColumnType("int");
+                    b.Property<DateTime>("ATA")
+                        .HasColumnType("datetime2");
 
-                            b.Property<bool>("Confirmed")
-                                .HasColumnType("bit");
+                    b.Property<int>("AffectedCustomers")
+                        .HasColumnType("int");
 
-                            b.Property<bool>("Deleted")
-                                .HasColumnType("bit");
+                    b.Property<int>("Calls")
+                        .HasColumnType("int");
 
-                            b.Property<DateTime>("ETA")
-                                .HasColumnType("datetime2");
+                    b.Property<bool>("Confirmed")
+                        .HasColumnType("bit");
 
-                            b.Property<DateTime>("ETR")
-                                .HasColumnType("datetime2");
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
 
-                            b.Property<DateTime>("EstimatedWorkTime")
-                                .HasColumnType("datetime2");
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
-                            b.Property<DateTime>("IncidentDateAndTime")
-                                .HasColumnType("datetime2");
+                    b.Property<DateTime>("ETA")
+                        .HasColumnType("datetime2");
 
-                            b.Property<int>("IncidentType")
-                                .HasColumnType("int");
+                    b.Property<DateTime>("ETR")
+                        .HasColumnType("datetime2");
 
-                            b.Property<long?>("OperaterId")
-                                .HasColumnType("bigint");
+                    b.Property<DateTime>("EstimatedWorkTime")
+                        .HasColumnType("datetime2");
 
-                            b.Property<int>("Priority")
-                                .HasColumnType("int");
+                    b.Property<DateTime>("IncidentDateAndTime")
+                        .HasColumnType("datetime2");
 
-                            b.Property<int>("Status")
-                                .HasColumnType("int");
+                    b.Property<int>("IncidentType")
+                        .HasColumnType("int");
 
-                            b.Property<double>("VoltegeLevel")
-                                .HasColumnType("float");
+                    b.Property<long?>("OperaterId")
+                        .HasColumnType("bigint");
 
-                            b.HasKey("Id");
+                    b.Property<int>("Priority")
+                        .HasColumnType("int");
 
-                            b.HasIndex("OperaterId");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
-                            b.ToTable("Incidents");
-                        });
+                    b.Property<double>("VoltegeLevel")
+                        .HasColumnType("float");
 
-                    modelBuilder.Entity("Web2_Backend.Model.Solution", b =>
-                        {
-                            b.Property<long>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("bigint")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.HasKey("Id");
 
-                            b.Property<string>("Cause")
-                                .HasColumnType("nvarchar(max)");
+                    b.HasIndex("OperaterId");
 
-                            b.Property<int>("ConstructionType")
-                                .HasColumnType("int");
+                    b.ToTable("Incidents");
+                });
 
-                            b.Property<bool>("Deleted")
-                                .HasColumnType("bit");
+            modelBuilder.Entity("Web2_Backend.Model.Solution", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                            b.Property<string>("Material")
-                                .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Cause")
+                        .HasColumnType("nvarchar(max)");
 
-                            b.Property<string>("SubCase")
-                                .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ConstructionType")
+                        .HasColumnType("int");
 
-                            b.HasKey("Id");
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
 
-                            b.ToTable("Solutions");
-                        });
+                    b.Property<string>("Material")
+                        .HasColumnType("nvarchar(max)");
 
-                    modelBuilder.Entity("Web2_Backend.Model.User", b =>
-                        {
-                            b.Property<long>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("bigint")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("SubCase")
+                        .HasColumnType("nvarchar(max)");
 
-                            b.Property<string>("Address")
-                                .HasColumnType("nvarchar(max)");
+                    b.HasKey("Id");
 
-                            b.Property<bool>("AdminNeedApproved")
-                                .HasColumnType("bit");
+                    b.ToTable("Solutions");
+                });
 
-                            b.Property<DateTime>("BirthDate")
-                                .HasColumnType("datetime2");
+            modelBuilder.Entity("Web2_Backend.Model.User", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                            b.Property<bool>("Deleted")
-                                .HasColumnType("bit");
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
 
-                            b.Property<string>("Email")
-                                .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("AdminNeedApproved")
+                        .HasColumnType("bit");
 
-                            b.Property<string>("LastName")
-                                .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2");
 
-                            b.Property<string>("Name")
-                                .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
 
-                            b.Property<int>("NewUserType")
-                                .HasColumnType("int");
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
 
-                            b.Property<string>("Password")
-                                .HasColumnType("nvarchar(max)");
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
 
-                            b.Property<int>("UserStatus")
-                                .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
-                            b.Property<int>("UserType")
-                                .HasColumnType("int");
+                    b.Property<int>("NewUserType")
+                        .HasColumnType("int");
 
-                            b.Property<string>("Username")
-                                .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
 
-                            b.HasKey("Id");
+                    b.Property<int>("UserStatus")
+                        .HasColumnType("int");
 
-                            b.ToTable("Users");
-                        });
+                    b.Property<int>("UserType")
+                        .HasColumnType("int");
 
-                    modelBuilder.Entity("Web2_Backend.Model.WorkingPlan", b =>
-                        {
-                            b.Property<long>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("bigint")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
 
-                            b.Property<string>("Company")
-                                .HasColumnType("nvarchar(max)");
+                    b.HasKey("Id");
 
-                            b.Property<DateTime>("CreateDocument")
-                                .HasColumnType("datetime2");
+                    b.ToTable("Users");
+                });
 
-                            b.Property<bool>("Deleted")
-                                .HasColumnType("bit");
+            modelBuilder.Entity("Web2_Backend.Model.WorkRequest", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                            b.Property<DateTime>("EndOfWork")
-                                .HasColumnType("datetime2");
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
 
-                            b.Property<string>("Notes")
-                                .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Cause")
+                        .HasColumnType("nvarchar(max)");
 
-                            b.Property<string>("Number")
-                                .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Company")
+                        .HasColumnType("nvarchar(max)");
 
-                            b.Property<string>("Point")
-                                .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
 
-                            b.Property<DateTime>("StartOfWork")
-                                .HasColumnType("datetime2");
+                    b.Property<DateTime>("End")
+                        .HasColumnType("datetime2");
 
-                            b.Property<string>("Street")
-                                .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
 
-                            b.Property<long?>("UserCreateId")
-                                .HasColumnType("bigint");
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
 
-                            b.HasKey("Id");
+                    b.Property<DateTime>("Start")
+                        .HasColumnType("datetime2");
 
-                            b.HasIndex("UserCreateId");
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
 
-                            b.ToTable("WorkingPlans");
-                        });
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
 
-                    modelBuilder.Entity("Web2_Backend.Model.Incident", b =>
-                        {
-                            b.HasOne("Web2_Backend.Model.User", "Operater")
-                                .WithMany()
-                                .HasForeignKey("OperaterId");
+                    b.Property<bool>("Urgent")
+                        .HasColumnType("bit");
 
-                            b.Navigation("Operater");
-                        });
+                    b.HasKey("Id");
 
-                    modelBuilder.Entity("Web2_Backend.Model.WorkingPlan", b =>
-                        {
-                            b.HasOne("Web2_Backend.Model.User", "UserCreate")
-                                .WithMany()
-                                .HasForeignKey("UserCreateId");
+                    b.ToTable("WorkRequests");
+                });
 
-                            b.Navigation("UserCreate");
-                        });
-                   
-                
+            modelBuilder.Entity("Web2_Backend.Model.WorkingPlan", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Company")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDocument")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("EndOfWork")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Point")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartOfWork")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Street")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<long?>("UserCreateId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserCreateId");
+
+                    b.ToTable("WorkingPlans");
+                });
+
+            modelBuilder.Entity("Web2_Backend.Model.Incident", b =>
+                {
+                    b.HasOne("Web2_Backend.Model.User", "Operater")
+                        .WithMany()
+                        .HasForeignKey("OperaterId");
+
+                    b.Navigation("Operater");
+                });
+
+            modelBuilder.Entity("Web2_Backend.Model.WorkingPlan", b =>
+                {
+                    b.HasOne("Web2_Backend.Model.User", "UserCreate")
+                        .WithMany()
+                        .HasForeignKey("UserCreateId");
+
+                    b.Navigation("UserCreate");
+                });
+#pragma warning restore 612, 618
         }
     }
 }

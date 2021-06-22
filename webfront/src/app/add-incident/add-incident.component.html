@@ -1,99 +1,276 @@
 <mat-card>
     <mat-card-content>
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            <h2>AddIncident</h2>
+
+      <div class="form-container">
+        <div class="navigation">
+          <a (click)="selectNavigation('BASIC')">Basic info</a>
+          <a [ngClass]="linkClass()" (click)="selectNavigation('DEVICES')">Devices</a>
+          <a [ngClass]="linkClass()" (click)="selectNavigation('RESOLUTION')">Resolution</a>
+          <a [ngClass]="linkClass()" (click)="selectNavigation('CALLS')">Calls</a>
+          <a [ngClass]="linkClass()" (click)="selectNavigation('CREW')">Crew</a>
+          <a [ngClass]="linkClass()" (click)="selectNavigation('MULTIMEDIA')">Multimedia attachments</a>
+          <a [ngClass]="linkClass()" (click)="selectNavigation('EQUIPMENT')">Equipment</a>
+        </div>
+        <div class="form-content">
+          <form *ngIf="state=='BASIC'" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <h2>Add Incident</h2>
             <mat-error *ngIf="addIncidentInvalid">
-                The username and password were not recognized
+              The username and password were not recognized
             </mat-error>
             <mat-form-field class="full-width-input">
-            <label>Type:</label>
-            <select matNativeControl required required>
-    
-            </select>
-            <mat-error>
+              <label>Type:</label>
+              <mat-select matNativeControl required formControlName="type">
+                <mat-option value="1">Planned</mat-option>
+                <mat-option value="2">Non Planned</mat-option>
+              </mat-select>
+              <mat-error>
                 Please provide a valid type
-            </mat-error>
+              </mat-error>
             </mat-form-field>
 
             <mat-form-field class="full-width-input">
-                <label>Priority:</label>
-                <select matNativeControl required required>
-        
-                </select>
-                <mat-error>
-                    Please provide a valid type
-                </mat-error>
+              <input matInput placeholder="Priority" type="number" formControlName="priority" required>
+              <mat-error>
+                Please provide a valid details
+              </mat-error>
             </mat-form-field>
 
             <section class="emergency" required>
-                <mat-checkbox matInput class="example-margin">Confirm</mat-checkbox>
+              <mat-checkbox matInput formControlName="confirmed" >Confirm</mat-checkbox>
             </section>
 
             <mat-form-field class="full-width-input">
-                <input matInput placeholder="Description" formControlName="details" required>
-                <mat-error>
-                  Please provide a valid details
-                </mat-error>
+              <input matInput placeholder="Description" formControlName="description" required>
+              <mat-error>
+                Please provide a valid details
+              </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>ETA</mat-label>
-                <input matInput [matDatepicker]="pickerETA">
-                <mat-datepicker-toggle matSuffix [for]="pickerETA"></mat-datepicker-toggle>
-                <mat-datepicker #pickerETA></mat-datepicker>
+              <mat-label>ETA</mat-label>
+              <input matInput [matDatepicker]="pickerETA" formControlName="pickerETA">
+              <mat-datepicker-toggle matSuffix [for]="pickerETA"></mat-datepicker-toggle>
+              <mat-datepicker #pickerETA></mat-datepicker>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>ATA</mat-label>
-                <input matInput [matDatepicker]="pickerATA">
-                <mat-datepicker-toggle matSuffix [for]="pickerATA"></mat-datepicker-toggle>
-                <mat-datepicker #pickerATA></mat-datepicker>
+              <mat-label>ATA</mat-label>
+              <input matInput [matDatepicker]="pickerATA" formControlName="pickerATA">
+              <mat-datepicker-toggle matSuffix [for]="pickerATA"></mat-datepicker-toggle>
+              <mat-datepicker #pickerATA></mat-datepicker>
             </mat-form-field>
 
             <mat-form-field class="full-width-input">
-                <input matInput placeholder="Affected customers" formControlName="details" required>
-                <mat-error>
-                  Please provide a valid details
-                </mat-error>
+              <input matInput placeholder="Affected customers" formControlName="affectedCustomers" type="number" required>
+              <mat-error>
+                Please provide a valid details
+              </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>Outage</mat-label>
-                <input matInput [matDatepicker]="pickerOutage">
-                <mat-datepicker-toggle matSuffix [for]="pickerOutage"></mat-datepicker-toggle>
-                <mat-datepicker #pickerOutage></mat-datepicker>
+              <mat-label>Outage</mat-label>
+              <input matInput [matDatepicker]="pickerOutage" formControlName="pickerOutage">
+              <mat-datepicker-toggle matSuffix [for]="pickerOutage"></mat-datepicker-toggle>
+              <mat-datepicker #pickerOutage></mat-datepicker>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>ETR</mat-label>
-                <input matInput [matDatepicker]="pickerETR">
-                <mat-datepicker-toggle matSuffix [for]="pickerETR"></mat-datepicker-toggle>
-                <mat-datepicker #pickerETR></mat-datepicker>
+              <mat-label>ETR</mat-label>
+              <input matInput [matDatepicker]="pickerETR" formControlName="pickerETR">
+              <mat-datepicker-toggle matSuffix [for]="pickerETR"></mat-datepicker-toggle>
+              <mat-datepicker #pickerETR></mat-datepicker>
             </mat-form-field>
 
             <mat-form-field class="full-width-input">
-                <input matInput placeholder="Calls" formControlName="details" required>
-                <mat-error>
-                  Please provide a valid details
-                </mat-error>
+              <input matInput placeholder="Calls" formControlName="calls" required type="number">
+              <mat-error>
+                Please provide a valid details
+              </mat-error>
             </mat-form-field>
 
             <mat-form-field class="full-width-input">
-                <input matInput placeholder="Voltage" formControlName="details" required>
-                <mat-error>
-                  Please provide a valid details
-                </mat-error>
+              <input matInput placeholder="Voltage" formControlName="voltage" required type="number">
+              <mat-error>
+                Please provide a valid details
+              </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>Scheduled time</mat-label>
-                <input matInput [matDatepicker]="pickerScheduled">
-                <mat-datepicker-toggle matSuffix [for]="pickerScheduled"></mat-datepicker-toggle>
-                <mat-datepicker #pickerScheduled></mat-datepicker>
+              <mat-label>Scheduled time</mat-label>
+              <input matInput [matDatepicker]="pickerScheduled" formControlName="pickerScheduled">
+              <mat-datepicker-toggle matSuffix [for]="pickerScheduled"></mat-datepicker-toggle>
+              <mat-datepicker #pickerScheduled></mat-datepicker>
             </mat-form-field>
 
-            <button mat-raised-button color="dark">Add</button>
+            <button mat-raised-button color="primary">Add</button>
 
-        </form>
+          </form>
+          <div *ngIf="state=='DEVICES'">
+            <h1>Devices</h1>
+            <div class="controls">
+              <div class="left">
+                <button mat-raised-button color="primary" class="margin" (click)="onNewDevice()">New</button>
+              </div>
+
+              <div class="right">
+                <button mat-raised-button color="primary">Filter</button>
+              </div>
+            </div>
+            <div class="mat-elevation-z8">
+              <table mat-table [dataSource]="dataSourceDevice">
+
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef> Name </th>
+                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="address">
+                  <th mat-header-cell *matHeaderCellDef> Address </th>
+                  <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="type">
+                  <th mat-header-cell *matHeaderCellDef> Type </th>
+                  <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="lat">
+                  <th mat-header-cell *matHeaderCellDef> Lat </th>
+                  <td mat-cell *matCellDef="let element"> {{element.lat}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="lng">
+                  <th mat-header-cell *matHeaderCellDef> Lng </th>
+                  <td mat-cell *matCellDef="let element"> {{element.lng}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsDevice"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsDevice;"></tr>
+              </table>
+
+              <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+            </div>
+          </div>
+          <form *ngIf="state=='RESOLUTION'" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <mat-form-field class="full-width-input">
+              <label>Cause:</label>
+              <mat-select matNativeControl required formControlName="cause">
+                <mat-option value="People">People</mat-option>
+                <mat-option value="Weather">Weather</mat-option>
+              </mat-select>
+              <mat-error>
+                Please provide a valid type
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+              <label>Subcause:</label>
+              <mat-select matNativeControl required formControlName="subcause">
+                <mat-option value="Wind">Wind</mat-option>
+                <mat-option value="Lighting">Lighting</mat-option>
+              </mat-select>
+              <mat-error>
+                Please provide a valid type
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+              <label>Construction type:</label>
+              <mat-select matNativeControl required formControlName="constructionType">
+                <mat-option value="Ground">Ground</mat-option>
+                <mat-option value="Subground">Subground</mat-option>
+              </mat-select>
+              <mat-error>
+                Please provide a valid type
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+              <label>Material:</label>
+              <mat-select matNativeControl required formControlName="material">
+                <mat-option value="Metal">Metal</mat-option>
+                <mat-option value="Plastic">Plastic</mat-option>
+              </mat-select>
+              <mat-error>
+                Please provide a valid type
+              </mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary">Save</button>
+          </form>
+
+          <div *ngIf="state=='CALLS'">
+            <h1>Calls</h1>
+            <div class="controls">
+              <div class="left">
+                <button mat-raised-button color="primary" class="margin" (click)="onNewCall()">New</button>
+              </div>
+
+              <div class="right">
+                <button mat-raised-button color="primary">Filter</button>
+              </div>
+            </div>
+            <div class="mat-elevation-z8">
+              <table mat-table [dataSource]="dataSourceCalls">
+
+                <ng-container matColumnDef="comment">
+                  <th mat-header-cell *matHeaderCellDef> Comment </th>
+                  <td mat-cell *matCellDef="let element"> {{element.comment}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="breakdownName">
+                  <th mat-header-cell *matHeaderCellDef> Breakdown Name </th>
+                  <td mat-cell *matCellDef="let element"> {{element.breakdownName}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="reason">
+                  <th mat-header-cell *matHeaderCellDef> Reason </th>
+                  <td mat-cell *matCellDef="let element"> {{element.reason}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="breakdownPriority">
+                  <th mat-header-cell *matHeaderCellDef> Breakdown Priority </th>
+                  <td mat-cell *matCellDef="let element"> {{element.breakdownPriority}} </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsCalls"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsCalls;"></tr>
+              </table>
+
+              <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+            </div>
+          </div>
+          <div *ngIf="state=='CREW'">
+            <h1>Crews</h1>
+            <div class="controls">
+              <div class="left">
+                <button mat-raised-button color="primary" class="margin" (click)="onNewCrew()">New</button>
+              </div>
+
+              <div class="right">
+                <button mat-raised-button color="primary">Filter</button>
+              </div>
+            </div>
+            <div class="mat-elevation-z8">
+              <table mat-table [dataSource]="dataSourceCrews">
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef> Name </th>
+                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsCrews"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsCrews;"></tr>
+              </table>
+
+              <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
     </mat-card-content>
 </mat-card>

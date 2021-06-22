@@ -3,25 +3,28 @@
 
     <span>Web 2</span>
     <div class="links" *ngIf="isUserLogin">
-      <a routerLink="/add-safety-document" routerLinkActive="active">Add safety document</a>
-      <a routerLink="/view-safety-document" routerLinkActive="active">View safety document</a>
-      <a routerLink="/add-working-plan" routerLinkActive="active">Add Working Plan</a>
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/work-requests" routerLinkActive="active">Work requests</a>
+      <a routerLink="/view-safety-document" routerLinkActive="active">Safety document</a>
       <a routerLink="/incidents" routerLinkActive="active">Incidents</a>
-      <a routerLink="/add-incidents" routerLinkActive="active">Add incidents</a>
-      <a routerLink="/view-working-plan" routerLinkActive="active">View Working Plan</a>
-      <a routerLink="/view-switching-plans" routerLinkActive="active">View switching plans</a> 
-      <a routerLink="/add-consumer" routerLinkActive="active">Add consumer</a> 
-      <a routerLink="/add-switching-plan" routerLinkActive="active">Add switching plan</a>
-      <a routerLink="/add-crew" routerLinkActive="active">Add crew</a> 
-      <a routerLink="/view-crew" routerLinkActive="active">View crew</a>
+      <a routerLink="/view-working-plan" routerLinkActive="active">Working Plans</a>
+      <a routerLink="/view-switching-plans" routerLinkActive="active">Switching plans</a>
+      <a routerLink="/calls" routerLinkActive="active">Calls</a>
+      <a routerLink="/consumers" routerLinkActive="active">Consumers</a>
+      <a routerLink="/crews" routerLinkActive="active">Crews</a>
+      <a routerLink="/devices" routerLinkActive="active">Devices</a>
+      <a routerLink="/user-verification" routerLinkActive="active">User verification</a>
+      <a routerLink="/user-edit" routerLinkActive="active">{{name}}(edit)</a>
+      <a routerLink="/settings" routerLinkActive="active">Settings</a>
+      <a routerLink="/notifications" routerLinkActive="active">Notifications</a>
       <a href="#" (click)="logout()" routerLinkActive="active">Logout</a>
     </div>
     <div class="links" *ngIf="!isUserLogin">
       <a routerLink="/login" routerLinkActive="active">Login</a>
       <a routerLink="/registration" routerLinkActive="active">Registration</a>
     </div>
-    
   </mat-toolbar>
 </p>
 
 <router-outlet></router-outlet>
+

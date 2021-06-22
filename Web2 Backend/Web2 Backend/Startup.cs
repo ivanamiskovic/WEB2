@@ -47,9 +47,9 @@ namespace Web2_Backend
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidAudience = Configuration["Jwt:Audience"],
-                    ValidIssuer = Configuration["Jwt:Issuer"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                    ValidAudience = Configuration["ProjectConfiguration:Jwt:Audience"],
+                    ValidIssuer = Configuration["ProjectConfiguration:Jwt:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["ProjectConfiguration:Jwt:Key"]))
                 };       
             });
 
@@ -62,7 +62,7 @@ namespace Web2_Backend
 
             services.AddDbContext<Web2Context>(x =>
             {
-                x.UseSqlServer(@"Server=DESKTOP-EIKEFC4\SQLEXPRESS;Database=WEB2;Trusted_Connection=True;");
+                x.UseSqlServer(Configuration["ProjectConfiguration:DatabaseConfiguration:ConnectionString"]);
 
               //  x.UseSqlServer(@"Server=DESKTOP-TJ9PUSD\SQLEXPRESS;Database=WEB2;Trusted_Connection=True;");
                 x.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);

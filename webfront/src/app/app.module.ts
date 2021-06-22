@@ -47,6 +47,19 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './auth/token.interceptor';
+import { HomeComponent } from './home/home.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {ChartsModule} from 'ng2-charts';
+import { UserVerificationComponent } from './user-verification/user-verification.component';
+import { AddDeviceComponent } from './add-device/add-device.component';
+import { ViewDevicesComponent } from './view-devices/view-devices.component';
+import { ViewCallsComponent } from './view-calls/view-calls.component';
+import { AddCallComponent } from './add-call/add-call.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { ViewWorkrequestComponent } from './view-workrequest/view-workrequest.component';
+import {AddWorkRequestComponent} from './add-work-request/add-work-request.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +78,19 @@ import { TokenInterceptor } from './auth/token.interceptor';
     ViewConsumersComponent,
     AddCrewComponent,
     AddCrewMemberComponent,
-    ViewCrewComponent
+    ViewCrewComponent,
+    HomeComponent,
+    EditUserComponent,
+    DashboardComponent,
+    UserVerificationComponent,
+    AddDeviceComponent,
+    ViewDevicesComponent,
+    ViewCallsComponent,
+    AddCallComponent,
+    ChangePasswordComponent,
+    NotificationsComponent,
+    ViewWorkrequestComponent,
+    AddWorkRequestComponent
   ],
   imports: [
     MatPaginatorModule,
@@ -93,8 +118,9 @@ import { TokenInterceptor } from './auth/token.interceptor';
     MatSelectModule,
     MatOptionModule,
     MatProgressSpinnerModule,
-    HttpClientModule
-],
+    HttpClientModule,
+    ChartsModule
+  ],
 exports: [ MatFormFieldModule, MatInputModule ],
   providers: [
     {

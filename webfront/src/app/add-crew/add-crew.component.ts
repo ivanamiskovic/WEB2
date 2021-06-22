@@ -20,12 +20,11 @@ export class AddCrewComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private api: ApiService)
-    
+
     { this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
 
     this.form = this.fb.group({
-      name: ['', Validators.email],
-      id: ['', Validators.required],
+      name: ['', Validators.required],
     });
     }
 
@@ -39,13 +38,11 @@ export class AddCrewComponent implements OnInit {
     if (this.form.valid) {
       try {
         const name = this.form.get('name')?.value;
-        const id = this.form.get('id')?.value;
 
         this.api.addCrew({
-          name: name,
-          id: id
+          name: name
         }).subscribe(response => {
-          console.log(response);
+          this.router.navigateByUrl('/dashboard');
         });
 
       } catch (err) {
@@ -54,6 +51,5 @@ export class AddCrewComponent implements OnInit {
   }  else {
       this.formSubmitAttempt = true;
     }
-  
   }
 }

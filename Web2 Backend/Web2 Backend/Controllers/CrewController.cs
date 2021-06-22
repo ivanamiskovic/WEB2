@@ -13,23 +13,24 @@ namespace Web2_Backend.Controllers
     [Route("[controller]")] 
     public class CrewController : Controller
     {
-        public CrewController crewService = new CrewController();
+        public CrewService crewService = new CrewService();
 
-        [Route("/api/crew/{id}")]
+        [Route("/api/crews/{id}")]
         [HttpGet]
         public async Task<IActionResult> Get(int id)
         {
             return Ok(crewService.Get(id));
         }
 
-        [Route("/api/crew")]
+        [Route("/api/crews")]
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery(Name = "page")] int page, [FromQuery(Name = "perPage")] int perPage,
+            [FromQuery(Name = "search")] string search)
         {
             return Ok(crewService.GetAll());
         }
 
-        [Route("/api/crew")]
+        [Route("/api/crews")]
         [HttpPost]
         public async Task<IActionResult> Add(Crew crew)
         {
@@ -43,7 +44,7 @@ namespace Web2_Backend.Controllers
             return Ok(crewService.Edit(id, crew));
         }
 
-        [Route("/api/crew/{id}")]
+        [Route("/api/crews/{id}")]
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {

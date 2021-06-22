@@ -26,13 +26,13 @@ namespace Web2_Backend.Service
             return null;
         }
 
-        public PageResponse<SafetyDocument> GetAll()
+        public PageResponse<SafetyDocument> GetAll(int page, int perPage, string search)
         {
             try
             {
                 using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
                 {
-                    IEnumerable<SafetyDocument> result = unitOfWork.SafetyDocument.GetAll();
+                    IEnumerable<SafetyDocument> result = unitOfWork.SafetyDocument.GetAll(page, perPage, search);
                     PageResponse<SafetyDocument> pageResponse = new PageResponse<SafetyDocument>(result, result.Count());
 
                     return pageResponse;

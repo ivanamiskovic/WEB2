@@ -27,13 +27,13 @@ namespace Web2_Backend.Service
             return null;
         }
 
-        public IEnumerable<Calls> GetAll()
+        public IEnumerable<Calls> GetAll(int page, int perPage, string search)
         {
             try
             {
                 using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
                 {
-                    return unitOfWork.Calls.GetAll();
+                    return unitOfWork.Calls.GetAll(page, perPage, search);
                 }
             }
             catch (Exception e)

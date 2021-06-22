@@ -18,6 +18,49 @@ namespace Web2_Backend.Service
 
         }
 
+        public bool VerifyUser(long id)
+        {
+            try
+            {
+                using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
+                {
+                    User userDB = unitOfWork.Users.Get(id);
+
+                    if (userDB == null)
+                    {
+                        return false;
+                    }
+
+                    unitOfWork.Users.Update(userDB);
+                    userDB.AdminNeedApproved = false;
+
+                    unitOfWork.Complete();
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public List<User> GetVerificationUsers()
+        {
+            try
+            {
+                using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
+                {
+                    return unitOfWork.Users.GetVerificationUsers();
+                }
+            }
+            catch (Exception e)
+            {
+                return new List<User>();
+            }
+
+        }
+
         public User GetUserWithEmail(string email) 
         {
             try
@@ -54,13 +97,13 @@ namespace Web2_Backend.Service
 
 
         //2.3
-        public bool Edit(int id, User user) 
+        public bool Edit(User user) 
         {
             try
             {
                 using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context())) 
                 {
-                    User userDB = unitOfWork.Users.Get(id);
+                    User userDB = unitOfWork.Users.Get(user.Id);
 
                     if (userDB == null) 
                     {
@@ -70,10 +113,11 @@ namespace Web2_Backend.Service
                     unitOfWork.Users.Update(userDB);
 
                     userDB.Address = user.Address;
-                    userDB.BirthDate = user.BirthDate;
                     userDB.LastName = user.LastName;
                     userDB.Email = user.Email;
                     userDB.Name = user.Name;
+                    userDB.AdminNeedApproved = userDB.UserType != user.UserType;
+                    userDB.UserType = user.UserType;
 
                     unitOfWork.Complete();
                 }
@@ -165,6 +209,7 @@ namespace Web2_Backend.Service
                     userDB.Password = user.Password;
                     userDB.UserType = user.UserType;
                     userDB.UserStatus = UserStatus.PROCESSING;
+                    userDB.AdminNeedApproved = true;
 
                     unitOfWork.Users.Add(userDB);
                     unitOfWork.Complete();
@@ -207,5 +252,35 @@ namespace Web2_Backend.Service
 
             return true;
         }
+
+        public bool ChangePassword(string password, long id)
+        {
+            try
+            {
+                using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
+                {
+                    User userDB = unitOfWork.Users.Get(id);
+
+                    if (userDB == null)
+                    {
+                        return false;
+                    }
+
+                    unitOfWork.Users.Update(userDB);
+
+                    userDB.Password = password;
+
+                    unitOfWork.Complete();
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        
     }
 }

@@ -1,0 +1,55 @@
+<mat-card>
+  <mat-card-content class="dashboard-container">
+
+    <div class="row-1">
+      <div class="item">
+        <h2>My Incidents</h2>
+        <h3><b>1</b> Drafts</h3>
+        <h3><b>2</b> Canceled</h3>
+        <h3><b>0</b> Executing</h3>
+        <h3><b>4</b> Computed</h3>
+      </div>
+      <div class="item">
+        <h2>My Work Plans</h2>
+        <h3><b>2</b> Drafts</h3>
+        <h3><b>0</b> Canceled</h3>
+        <h3><b>1</b> Executing</h3>
+        <h3><b>0</b> Computed</h3>
+      </div>
+      <div class="item">
+        <h2>My Safety Docs</h2>
+        <h3><b>3</b> Drafts</h3>
+        <h3><b>1</b> Canceled</h3>
+        <h3><b>1</b> Executing</h3>
+        <h3><b>0</b> Computed</h3>
+      </div>
+    </div>
+
+    <div class="row-2">
+      <div class="item">
+        <h2>Incidents</h2>
+        <canvas baseChart width="400" height="400"
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"></canvas>
+      </div>
+      <div class="item">
+        <h2>Documents</h2>
+        <canvas baseChart
+                [data]="pieChartData"
+                [labels]="pieChartLabels"
+                [chartType]="pieChartType"
+                [options]="pieChartOptions"
+                [colors]="pieChartColors"
+                [legend]="pieChartLegend">
+        </canvas>
+      </div>
+    </div>
+
+
+  </mat-card-content>
+</mat-card>
+

@@ -11,5 +11,6 @@ namespace Web2_Backend.Core
         User GetUserWithEmail(string email);
 
         User GetUserWithUsernameAndPassword(string email, string password);
+        List<User> GetVerificationUsers();
     }
 }

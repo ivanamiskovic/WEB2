@@ -32,25 +32,26 @@ namespace Web2_Backend.Controllers
 
             User user = userService.GetUserWithEmailAndPassword(userData.Email, userData.Password);
 
-            if (user == null) 
+            if (user == null || user.AdminNeedApproved) 
             {
                 return BadRequest("Invalide credentials");
             }
 
             var claims = new[] {
-                new Claim(JwtRegisteredClaimNames.Sub, "daxbvcbvcbcvbcvbcvbcvbcvbcvbcvbcbcvbcvbcvbcsdsadasd"),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                new Claim("Id", user.Id.ToString()),
-                new Claim("FirstName", user.Name),
-                new Claim("LastName", user.LastName),
-                new Claim("Email", user.Email)
-            };
+                    new Claim(JwtRegisteredClaimNames.Sub, configuration.Jwt.Subject),
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                    new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
+                    new Claim("Id", user.Id.ToString()),
+                    new Claim("FirstName", user.Name),
+                    new Claim("LastName", user.LastName),
+                    new Claim("Email", user.Email)
+                   };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("daxbvcbvcbcvbcvbcvbcvbcvbcvbcvbcbcvbcvbcvbcsdsadasd"));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.Jwt.Key));
 
             var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var token = new JwtSecurityToken("daxbvcbvcbcvbcvbcvbcvbcvbcvbcvbcbcvbcvbcvbcsdsadasd", "daxbvcbvcbcvbcvbcvbcvbcvbcvbcvbcbcvbcvbcvbcsdsadasd", expires: DateTime.UtcNow.AddDays(60), signingCredentials: signIn);
+
+            var token = new JwtSecurityToken(configuration.Jwt.Issuer, configuration.Jwt.Audience, claims, expires: DateTime.UtcNow.AddDays(1), signingCredentials: signIn);
 
             return Ok( new { Token = new JwtSecurityTokenHandler().WriteToken(token) });
         }

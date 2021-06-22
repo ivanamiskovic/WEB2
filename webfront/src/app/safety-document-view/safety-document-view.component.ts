@@ -40,6 +40,10 @@ export class SafetyDocumentViewComponent implements OnInit {
     ];
   }
 
+  onSearchChange(searhcValue: any): void {
+    console.log(searhcValue);
+  }
+  
   ngOnInit(): void {
   }
 

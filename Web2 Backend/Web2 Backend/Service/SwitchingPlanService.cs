@@ -28,13 +28,13 @@ namespace Web2_Backend.Service
                 return null;
             }
 
-            public PageResponse<SwitchingPlan> GetAll()
+            public PageResponse<SwitchingPlan> GetAll(int page, int perPage, string search)
             {
                 try
                 {
                     using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
                     {
-                        IEnumerable<SwitchingPlan> result = unitOfWork.SwitchingPlans.GetAll();
+                        IEnumerable<SwitchingPlan> result = unitOfWork.SwitchingPlans.GetAll(page, perPage, search);
                         PageResponse<SwitchingPlan> pageResponse = new PageResponse<SwitchingPlan>(result, result.Count());
 
                         return pageResponse;

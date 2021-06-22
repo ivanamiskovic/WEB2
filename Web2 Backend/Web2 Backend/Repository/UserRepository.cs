@@ -24,5 +24,12 @@ namespace Web2_Backend.Repository
 
             return query.FirstOrDefault();
         }
+
+        public List<User> GetVerificationUsers()
+        {
+            var query = Web2Context.Users.Where(x => x.Deleted == false && x.AdminNeedApproved == true);
+
+            return query.ToList();
+        }
     }
 }

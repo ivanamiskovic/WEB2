@@ -27,13 +27,13 @@ namespace Web2_Backend.Service
             return null;
         }
 
-        public PageResponse<Cosumer> GetAll()
+        public PageResponse<Cosumer> GetAll(int page, int perPage, string search)
         {
             try
             {
                 using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
                 {
-                    IEnumerable<Cosumer> result = unitOfWork.Cosumer.GetAll();
+                    IEnumerable<Cosumer> result = unitOfWork.Cosumer.GetAll(page, perPage, search);
                     PageResponse<Cosumer> pageResponse = new PageResponse<Cosumer>(result, result.Count());
 
                     return pageResponse;
@@ -58,10 +58,7 @@ namespace Web2_Backend.Service
                     newCosumer.Priority = cosumer.Priority;
                     newCosumer.LastName = cosumer.LastName;
                     newCosumer.PhoneNumber = cosumer.PhoneNumber;
-                    newCosumer.Id = cosumer.Id;
                     newCosumer.Type = cosumer.Type;
-                   
-
 
                     unitOfWork.Cosumer.Add(newCosumer);
                     unitOfWork.Complete();

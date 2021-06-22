@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-content>
+    <h1>Notifications</h1>
+    <div *ngIf="showNotification" class="notifications" >
+
+      <div class="info notification">
+        <p>Call added 01.01.2021. 12:33</p>
+      </div>
+
+      <div class="info notification">
+        <p>Call added 01.01.2021. 12:33</p>
+      </div>
+
+      <div class="error notification">
+        <p>Call added 01.01.2021. 12:33</p>
+      </div>
+
+      <div class="success notification">
+        <p>Call added 01.01.2021. 12:33</p>
+      </div>
+
+      <div class="info notification">
+        <p>Call added 01.01.2021. 12:33</p>
+      </div>
+
+      <div class="error notification">
+        <p>Call added 01.01.2021. 12:33</p>
+      </div>
+    </div>
+    <button (click)="clear()"  mat-raised-button color="primary">Clear All</button>
+  </mat-card-content>
+</mat-card>
+

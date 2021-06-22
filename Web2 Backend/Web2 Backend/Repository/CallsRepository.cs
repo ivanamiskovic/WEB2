@@ -10,5 +10,10 @@ namespace Web2_Backend.Repository
     public class CallsRepository : Repository<Calls>, ICallsRepository
     {
         public CallsRepository(Web2Context context) : base(context) { }
+
+        public override IEnumerable<Calls> GetAll()
+        {
+            return Web2Context.Calls.Where(x => x.Deleted == false).ToList();
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace Web2_Backend.Core
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        TEntity Get(int d);
+        TEntity Get(long d);
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
 
         IEnumerable<TEntity> GetAll();

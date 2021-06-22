@@ -13,11 +13,15 @@ import { ApiService } from '../api.service';
 export class AddWorkingPlanComponent implements OnInit {
 
   form: FormGroup;
-  public addWorkingPlanInvalid = false;
-  private formSubmitAttempt = false;
-  private returnUrl: string;
-  instructions: any;
-  user:any
+  public addIncidentInvalid = false;
+  public state = 'BASIC';
+  data: any;
+  dataSourceDevice: any;
+  displayedColumnsDevice: string[] = ['name', 'address', 'type', 'lat', 'lng'];
+  dataSourceCalls: any;
+  displayedColumnsCalls: string[] = ['comment', 'breakdownName', 'reason', 'breakdownPriority'];
+  dataSourceCrews: any;
+  displayedColumnsCrews: string[] = ['name'];
 
   constructor(
     private fb: FormBuilder,
@@ -25,81 +29,99 @@ export class AddWorkingPlanComponent implements OnInit {
     private router: Router,
     private api: ApiService
   ) {
-    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
-
-
     this.form = this.fb.group({
       type: ['', Validators.required],
-      status: ['', Validators.required],
-      typeOfWork: ['', Validators.required],
-      createdBy: ['', Validators.required],
-      purpose: ['', Validators.required],
-      details: ['', Validators.required],
-      notes : ['', Validators.required],
+      note: ['', Validators.required],
+      pickerStart: ['', Validators.required],
+      pickerEnd: ['', Validators.required],
       urgent: ['', Validators.required],
+      cause: ['', Validators.required],
       company: ['', Validators.required],
-      phone: ['', Validators.required],
       address: ['', Validators.required],
-      date:['', Validators.required]
+      phoneNumber: ['', Validators.required],
     });
+  }
 
-    this.form.controls['status'].disable();
-    this.form.controls['createdBy'].disable();
-    this.form.controls['date'].disable();
-   }
+  onNewCrew(): void {
+    this.router.navigateByUrl('/add-crew');
+  }
+
+  onNewCall(): void {
+    this.router.navigateByUrl('/add-call');
+  }
+
+
+  fetchCalls(): void {
+    this.api.getCalls().subscribe((response: any) => {
+      this.dataSourceCalls = response;
+    });
+  }
+
+  onNewDevice(): void {
+    this.router.navigateByUrl('/add-device');
+  }
+
+  linkClass(): string {
+    return this.data && this.data.id ? '' : 'disabled';
+  }
+
+  selectNavigation(state: any): void {
+    this.state = state;
+  }
+
+  fetchDevices(): void {
+    this.api.getDevices().subscribe(response => {
+      console.log(response);
+      this.dataSourceDevice = response;
+    });
+  }
+
+  fetchCrews(): void {
+    this.api.getCrews().subscribe(response => {
+      console.log(response);
+      this.dataSourceCrews = response;
+    });
+  }
 
   ngOnInit(): void {
-    this.api.getCurrentUser().subscribe(response =>{
-      console.log(response);
-      this.user = response;
-    })
+
+    this.route.queryParams.subscribe(params => {
+      console.log();
+      if(params['id']) {
+        this.api.getIncident(params['id']).subscribe((response: any) => {
+          this.data = response;
+          this.form.controls['type'].setValue(this.data.type);
+          this.form.controls['note'].setValue(this.data.note);
+          this.form.controls['pickerStart'].setValue(this.data.start);
+          this.form.controls['pickerEnd'].setValue(this.data.end);
+          this.form.controls['company'].setValue(this.data.company);
+          this.form.controls['address'].setValue(this.data.address);
+          this.form.controls['urgent'].setValue(this.data.urgent);
+          this.form.controls['phoneNumber'].setValue(this.data.phoneNumber);
+          this.form.controls['cause'].setValue(this.data.cause);
+        });
+      }
+    });
+
+    this.fetchDevices();
+    this.fetchCalls();
+    this.fetchCrews();
   }
 
-  async onSubmit(): Promise<void> {
-/**/ 
-  this.addWorkingPlanInvalid = false;
-  this.formSubmitAttempt = false;
-  if (this.form.valid) {
-    try {
-      const type = this.form.get('type')?.value;
-      const status = this.form.get('status')?.value;
-      const typeOfWork = this.form.get('typeOfWork')?.value;
-      const createdBy = this.form.get('createdBy')?.value;
-      const purpose = this.form.get('purpose')?.value;
-      const details = this.form.get('details')?.value;
-      const notes = this.form.get('notes')?.value;
-      const urgent = this.form.get('urgent')?.value;
-      const company = this.form.get('company')?.value;
-      const phone = this.form.get('phone')?.value;
-      const address = this.form.get('address')?.value;
-      const date = this.form.get('date')?.value;
-
-
-      this.api.addWorkingPlan({
-        type: type,
-        status: status,
-        typeOfWork:typeOfWork,
-        createdBy: createdBy,
-        purpose:purpose,
-        details:details,
-        notes:notes,
-        urgent:urgent,
-        company:company,
-        phone:phone,
-        address:address,
-        date:date
-
-      }).subscribe(response => {
-        console.log(response);
-      });
-
-    } catch (err) {
-      this.addWorkingPlanInvalid = true;
-    }
-  } else {
-    this.formSubmitAttempt = true;
+  onSubmit(): void {
+    this.api.addWorkRequests({
+      type: this.form.get('type')?.value,
+      note: this.form.get('description')?.value,
+      urgent: Boolean(this.form.get('urgent')?.value),
+      start: this.form.get('pickerStart')?.value,
+      end: this.form.get('pickerEnd')?.value,
+      company: this.form.get('company')?.value,
+      phoneNumber: this.form.get('phoneNumber')?.value,
+      address: this.form.get('address')?.value,
+      caause: this.form.get('cause')?.value,
+    }).subscribe((response: any) => {
+      this.data = response;
+    });
   }
 }
-  }
-
 

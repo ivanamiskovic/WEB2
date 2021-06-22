@@ -1,131 +1,130 @@
-<mat-card class="page">
-  <div class="navigation">
-    <mat-card-content>
-      <a>Basic information</a>
-      <a>History of state changes</a>
-      <a>Multimedia attachments</a>
-      <a>Equipment</a>
+<mat-card>
+  <mat-card-content>
 
-    </mat-card-content>
-  </div>
-  <div class="content">
-    <mat-card-content>
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-          <h2>Add work request</h2>
-          <mat-error *ngIf="addWorkingPlanInvalid">
-              Error adding work request
+    <div class="form-container">
+      <div class="navigation">
+        <a (click)="selectNavigation('BASIC')">Basic info</a>
+        <a [ngClass]="linkClass()" (click)="selectNavigation('HISTORY')">History of changes</a>
+        <a [ngClass]="linkClass()" (click)="selectNavigation('MULTIMEDIA')">Multimedia attachments</a>
+        <a [ngClass]="linkClass()" (click)="selectNavigation('EQUIPMENT')">Equipment</a>
+      </div>
+      <div class="form-content">
+        <form *ngIf="state=='BASIC'" [formGroup]="form" (ngSubmit)="onSubmit()">
+          <h2>Add Working Plan</h2>
+          <mat-error *ngIf="addIncidentInvalid">
+            The username and password were not recognized
           </mat-error>
-  
           <mat-form-field class="full-width-input">
-              <label>Type</label>
-              <select matNativeControl required>
-                  <option value = "1">Planned</option>
-                  <option value = "2">Not planned</option>
-              </select>
-              <mat-error>
-                  Please provide a valid type
-              </mat-error>
+            <label>Type:</label>
+            <mat-select matNativeControl required formControlName="type">
+              <mat-option value="1">Planned</mat-option>
+              <mat-option value="2">Non Planned</mat-option>
+            </mat-select>
+            <mat-error>
+              Please provide a valid type
+            </mat-error>
           </mat-form-field>
-  
-          <mat-form-field class="full-width-input">
-              <input matInput placeholder="Status" formControlName="status" required>
-              <option value = "Draft">Draft</option>
-              <mat-error>
-                Please provide a valid status
-              </mat-error>
-          </mat-form-field>
-  
-          <mat-form-field class="full-width-input">
-              <input matInput placeholder="Address" formControlName="address" required>
-              <mat-error>
-                Please provide a valid address
-              </mat-error>
-            </mat-form-field>
-  
-         
-  
-          <mat-form-field appearance="fill">
-              <mat-label>StartDate</mat-label>
-              <input matInput [matDatepicker]="pickerStart">
-              <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
-              <mat-datepicker #pickerStart></mat-datepicker>
-              <mat-error>
-                Please provide a valid date.
-              </mat-error>
-          </mat-form-field>
-  
-          <mat-form-field appearance="fill">
-              <mat-label>EndDate</mat-label>
-              <input matInput [matDatepicker]="pickerEnd">
-              <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
-              <mat-datepicker #pickerEnd></mat-datepicker>
-              <mat-error>
-                Please provide a valid date.
-              </mat-error>
-          </mat-form-field>
-          
-  
-          <mat-form-field class="full-width-input">
-              <input matInput placeholder="CreatedBy" formControlName="createdBy" required>
-              <mat-error>
-                Please provide a valid creater.
-              </mat-error>
-          </mat-form-field>
-  
-          <mat-form-field class="full-width-input">
-              <input matInput placeholder="Purpose" formControlName="purpose" required>
-              <mat-error>
-                Please provide a valid purpose
-              </mat-error>
-            </mat-form-field>
-  
-            <mat-form-field class="full-width-input">
-              <input matInput placeholder="Details" formControlName="details" required>
-              <mat-error>
-                Please provide a valid details
-              </mat-error>
-            </mat-form-field>
-  
-            <mat-form-field class="full-width-input">
-              <input matInput placeholder="Notes" formControlName="notes" required>
-              <mat-error>
-                Please provide a valid notes
-              </mat-error>
-            </mat-form-field>
-  
-            <section class="emergency" required>
-              <mat-checkbox matInput class="example-margin">Emergency work</mat-checkbox>
-          </section>
-  
-  
-          <mat-form-field class="full-width-input">
-              <input matInput placeholder="Company" formControlName="company" required>
-              <mat-error>
-                Please provide a valid Company
-              </mat-error>
-            </mat-form-field>
-  
-            <mat-form-field class="full-width-input">
-              <input matInput placeholder="Phone" formControlName="phone" required>
-              <mat-error>
-                Please provide a valid Phone No.
-              </mat-error>
-            </mat-form-field>
-  
 
-            <mat-form-field appearance="fill">
-              <mat-label>DateCreated</mat-label>
-              <input matInput [matDatepicker]="pickerEnd">
-              <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
-              <mat-datepicker #pickerEnd></mat-datepicker>
-              <mat-error>
-                Please provide a valid date.
-              </mat-error>
+          <section class="urgent" required>
+            <mat-checkbox matInput formControlName="urgent" >Urgent</mat-checkbox>
+          </section>
+
+          <mat-form-field class="full-width-input">
+            <input matInput placeholder="Note" formControlName="note" required>
+            <mat-error>
+              Please provide a valid details
+            </mat-error>
           </mat-form-field>
-            
-  
-            <button mat-raised-button color="dark">AddWorkingPlan</button>
-      </form>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Start</mat-label>
+            <input matInput [matDatepicker]="pickerStart" formControlName="pickerStart">
+            <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+            <mat-datepicker #pickerStart></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>End</mat-label>
+            <input matInput [matDatepicker]="pickerEnd" formControlName="pickerEnd">
+            <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+            <mat-datepicker #pickerEnd></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field class="full-width-input">
+            <input matInput placeholder="Cause" formControlName="cause"  required>
+            <mat-error>
+              Please provide a valid details
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width-input">
+            <input matInput placeholder="Company" formControlName="company" required>
+            <mat-error>
+              Please provide a valid details
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width-input">
+            <input matInput placeholder="Phone number" formControlName="phoneNumber" required>
+            <mat-error>
+              Please provide a valid details
+            </mat-error>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary">Add</button>
+
+        </form>
+        <div *ngIf="state=='EQUIPMENT'">
+          <h1>Devices</h1>
+          <div class="controls">
+            <div class="left">
+              <button mat-raised-button color="primary" class="margin" (click)="onNewDevice()">New</button>
+            </div>
+
+            <div class="right">
+              <button mat-raised-button color="primary">Filter</button>
+            </div>
+          </div>
+          <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSourceDevice">
+
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef> Address </th>
+                <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="type">
+                <th mat-header-cell *matHeaderCellDef> Type </th>
+                <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="lat">
+                <th mat-header-cell *matHeaderCellDef> Lat </th>
+                <td mat-cell *matCellDef="let element"> {{element.lat}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="lng">
+                <th mat-header-cell *matHeaderCellDef> Lng </th>
+                <td mat-cell *matCellDef="let element"> {{element.lng}} </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumnsDevice"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumnsDevice;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
   </mat-card-content>
-  </div>
 </mat-card>

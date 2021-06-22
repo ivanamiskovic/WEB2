@@ -30,11 +30,12 @@ export class RegistrationComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       address: ['', Validators.required],
+      userType: ['', Validators.required],
     });
   }
 
   async ngOnInit(): Promise<void> {
-    
+
   }
 
   async onSubmit(): Promise<void> {
@@ -50,8 +51,8 @@ export class RegistrationComponent implements OnInit {
           lastName: this.form.get('lastName')?.value,
           password: this.form.get('password')?.value,
           passwordConfirm: this.form.get('passwordConfirm')?.value,
-          address: this.form.get('address')?.value
-
+          address: this.form.get('address')?.value,
+          userType: Number(this.form.get('userType')?.value)
         }).subscribe(response => {
           this.router.navigateByUrl('/login');
         });

@@ -13,6 +13,10 @@ export class ViewSwitchingPlanComponent implements OnInit {
 
   constructor(private router: Router) {this.dataSource = []; }
 
+  onSearchChange(searhcValue: any): void {
+    console.log(searhcValue);
+  }
+
   ngOnInit(): void {
   }
 

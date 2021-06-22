@@ -10,7 +10,7 @@ namespace Web2_Backend.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class IncidentController : Controller
+    public class IncidentController : DefaultController
     {
         public IncidentService incidentService = new IncidentService();
 
@@ -23,7 +23,8 @@ namespace Web2_Backend.Controllers
 
         [Route("/api/incidents")]
         [HttpGet]
-        public PageResponse<Incident> GetAll() 
+        public PageResponse<Incident> GetAll([FromQuery(Name = "page")] int page, [FromQuery(Name = "perPage")] int perPage,
+            [FromQuery(Name = "search")] string search) 
         {
             return incidentService.GetAll();
         }
@@ -32,6 +33,7 @@ namespace Web2_Backend.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(Incident incident)
         {
+            incident.Operater = GetCurrentUser();
             return Ok(incidentService.Add(incident));
         }
 

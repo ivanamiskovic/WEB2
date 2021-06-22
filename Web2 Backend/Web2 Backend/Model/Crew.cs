@@ -8,6 +8,5 @@ namespace Web2_Backend.Model
     public class Crew : Entity
     {
         public string Name { get; set; }
-        public string Id { get; set; }
     }
 }

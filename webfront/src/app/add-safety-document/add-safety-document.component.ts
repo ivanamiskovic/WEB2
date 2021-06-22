@@ -19,7 +19,7 @@ export class AddSafetyDocumentComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
   private api: ApiService
-  ) 
+  )
   {
     this.form = this.fb.group({
       type: ['', Validators.required],
@@ -35,7 +35,7 @@ export class AddSafetyDocumentComponent implements OnInit {
   ngOnInit(): void {
 
 
-  
+
   }
 
   async onSubmit(): Promise<void> {
@@ -47,11 +47,10 @@ export class AddSafetyDocumentComponent implements OnInit {
       details: this.form.get('details')?.value,
       notes: this.form.get('notes')?.value,
       phoneNumber: this.form.get('phoneNumber')?.value
-      
+
     }).subscribe(response => {
-      console.log(response);
     });
-    
+
   }
 
 }

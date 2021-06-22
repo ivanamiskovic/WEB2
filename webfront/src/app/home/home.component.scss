@@ -1,0 +1,25 @@
+.home-content {
+
+
+  display: flex;
+  flex-direction: row;
+  max-height: 100vh;
+
+  .home-image,
+  .home-controls {
+    width: 50%;
+    padding: 10px;
+  }
+
+  .home-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .home-image {
+    img {
+      width: 100%;
+    }
+  }
+}

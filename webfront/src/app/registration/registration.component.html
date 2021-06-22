@@ -9,7 +9,7 @@
         <img src="/assets/placeholder.jpg">
           <input #csvInput hidden="true" type="file" onclick="this.value=null" accept=".jpg"/>
           <button mat-flat-button color="primary" >Choose image</button>
-          
+
 
         <mat-form-field class="full-width-input">
           <input matInput placeholder="Email" formControlName="email" required>
@@ -24,7 +24,7 @@
               Please provide a valid username
             </mat-error>
           </mat-form-field>
-        
+
           <mat-form-field class="full-width-input">
             <input matInput placeholder="First Name" formControlName="firstName" required>
             <mat-error>
@@ -55,6 +55,15 @@
               Please provide a valid address
             </mat-error>
           </mat-form-field>
+
+        <mat-form-field class="full-width-input">
+          <mat-label>Type</mat-label>
+          <mat-select formControlName="userType">
+            <mat-option value="1">Crew Member</mat-option>
+            <mat-option value="2">Dispatcher</mat-option>
+            <mat-option value="3">Worker</mat-option>
+          </mat-select>
+        </mat-form-field>
 
         <mat-form-field class="full-width-input">
           <input matInput type="password" placeholder="Password" formControlName="password" required>

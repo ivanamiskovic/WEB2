@@ -20,7 +20,7 @@ export class AddSwitchingPlanComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private api: ApiService
-  ) 
+  )
 
 
 
@@ -28,7 +28,7 @@ export class AddSwitchingPlanComponent implements OnInit {
     this.form = this.fb.group({
       type: ['', Validators.required],
       status: ['', Validators.required],
-      typeOfWork: ['', Validators.required],     
+      typeOfWork: ['', Validators.required],
       createdBy: ['', Validators.required],
       purpose: ['', Validators.required],
       details: ['', Validators.required],
@@ -46,22 +46,20 @@ export class AddSwitchingPlanComponent implements OnInit {
   ngOnInit(): void {
 
     this.api.getCurrentUser().subscribe(response => {
-      console.log(response);  
       this.user = response;
     });
 
 
-    
+
   }
 
   async onSubmit(): Promise<void> {
-    console.log(this.form.value)
 
     this.instructions.push({
       id: this.instructions.length + 1,
       name: this.form.value.name
 
-     
+
     });
    this.api.addSwitchingPlan({
       type: this.form.get('type')?.value,
@@ -74,7 +72,6 @@ export class AddSwitchingPlanComponent implements OnInit {
       company: this.form.get('company')?.value,
       phone: this.form.get('phone')?.value
     }).subscribe((response: any) => {
-      console.log(response);
     });
 
 
@@ -102,7 +99,7 @@ export class AddSwitchingPlanComponent implements OnInit {
       this.instructions.splice(index, 1);
     }
 
-  } 
-  
+  }
+
 
 }

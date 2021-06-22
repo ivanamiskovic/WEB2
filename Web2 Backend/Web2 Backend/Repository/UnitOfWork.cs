@@ -20,6 +20,8 @@ namespace Web2_Backend.Repository
         public ICosumerRepository Cosumer { get; private set; }
         public IWorkingPlanRepository WorkingPlans { get; private set; }
         public ICrewRepository Crews { get; private set; }
+        public IDeviceRepository Devices { get; private set; }
+        public IWorkRequestRepository WorkRequests { get; private set; }
 
         public UnitOfWork(Web2Context context) 
         {
@@ -33,6 +35,8 @@ namespace Web2_Backend.Repository
             Cosumer = new CosumerRepository(this.context);
             WorkingPlans = new WorkingPlanRepository(this.context);
             Crews = new CrewRepository(this.context);
+            Devices = new DeviceRepository(this.context);
+            WorkRequests = new WorkRequestRepository(this.context);
         }
 
         public Web2Context Context

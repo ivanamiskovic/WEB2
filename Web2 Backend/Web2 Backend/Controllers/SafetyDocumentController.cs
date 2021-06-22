@@ -24,7 +24,8 @@ namespace Web2_Backend.Controllers
 
         [Route("/api/safetyDocuments")]
         [HttpGet]
-        public PageResponse<SafetyDocument> GetAll()
+        public PageResponse<SafetyDocument> GetAll([FromQuery(Name = "page")] int page, [FromQuery(Name = "perPage")] int perPage,
+            [FromQuery(Name = "search")] string search)
         {
             return safetyDocumentService.GetAll();
         }

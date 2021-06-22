@@ -1,0 +1,51 @@
+<mat-card>
+  <mat-card-content>
+    <h1>Calls</h1>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Comment" formControlName="comment" required>
+        <mat-error>
+          Please provide a valid name
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Breakdown Name" formControlName="breakdownName" required>
+        <mat-error>
+          Please provide a valid lastname
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input">
+        <label>Reason</label>
+        <mat-select matNativeControl required formControlName="reason">
+          <mat-option value="1">NoEletricity</mat-option>
+          <mat-option value="2">BreakdownTrue</mat-option>
+          <mat-option value="3">LightFlickering</mat-option>
+          <mat-option value="4">ElectricityReturn</mat-option>
+          <mat-option value="5">PartialElecticity</mat-option>
+          <mat-option value="6">VoltageProblems</mat-option>
+        </mat-select>
+        <mat-error>
+          Please provide a valid type
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="full-width-input">
+        <input matInput type="number" placeholder="Breakdown Priority" formControlName="breakdownPriority" required>
+        <mat-error>
+          Please provide a valid priority
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary">Add</button>
+
+    </form>
+
+
+
+  </mat-card-content>
+</mat-card>
+

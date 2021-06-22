@@ -13,7 +13,7 @@ namespace Web2_Backend.Controllers
     [Route("[controller]")]
     public class WorkingPlanController : Controller
     {
-        public WorkingPlanController workingPlanService = new WorkingPlanController();
+        public WorkingPlanService workingPlanService = new WorkingPlanService();
 
         [Route("/api/workingPlan/{id}")]
         [HttpGet]
@@ -24,7 +24,8 @@ namespace Web2_Backend.Controllers
 
         [Route("/api/workingPlan")]
         [HttpGet]
-        public PageResponse<WorkingPlan> GetAll()
+        public PageResponse<WorkingPlan> GetAll([FromQuery(Name = "page")] int page, [FromQuery(Name = "perPage")] int perPage,
+            [FromQuery(Name = "search")] string search)
         {
             return workingPlanService.GetAll();
         }

@@ -1,0 +1,51 @@
+<mat-card>
+  <mat-card-content>
+    <h1>Calls</h1>
+    <div class="controls">
+      <div class="left">
+        <button mat-raised-button color="primary" class="margin" (click)="onNew()">New</button>
+      </div>
+
+      <div class="right">
+        <button mat-raised-button color="primary">Filter</button>
+        <input matInput type="text" placeholder="Search" (input)="onSearchChange($event)">
+      </div>
+    </div>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="comment">
+          <th mat-header-cell *matHeaderCellDef> Comment </th>
+          <td mat-cell *matCellDef="let element"> {{element.comment}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="breakdownName">
+          <th mat-header-cell *matHeaderCellDef> Breakdown Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.breakdownName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="reason">
+          <th mat-header-cell *matHeaderCellDef> Reason </th>
+          <td mat-cell *matCellDef="let element"> {{element.reason}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="breakdownPriority">
+          <th mat-header-cell *matHeaderCellDef> Breakdown Priority </th>
+          <td mat-cell *matCellDef="let element"> {{element.breakdownPriority}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Controls </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-raised-button color="primary" (click)="delete(element.id)">Delete</button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>

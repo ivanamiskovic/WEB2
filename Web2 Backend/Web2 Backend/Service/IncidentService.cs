@@ -27,13 +27,13 @@ namespace Web2_Backend.Service
             return null;
         }
 
-        public PageResponse<Incident> GetAll()
+        public PageResponse<Incident> GetAll(int page, int perPage, string search)
         {
             try
             {
                 using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
                 {
-                    IEnumerable<Incident> result = unitOfWork.Incidents.GetAll();
+                    IEnumerable<Incident> result = unitOfWork.Incidents.GetAll(page, perPage, search);
                     PageResponse<Incident> pageResponse = new PageResponse<Incident>(result, result.Count());
 
                     return pageResponse;
@@ -45,10 +45,10 @@ namespace Web2_Backend.Service
             }
         }
 
-        public bool Add(Incident incident)
+        public Incident Add(Incident incident)
         {
-            try
-            {
+            //try
+            //{
                 using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
                 {
                     Incident newIncident = new Incident();
@@ -57,28 +57,33 @@ namespace Web2_Backend.Service
                     newIncident.ATA = incident.ATA;
                     newIncident.Calls = incident.Calls;
                     newIncident.Confirmed = incident.Confirmed;
-                    newIncident.Deleted = incident.Deleted;
+                    newIncident.Deleted = false;
                     newIncident.EstimatedWorkTime = incident.EstimatedWorkTime;
                     newIncident.ETA = incident.ETA;
                     newIncident.ETR = incident.ETR;
                     newIncident.Id = incident.Id;
                     newIncident.IncidentDateAndTime = incident.IncidentDateAndTime;
                     newIncident.IncidentType = incident.IncidentType;
-                    newIncident.Operater = incident.Operater;
+                    
                     newIncident.Priority = incident.Priority;
-                    newIncident.Status = incident.Status;
+                    newIncident.Status = 1;
                     newIncident.VoltegeLevel = incident.VoltegeLevel;
+                    newIncident.Description = incident.Description;
 
                     unitOfWork.Incidents.Add(newIncident);
                     unitOfWork.Complete();
-                }
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
 
-            return true;
+                    unitOfWork.Incidents.Update(newIncident);
+                newIncident.Operater = incident.Operater;
+                unitOfWork.Complete();
+                return newIncident;
+                }
+            //}
+            //catch (Exception e)
+            //{
+            //    return null;
+            //}
+
         }
 
         public bool Edit(int id, Incident incident)

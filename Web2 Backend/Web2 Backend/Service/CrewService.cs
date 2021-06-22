@@ -27,13 +27,13 @@ namespace Web2_Backend.Service
             return null;
         }
 
-        public IEnumerable<Crew> GetAll()
+        public IEnumerable<Crew> GetAll(int page, int perPage, string search)
         {
             try
             {
                 using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
                 {
-                    return unitOfWork.Crews.GetAll();
+                    return unitOfWork.Crews.GetAll(page, perPage, search);
                 }
             }
             catch (Exception e)
@@ -51,7 +51,6 @@ namespace Web2_Backend.Service
                     Crew newCrew = new Crew();
 
                     newCrew.Name = crews.Name;
-                    newCrew.Id = crews.Id;
 
                     unitOfWork.Crews.Add(newCrew);
                     unitOfWork.Complete();

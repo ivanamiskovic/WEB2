@@ -9,7 +9,7 @@ namespace Web2_Backend.Configuration
     {
         public DatabaseConfiguration DatabaseConfiguration { get; set; } = new DatabaseConfiguration();
         public Jwt Jwt { get; set; } = new Jwt();
-        public EmailSettings EmailSettings { get; set; } = new EmailSettings();
+        //public EmailSettings EmailSettings { get; set; } = new EmailSettings();
     }
 
     public class EmailSettings 

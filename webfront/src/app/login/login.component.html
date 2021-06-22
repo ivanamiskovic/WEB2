@@ -10,8 +10,8 @@
           <mat-error>
             Please provide a valid email address
           </mat-error>
-        </mat-form-field>          
-        
+        </mat-form-field>
+
         <mat-form-field class="full-width-input">
           <input matInput type="password" placeholder="Password" formControlName="password" required>
           <mat-error>
@@ -20,5 +20,6 @@
         </mat-form-field>
         <button mat-raised-button color="primary">Login</button>
       </form>
+      <p>{{error}}</p>
     </mat-card-content>
   </mat-card>

@@ -1,44 +1,41 @@
 <mat-card>
     <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        
-        <mat-error *ngIf="addConsumerInvalid">
-            Error adding work request
-        </mat-error>
-  
-         <mat-form-field class="full-width-input">
-            <label>Type</label>
-            <select matNativeControl required>
-                
-            </select>
-            <mat-error>
-                Please provide a valid type
-            </mat-error>
-        </mat-form-field>
-  
+
         <mat-form-field class="full-width-input">
           <input matInput placeholder="Name" formControlName="name" required>
           <mat-error>
             Please provide a valid name
           </mat-error>
       </mat-form-field>
-  
+
         <mat-form-field class="full-width-input">
-            <input matInput placeholder="LastName" formControlName="lastname" required>
+            <input matInput placeholder="Last Name" formControlName="lastName" required>
             <mat-error>
               Please provide a valid lastname
             </mat-error>
         </mat-form-field>
-  
+
+      <mat-form-field class="full-width-input">
+        <label>Type</label>
+        <mat-select matNativeControl required formControlName="type">
+          <mat-option value="Resident">Resident</mat-option>
+          <mat-option value="Non Resident">Non Resident</mat-option>
+        </mat-select>
+        <mat-error>
+          Please provide a valid type
+        </mat-error>
+      </mat-form-field>
+
         <mat-form-field class="full-width-input">
             <input matInput placeholder="Location" formControlName="location" required>
             <mat-error>
               Please provide a valid location
             </mat-error>
         </mat-form-field>
-  
+
         <mat-form-field class="full-width-input">
-            <input matInput placeholder="Priority" formControlName="priority" required>
+            <input matInput type="number" placeholder="Priority" formControlName="priority" required>
             <mat-error>
               Please provide a valid priority
             </mat-error>
@@ -46,32 +43,18 @@
 
 
         <mat-form-field class="full-width-input">
-            <input matInput placeholder="PhoneNumber" formControlName="phonenumber" required>
+            <input matInput placeholder="PhoneNumber" formControlName="phoneNumber" required>
             <mat-error>
               Please provide a valid location
             </mat-error>
         </mat-form-field>
 
-        <mat-form-field class="full-width-input">
-            <input matInput placeholder="Id" formControlName="id" required>
-            <mat-error>
-              Please provide a valid id
-            </mat-error>
-        </mat-form-field>
+      <button mat-raised-button color="primary">Add</button>
 
-        <mat-form-field class="full-width-input">
-            <input matInput placeholder="Type" formControlName="type" required>
-            <mat-error>
-              Please provide a valid type
-            </mat-error>
-        </mat-form-field>
+    </form>
 
 
-          </form>
-  
-         
-  
+
       </mat-card-content>
   </mat-card>
-  
-  
+

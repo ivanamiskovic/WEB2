@@ -10,5 +10,10 @@ namespace Web2_Backend.Repository
     public class CrewRepository : Repository<Crew>, ICrewRepository
     {
         public CrewRepository(Web2Context context) : base(context) { }
+
+        public override IEnumerable<Crew> GetAll()
+        {
+            return Web2Context.Crews.Where(x => x.Deleted == false).ToList();
+        }
     }
 }

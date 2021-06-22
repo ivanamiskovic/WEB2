@@ -13,37 +13,38 @@ namespace Web2_Backend.Controllers
     [Route("[controller]")]
     public class CosumerController : Controller
     {
-        public CosumerController cosumerService = new CosumerController();
+        public CosumerService cosumerService = new CosumerService();
 
-        [Route("/api/cosumer/{id}")]
+        [Route("/api/consumers/{id}")]
         [HttpGet]
         public async Task<IActionResult> Get(int id)
         {
             return Ok(cosumerService.Get(id));
         }
 
-        [Route("/api/cosumer")]
+        [Route("/api/consumers")]
         [HttpGet]
-        public PageResponse<Cosumer> GetAll()
+        public PageResponse<Cosumer> GetAll([FromQuery(Name = "page")] int page, [FromQuery(Name = "perPage")] int perPage,
+            [FromQuery(Name = "search")] string search)
         {
             return cosumerService.GetAll();
         }
 
-        [Route("/api/cosumer")]
+        [Route("/api/consumers")]
         [HttpPost]
         public async Task<IActionResult> Add(Cosumer cosumer)
         {
             return Ok(cosumerService.Add(cosumer));
         }
 
-        [Route("/api/cosumer/{id}")]
+        [Route("/api/consumers/{id}")]
         [HttpPut]
         public async Task<IActionResult> Edit(int id, Cosumer cosumer)
         {
             return Ok(cosumerService.Edit(id, cosumer));
         }
 
-        [Route("/api/cosumer/{id}")]
+        [Route("/api/consumers/{id}")]
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {

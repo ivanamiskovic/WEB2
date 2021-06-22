@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,17 +16,13 @@ namespace Web2_Backend.Controllers
     {
         private UserService userService = new UserService();
 
+        [Authorize]
         [Route("/api/users/current")]
         [HttpGet]
         public async Task<IActionResult> GetCurrent(int id)
         {
             return Ok(GetCurrentUser());
         }
-
-        [Route("/api/users/{id}")]
-
-
-
 
         [Route("/api/users/{id}")]
         [HttpGet]
@@ -36,7 +33,8 @@ namespace Web2_Backend.Controllers
 
         [Route("/api/users")]
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery(Name = "page")] int page, [FromQuery(Name = "perPage")] int perPage,
+            [FromQuery(Name = "search")] string search)
         { 
             return null;
         }
@@ -48,10 +46,12 @@ namespace Web2_Backend.Controllers
             return Ok(userService.Add(user));
         }
 
-        [Route("/api/users/{id}")]
+        [Route("/api/users")]
         [HttpPut]
-        public async Task<IActionResult> Edit(int id, User user)
+        public async Task<IActionResult> Edit(User user)
         {
+            userService.Edit(user);
+
             return Ok();
         }
 
@@ -81,6 +81,28 @@ namespace Web2_Backend.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             return Ok();
+        }
+
+        [Route("/api/users/verification")]
+        [HttpGet]
+        public async Task<IActionResult> VerificationUsers()
+        {
+            return Ok(userService.GetVerificationUsers());
+        }
+
+        [Route("/api/users/verification/{id}")]
+        [HttpPut]
+        public async Task<IActionResult> VerifyUser(long id)
+        {
+            return Ok(userService.VerifyUser(id));
+        }
+
+        [Authorize]
+        [Route("/api/users/change-password")]
+        [HttpPut]
+        public async Task<IActionResult> ChangePassword(ChangePasswordRequest changePasswordRequest)
+        {
+            return Ok(userService.ChangePassword(changePasswordRequest.Password, GetCurrentUser().Id));
         }
     }
 }

@@ -11,6 +11,8 @@ namespace Web2_Backend.Model
 
         public int Priority { get; set; }
 
+        public string Description { get; set; }
+
         public bool Confirmed { get; set; }
 
         public int Status { get; set; }
