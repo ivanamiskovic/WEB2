@@ -10,6 +10,8 @@ import {ApiService} from '../api.service';
 export class ViewDevicesComponent implements OnInit {
   dataSource: any;
   displayedColumns: string[] = ['name', 'address', 'type', 'lat', 'lng', 'id'];
+  
+
 
   constructor(
     private route: ActivatedRoute,
@@ -30,8 +32,11 @@ export class ViewDevicesComponent implements OnInit {
   }
 
   fetch(): void {
+    
     this.api.getDevices().subscribe(response => {
       console.log(response);
+   
+    
       this.dataSource = response;
     });
   }

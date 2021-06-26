@@ -17,7 +17,7 @@ namespace Web2_Backend.Repository
 
         public override PageResponse<SafetyDocument> GetAll(int page, int perPage, string search)
         {
-            string term = search.ToLower();
+            string term = search == null ? string.Empty : search.ToLower();
 
             var query = Web2Context.SafetyDocuments.Where(x => x.Details.ToLower().Contains(term)
             || x.Notes.ToLower().Contains(term) || x.PhoneNumber.ToLower().Contains(term));

@@ -33,7 +33,10 @@ export class ApiService {
     return this.httpClient.get(this.REST_API_SERVER + '/api/crews?page=' + data.page 
     + '&perPage=' + data.perPage + '&search=' + data.search);
   }
-
+  public getSafetyDocument(data: any) {
+    return this.httpClient.get(this.REST_API_SERVER + '/api/crews?page=' + data.page 
+    + '&perPage=' + data.perPage + '&search=' + data.search);
+  }
   public deleteCrew(id: any) {
     return this.httpClient.delete(this.REST_API_SERVER + '/api/crews/' + id);
   }

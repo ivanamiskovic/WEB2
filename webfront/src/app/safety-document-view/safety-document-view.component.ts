@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ApiService} from '../api.service';
 
 @Component({
   selector: 'app-safety-document-view',
@@ -9,37 +11,33 @@ export class SafetyDocumentViewComponent implements OnInit {
 
   dataSource: any;
   displayedColumns: string[] = ['id', 'startDate', 'phoneNumber', 'status', 'address'];
+  
+  page = 0;
+  perPage = 5;
+  search = '';
 
-  constructor() 
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private api: ApiService
+  ) 
   {
-    this.dataSource = [
-      {
-        'id' : 1,
-        'startDate': '1.1.2021.',
-        'phoneNumber': '08956',
-        'status': 'dkjfg',
-        'address': 'adresa sokdo'
-      },
-
-      {
-        'id' : 2,
-        'startDate': '7.5.2021.',
-        'phoneNumber': '+38123476',
-        'status': 'omg',
-        'address': 'adresa sdfyrfbhbv'
-      },
-
-      {
-        'id' : 3,
-        'startDate': '12.12.2021.',
-        'phoneNumber': '+385679476',
-        'status': 'wtf',
-        'address': 'adresa trafsdvh'
-      }
-
-    ];
+    this.dataSource = []
   }
-
+  fetch(): void {
+    
+    this.api.getSafetyDocument({
+      page: 0,
+      perPage: 5,
+      search: '',
+    }).subscribe((response: any) => {
+      
+      console.log(response);
+   
+    
+      this.dataSource = response.entities;
+    });
+  }
   onSearchChange(searhcValue: any): void {
     console.log(searhcValue);
   }
