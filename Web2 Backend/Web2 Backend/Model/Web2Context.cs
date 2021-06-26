@@ -25,6 +25,7 @@ namespace Web2_Backend.Model
         public DbSet<Crew> Crews { get; set; }
         public DbSet<Device> Devices { get; set; }
         public DbSet<WorkRequest> WorkRequests { get; set; }
+        public DbSet<SafetyDocument> SafetyDocuments { get; set; }
 
         public DbSet<Cosumer> Cosumers { get; set; }
 

@@ -10,5 +10,20 @@ namespace Web2_Backend.Repository
     public class IncidentRepository : Repository<Incident>, IIncidentRepository
     {
         public IncidentRepository(Web2Context context) : base(context) { }
+
+        public override IEnumerable<Incident> GetAll()
+        {
+            return Web2Context.Incidents.Where(x => x.Deleted == false).ToList();
+        }
+
+        public override PageResponse<Incident> GetAll(int page, int perPage, string search)
+        {
+            string term = search.ToLower();
+
+            var query = Web2Context.Incidents.Where(x => x.Description.ToLower().Contains(term));
+
+            return new PageResponse<Incident>(query.Skip(page * perPage).Take(perPage).ToList(), query.Count());
+        }
+
     }
 }
