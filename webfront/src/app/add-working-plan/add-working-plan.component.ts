@@ -77,7 +77,7 @@ export class AddWorkingPlanComponent implements OnInit {
   }
 
   fetchCrews(): void {
-    this.api.getCrews().subscribe(response => {
+    this.api.getCrews({}).subscribe(response => {
       console.log(response);
       this.dataSourceCrews = response;
     });

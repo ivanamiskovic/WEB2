@@ -11,6 +11,10 @@ export class ViewCrewComponent implements OnInit {
   dataSource: any;
   displayedColumns: string[] = ['name', 'id'];
 
+  page = 0;
+  perPage = 5;
+  search = '';
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -30,14 +34,18 @@ export class ViewCrewComponent implements OnInit {
   }
 
   fetch(): void {
-    this.api.getCrews().subscribe(response => {
+    this.api.getCrews({
+      page: this.page,
+      perPage: this.perPage,
+      search: this.search
+    }).subscribe((response : any) => {
       console.log(response);
-      this.dataSource = response;
+      this.dataSource = response.entities;
     });
   }
 
   onSearchChange(searhcValue: any): void {
-    console.log(searhcValue);
+    this.fetch();
   }
 
   ngOnInit(): void {

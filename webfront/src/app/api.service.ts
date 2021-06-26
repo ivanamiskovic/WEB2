@@ -29,8 +29,9 @@ export class ApiService {
     return this.httpClient.post(this.REST_API_SERVER + '/api/crews', data); //
   }
 
-  public getCrews() {
-    return this.httpClient.get(this.REST_API_SERVER + '/api/crews');
+  public getCrews(data: any) {
+    return this.httpClient.get(this.REST_API_SERVER + '/api/crews?page=' + data.page 
+    + '&perPage=' + data.perPage + '&search=' + data.search);
   }
 
   public deleteCrew(id: any) {
