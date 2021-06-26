@@ -12,6 +12,10 @@ export class ViewWorkrequestComponent implements OnInit {
   dataSource: any;
   displayedColumns: string[] = ['type', 'status', 'address', 'start', 'end', 'note', 'id'];
 
+  page = 0;
+  perPage = 5;
+  search = '';
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -35,13 +39,18 @@ export class ViewWorkrequestComponent implements OnInit {
   }
 
   fetch(): void {
-    this.api.getWorkRequests().subscribe((response: any) => {
-      this.dataSource = response ? response.entities : [];
+    this.api.getWorkRequests({
+      page: this.page,
+      perPage: this.perPage,
+      search: this.search
+    }).subscribe((response : any) => {
+      console.log(response);
+      this.dataSource = response.entities;
     });
   }
 
   onSearchChange(searhcValue: any): void {
-    console.log(searhcValue);
+    this.fetch();
   }
 
   ngOnInit(): void {

@@ -122,8 +122,9 @@ export class ApiService {
     return this.httpClient.delete(this.REST_API_SERVER + '/api/work-requests/' + id);
   }
 
-  public getWorkRequests() {
-    return this.httpClient.get(this.REST_API_SERVER + '/api/work-requests/');
+  public getWorkRequests(data: any) {
+    return this.httpClient.get(this.REST_API_SERVER + '/api/work-requests?page=' + data.page 
+    + '&perPage=' + data.perPage + '&search=' + data.search);
   }
 
   public addWorkRequests(data: any) {
@@ -134,11 +135,22 @@ export class ApiService {
     return this.httpClient.delete(this.REST_API_SERVER + '/api/workingPlan/' + id);
   }
 
-  public getWorkingPlans() {
-    return this.httpClient.get(this.REST_API_SERVER + '/api/workingPlan/');
+  public getWorkingPlans(data: any) {
+    return this.httpClient.get(this.REST_API_SERVER + '/api/workingPlan?page=/' + data.page 
+    + '&perPage=' + data.perPage + '&search=' + data.search);
   }
 
   public addWorkingPlan(data: any) {
     return this.httpClient.post(this.REST_API_SERVER + '/api/workingPlan/', data);
+  }
+
+  public getSwitchingPlans(data: any) {
+    return this.httpClient.get(this.REST_API_SERVER + '/api/switching-plans?page=/' + data.page 
+    + '&perPage=' + data.perPage + '&search=' + data.search);
+  }
+
+  public getSolutions(data: any) {
+    return this.httpClient.get(this.REST_API_SERVER + '/api/switching-plans?page=/' + data.page 
+    + '&perPage=' + data.perPage + '&search=' + data.search);
   }
 }

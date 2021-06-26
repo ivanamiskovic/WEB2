@@ -9,7 +9,9 @@
 
           <div class="right">
               <button mat-raised-button color="primary">Filter</button>
-              <input matInput type="text" placeholder="Search" (input)="onSearchChange($event)">
+              <input matInput type="text" placeholder="Search" 
+              [(ngModel)]="search"
+              (input)="onSearchChange($event)">
           </div>
         </div>
         <div class="mat-elevation-z8">

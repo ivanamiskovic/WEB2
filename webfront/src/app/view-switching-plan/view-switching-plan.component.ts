@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
+import {ActivatedRoute, Router} from '@angular/router';
+import {ApiService} from '../api.service';
 
 @Component({
   selector: 'app-view-switching-plan',
@@ -11,10 +11,18 @@ export class ViewSwitchingPlanComponent implements OnInit {
   dataSource: any;
   displayedColumns: string[] = ['street', 'startOfWork', 'endOfWork', 'notes', 'company','number','createDocument','point','userCreate','team'];
 
-  constructor(private router: Router) {this.dataSource = []; }
+  page = 0;
+  perPage = 5;
+  search = '';
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private api: ApiService
+  ) {this.dataSource = []; }
 
   onSearchChange(searhcValue: any): void {
-    console.log(searhcValue);
+    this.fetch();
   }
 
   ngOnInit(): void {
@@ -22,6 +30,17 @@ export class ViewSwitchingPlanComponent implements OnInit {
 
   onNew() {
     this.router.navigateByUrl('/add-switchinng-plan');
+  }
+
+  fetch(): void {
+    this.api.getSwitchingPlans({
+      page: this.page,
+      perPage: this.perPage,
+      search: this.search
+    }).subscribe((response : any) => {
+      console.log(response);
+      this.dataSource = response.entities;
+    });
   }
 
 }

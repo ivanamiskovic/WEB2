@@ -60,6 +60,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ViewWorkrequestComponent } from './view-workrequest/view-workrequest.component';
 import {AddWorkRequestComponent} from './add-work-request/add-work-request.component';
+import { ViewSolutionsComponent } from './view-solutions/view-solutions.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import {AddWorkRequestComponent} from './add-work-request/add-work-request.compo
     ChangePasswordComponent,
     NotificationsComponent,
     ViewWorkrequestComponent,
-    AddWorkRequestComponent
+    AddWorkRequestComponent,
+    ViewSolutionsComponent
   ],
   imports: [
     MatPaginatorModule,

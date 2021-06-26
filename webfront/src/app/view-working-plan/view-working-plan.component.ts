@@ -12,6 +12,10 @@ export class ViewWorkingPlanComponent implements OnInit {
   dataSource: any;
   displayedColumns: string[] = ['street', 'starOfWork', 'endOfWork', 'notes', 'company', 'number', 'id'];
 
+  page = 0;
+  perPage = 5;
+  search = '';
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -35,13 +39,18 @@ export class ViewWorkingPlanComponent implements OnInit {
   }
 
   fetch(): void {
-    this.api.getWorkingPlans().subscribe((response: any) => {
-      this.dataSource = response ? response.entities : [];
+    this.api.getWorkingPlans({
+      page: this.page,
+      perPage: this.perPage,
+      search: this.search
+    }).subscribe((response : any) => {
+      console.log(response);
+      this.dataSource = response.entities;
     });
   }
 
   onSearchChange(searhcValue: any): void {
-    console.log(searhcValue);
+    this.fetch();
   }
 
   ngOnInit(): void {
