@@ -16,5 +16,15 @@ namespace Web2_Backend.Repository
         {
             return Web2Context.Cosumers.Where(x => x.Deleted == false).ToList();
         }
+
+        public override PageResponse<Cosumer> GetAll(int page, int perPage, string search)
+        {
+            string term = search.ToLower();
+
+            var query = Web2Context.Cosumers.Where(x => x.Name.ToLower().Contains(term)
+            || x.Location.ToLower().Contains(term) || x.LastName.ToLower().Contains(term) || x.PhoneNumber.ToLower().Contains(term) || x.Type.ToLower().Contains(term));
+
+            return new PageResponse<Cosumer>(query.Skip(page * perPage).Take(perPage).ToList(), query.Count());
+        }
     }
 }
