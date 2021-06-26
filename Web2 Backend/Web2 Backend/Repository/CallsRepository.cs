@@ -18,7 +18,8 @@ namespace Web2_Backend.Repository
 
         public override PageResponse<Calls> GetAll(int page, int perPage, string search)
         {
-            string term = search.ToLower();
+            string term = search == null ? string.Empty : search.ToLower();
+
 
             var query = Web2Context.Calls.Where(x => x.BreakdownName.ToLower().Contains(term)
             || x.Comment.ToLower().Contains(term));

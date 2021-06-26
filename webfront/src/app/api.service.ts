@@ -33,7 +33,10 @@ export class ApiService {
     return this.httpClient.get(this.REST_API_SERVER + '/api/crews?page=' + data.page 
     + '&perPage=' + data.perPage + '&search=' + data.search);
   }
-
+  public getSafetyDocument(data: any) {
+    return this.httpClient.get(this.REST_API_SERVER + '/api/crews?page=' + data.page 
+    + '&perPage=' + data.perPage + '&search=' + data.search);
+  }
   public deleteCrew(id: any) {
     return this.httpClient.delete(this.REST_API_SERVER + '/api/crews/' + id);
   }
@@ -58,8 +61,9 @@ export class ApiService {
     return this.httpClient.post(this.REST_API_SERVER + '/api/consumers', data);
   }
 
-  public getConsumers() : any {
-    return this.httpClient.get(this.REST_API_SERVER + '/api/consumers');
+  public getConsumers(data : any) : any {
+    return this.httpClient.get(this.REST_API_SERVER + '/api/consumers?page=' + data.page 
+    + '&perPage=' + data.perPage + '&search=' + data.search);
   }
 
   public deleteConsumer(id: any) {
@@ -78,8 +82,9 @@ export class ApiService {
     return this.httpClient.post(this.REST_API_SERVER + '/api/devices', data);
   }
 
-  public getDevices() {
-    return this.httpClient.get(this.REST_API_SERVER + '/api/devices');
+  public getDevices(data: any) {
+    return this.httpClient.get(this.REST_API_SERVER + '/api/devices?page=' + data.page 
+    + '&perPage=' + data.perPage + '&search=' + data.search);
   }
 
   public deleteDevice(id: any) {
@@ -90,8 +95,9 @@ export class ApiService {
     return this.httpClient.delete(this.REST_API_SERVER + '/api/incidents/' + id);
   }
 
-  public getIncidents() {
-    return this.httpClient.get(this.REST_API_SERVER + '/api/incidents');
+  public getIncidents(data: any) {
+    return this.httpClient.get(this.REST_API_SERVER + '/api/incidents?page=' + data.page 
+    + '&perPage=' + data.perPage + '&search=' + data.search);
   }
 
   public getIncident(id: any): any {
@@ -106,8 +112,9 @@ export class ApiService {
     return this.httpClient.post(this.REST_API_SERVER + '/api/calls', data);
   }
 
-  public getCalls(): any {
-    return this.httpClient.get(this.REST_API_SERVER + '/api/calls');
+  public getCalls(data: any): any {
+    return this.httpClient.get(this.REST_API_SERVER + '/api/calls?page=' + data.page 
+    + '&perPage=' + data.perPage + '&search=' + data.search);
   }
 
   public deleteCall(id: any): any {

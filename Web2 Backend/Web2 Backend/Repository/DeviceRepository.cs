@@ -17,7 +17,8 @@ namespace Web2_Backend.Repository
 
         public override PageResponse<Device> GetAll(int page, int perPage, string search)
         {
-            string term = search.ToLower();
+            string term = search == null ? string.Empty : search.ToLower();
+
 
             var query = Web2Context.Devices.Where(x => x.Type.ToLower().Contains(term)
             || x.Name.ToLower().Contains(term) || x.Address.ToLower().Contains(term));
