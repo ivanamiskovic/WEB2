@@ -27,7 +27,7 @@ namespace Web2_Backend.Controllers
         public PageResponse<Cosumer> GetAll([FromQuery(Name = "page")] int page, [FromQuery(Name = "perPage")] int perPage,
             [FromQuery(Name = "search")] string search)
         {
-            return cosumerService.GetAll();
+            return cosumerService.GetAll(page, perPage, search);
         }
 
         [Route("/api/consumers")]

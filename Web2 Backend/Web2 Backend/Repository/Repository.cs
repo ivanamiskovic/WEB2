@@ -82,5 +82,10 @@ namespace Web2_Backend.Repository
             Context.Set<TEntity>().Attach(entity);
             Context.Entry(entity).State = EntityState.Modified;
         }
+
+        public IEnumerable<TEntity> GetAll(int page, int perPage, string search)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

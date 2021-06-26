@@ -26,7 +26,7 @@ namespace Web2_Backend.Controllers
         public async Task<IActionResult> GetAll([FromQuery(Name = "page")] int page, [FromQuery(Name = "perPage")] int perPage,
             [FromQuery(Name = "search")] string search)
         {
-            return Ok(solutionService.GetAll());
+            return Ok(solutionService.GetAll(page, perPage, search));
         }
 
         [Route("/api/solutions")]

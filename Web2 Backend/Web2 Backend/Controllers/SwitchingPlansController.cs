@@ -27,7 +27,7 @@ namespace Web2_Backend.Controllers
         public PageResponse<SwitchingPlan> GetAll([FromQuery(Name = "page")] int page, [FromQuery(Name = "perPage")] int perPage,
             [FromQuery(Name = "search")] string search)
         {
-            return switchingPlanService.GetAll();
+            return switchingPlanService.GetAll(page, perPage, search);
         }
 
         [Route("/api/switchingPlans")]
