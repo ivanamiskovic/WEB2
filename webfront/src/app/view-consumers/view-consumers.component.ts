@@ -11,6 +11,10 @@ export class ViewConsumersComponent implements OnInit {
   dataSource: any;
   displayedColumns: string[] = ['name', 'lastName', 'type', 'location', 'priority', 'phoneNumber', 'id'];
 
+  page = 0;
+  perPage = 5;
+  search = '';
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -30,13 +34,18 @@ export class ViewConsumersComponent implements OnInit {
   }
 
   fetch(): void {
-    this.api.getConsumers().subscribe((response: any) => {
+    this.api.getConsumers({
+      page: this.page,
+      perPage: this.perPage,
+      search: this.search
+    }).subscribe((response: any) => {
+      console.log(response);
       this.dataSource = response.entities;
     });
   }
 
   onSearchChange(searhcValue: any): void {
-    console.log(searhcValue);
+    this.fetch();
   }
 
   ngOnInit(): void {

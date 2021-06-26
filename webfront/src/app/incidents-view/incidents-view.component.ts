@@ -12,6 +12,10 @@ export class IncidentsViewComponent implements OnInit {
   dataSource: any;
   displayedColumns: string[] = ['description', 'eta', 'etr', 'ata', 'calls', 'affectedCustomers', 'id'];
 
+  page = 0;
+  perPage = 5;
+  search = '';
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -35,8 +39,13 @@ export class IncidentsViewComponent implements OnInit {
   }
 
   fetch(): void {
-    this.api.getIncidents().subscribe((response: any) => {
-      this.dataSource = response ? response.entities : [];
+    this.api.getIncidents({
+      page: this.page,
+      perPage: this.perPage,
+      search: this.search
+    }).subscribe((response: any) => {
+      console.log(response);
+      this.dataSource = response.entities;
     });
   }
 

@@ -11,6 +11,10 @@ export class ViewDevicesComponent implements OnInit {
   dataSource: any;
   displayedColumns: string[] = ['name', 'address', 'type', 'lat', 'lng', 'id'];
 
+  page = 0;
+  perPage = 5;
+  search = '';
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -30,14 +34,18 @@ export class ViewDevicesComponent implements OnInit {
   }
 
   fetch(): void {
-    this.api.getDevices().subscribe(response => {
+    this.api.getDevices({
+      page: this.page,
+      perPage: this.perPage,
+      search: this.search
+    }).subscribe((response : any) => {
       console.log(response);
-      this.dataSource = response;
+      this.dataSource = response.entities;
     });
   }
 
   onSearchChange(searhcValue: any): void {
-    console.log(searhcValue);
+    this.fetch();
   }
 
   ngOnInit(): void {

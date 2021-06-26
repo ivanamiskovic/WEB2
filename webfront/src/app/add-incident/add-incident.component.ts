@@ -57,7 +57,7 @@ export class AddIncidentComponent implements OnInit {
 
 
   fetchCalls(): void {
-    this.api.getCalls().subscribe((response: any) => {
+    this.api.getCalls({}).subscribe((response: any) => {
       this.dataSourceCalls = response;
     });
   }
@@ -75,7 +75,7 @@ export class AddIncidentComponent implements OnInit {
   }
 
   fetchDevices(): void {
-    this.api.getDevices().subscribe(response => {
+    this.api.getDevices({}).subscribe(response => {
       console.log(response);
       this.dataSourceDevice = response;
     });
