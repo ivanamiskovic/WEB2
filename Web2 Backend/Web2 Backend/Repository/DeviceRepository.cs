@@ -14,5 +14,15 @@ namespace Web2_Backend.Repository
         {
             return Web2Context.Devices.Where(x => x.Deleted == false).ToList();
         }
+
+        public override PageResponse<Device> GetAll(int page, int perPage, string search)
+        {
+            string term = search.ToLower();
+
+            var query = Web2Context.Devices.Where(x => x.Type.ToLower().Contains(term)
+            || x.Name.ToLower().Contains(term) || x.Address.ToLower().Contains(term));
+
+            return new PageResponse<Device>(query.Skip(page * perPage).Take(perPage).ToList(), query.Count());
+        }
     }
 }

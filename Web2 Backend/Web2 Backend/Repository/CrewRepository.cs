@@ -15,5 +15,13 @@ namespace Web2_Backend.Repository
         {
             return Web2Context.Crews.Where(x => x.Deleted == false).ToList();
         }
+        public override PageResponse<Crew> GetAll(int page, int perPage, string search)
+        {
+            string term = search.ToLower();
+
+            var query = Web2Context.Crews.Where(x => x.Name.ToLower().Contains(term));
+
+            return new PageResponse<Crew>(query.Skip(page * perPage).Take(perPage).ToList(), query.Count());
+        }
     }
 }
