@@ -28,7 +28,7 @@ export class ViewCrewComponent implements OnInit {
   }
 
   delete(id: number): void {
-    this.api.deleteCrew(id).subscribe(response => {
+    this.api.deleteCrew(id).subscribe((response: any) => {
       this.fetch();
     });
   }

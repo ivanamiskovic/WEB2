@@ -11,6 +11,10 @@ export class ViewCallsComponent implements OnInit {
   dataSource: any;
   displayedColumns: string[] = ['comment', 'breakdownName', 'reason', 'breakdownPriority', 'id'];
 
+  page = 0;
+  perPage = 5;
+  search = '';
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -30,13 +34,18 @@ export class ViewCallsComponent implements OnInit {
   }
 
   fetch(): void {
-    this.api.getCalls().subscribe((response: any) => {
-      this.dataSource = response;
+    this.api.getCalls({
+      page: this.page,
+      perPage: this.perPage,
+      search: this.search
+    }).subscribe((response : any) => {
+      console.log(response);
+      this.dataSource = response.entities;
     });
   }
 
   onSearchChange(searhcValue: any): void {
-    console.log(searhcValue);
+    this.fetch();
   }
 
   ngOnInit(): void {
