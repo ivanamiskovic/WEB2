@@ -32,10 +32,7 @@ namespace Web2_Backend.Service
             {
                 using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
                 {
-                    IEnumerable<SafetyDocument> result = unitOfWork.SafetyDocument.GetAll(page, perPage, search);
-                    PageResponse<SafetyDocument> pageResponse = new PageResponse<SafetyDocument>(result, result.Count());
-
-                    return pageResponse;
+                    return unitOfWork.SafetyDocument.GetAll(page, perPage, search);
                 }
             }
             catch (Exception e)

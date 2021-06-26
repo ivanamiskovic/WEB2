@@ -27,7 +27,7 @@ namespace Web2_Backend.Service
             return null;
         }
 
-        public IEnumerable<Solution> GetAll(int page, int perPage, string search)
+        public PageResponse<Solution> GetAll(int page, int perPage, string search)
         {
             try
             {

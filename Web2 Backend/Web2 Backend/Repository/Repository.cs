@@ -52,7 +52,7 @@ namespace Web2_Backend.Repository
             return Context.Set<TEntity>().ToList();
         }
 
-        public PageResponse<TEntity> GetPage(PageModel model)
+        public virtual PageResponse<TEntity> GetPage(PageModel model)
         {
             throw new NotImplementedException();
         }
@@ -83,7 +83,7 @@ namespace Web2_Backend.Repository
             Context.Entry(entity).State = EntityState.Modified;
         }
 
-        public IEnumerable<TEntity> GetAll(int page, int perPage, string search)
+        public virtual PageResponse<TEntity> GetAll(int page, int perPage, string search)
         {
             throw new NotImplementedException();
         }

@@ -31,10 +31,7 @@ namespace Web2_Backend.Service
             {
                 using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
                 {
-                    IEnumerable<WorkRequest> result = unitOfWork.WorkRequests.GetAll(page, perPage, search);
-                    PageResponse<WorkRequest> pageResponse = new PageResponse<WorkRequest>(result, 1);
-
-                    return pageResponse;
+                    return unitOfWork.WorkRequests.GetAll(page, perPage, search);
                 }
             }
             catch (Exception e)

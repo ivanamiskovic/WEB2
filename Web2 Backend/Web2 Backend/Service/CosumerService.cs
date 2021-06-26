@@ -33,10 +33,7 @@ namespace Web2_Backend.Service
             {
                 using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
                 {
-                    IEnumerable<Cosumer> result = unitOfWork.Cosumer.GetAll(page, perPage, search);
-                    PageResponse<Cosumer> pageResponse = new PageResponse<Cosumer>(result, result.Count());
-
-                    return pageResponse;
+                     return unitOfWork.Cosumer.GetAll(page, perPage, search);
                 }
             }
             catch (Exception e)

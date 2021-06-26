@@ -23,7 +23,7 @@ namespace Web2_Backend.Service
 
         }
 
-        public IEnumerable<Device> GetAll(int page, int perPage, string search)
+        public PageResponse<Device> GetAll(int page, int perPage, string search)
         {
             try
             {

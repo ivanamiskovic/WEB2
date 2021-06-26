@@ -34,10 +34,7 @@ namespace Web2_Backend.Service
                 {
                     using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
                     {
-                        IEnumerable<SwitchingPlan> result = unitOfWork.SwitchingPlans.GetAll(page, perPage, search);
-                        PageResponse<SwitchingPlan> pageResponse = new PageResponse<SwitchingPlan>(result, result.Count());
-
-                        return pageResponse;
+                        return unitOfWork.SwitchingPlans.GetAll(page, perPage, search);
                     }
                 }
                 catch (Exception e)
