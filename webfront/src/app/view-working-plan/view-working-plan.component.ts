@@ -15,6 +15,7 @@ export class ViewWorkingPlanComponent implements OnInit {
   page = 0;
   perPage = 5;
   search = '';
+  totalSize = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +33,12 @@ export class ViewWorkingPlanComponent implements OnInit {
     this.router.navigateByUrl('/add-working-plan?id=' + id);
   }
 
+  public handlePage(e: any) {
+    this.page = e.pageIndex;
+    this.perPage = e.pageSize;
+    this.fetch();
+  }
+
   delete(id: number): void {
     this.api.deleteWorkingPlan(id).subscribe(response => {
       this.fetch();
@@ -45,6 +52,7 @@ export class ViewWorkingPlanComponent implements OnInit {
       search: this.search
     }).subscribe((response : any) => {
       console.log(response);
+      this.totalSize = response.total;
       this.dataSource = response.entities;
     });
   }

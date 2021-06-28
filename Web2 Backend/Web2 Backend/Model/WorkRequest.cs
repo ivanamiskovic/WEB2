@@ -5,6 +5,7 @@ namespace Web2_Backend.Model
     {
         public string Type { get; set; }
         public string Status { get; set; }
+        public string Incident { get; set; }
         public string Address { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
@@ -14,6 +15,8 @@ namespace Web2_Backend.Model
         public string Company { get; set; }
         public string PhoneNumber { get; set; }
 
-
+        public string CreatedBy { get; set; }
+        public string Purpose { get; set; }
+        public DateTime Created { get; set; }
     }
 }

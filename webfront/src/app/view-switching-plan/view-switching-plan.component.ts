@@ -14,6 +14,7 @@ export class ViewSwitchingPlanComponent implements OnInit {
   page = 0;
   perPage = 5;
   search = '';
+  totalSize=0;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +33,12 @@ export class ViewSwitchingPlanComponent implements OnInit {
     this.router.navigateByUrl('/add-switchinng-plan');
   }
 
+  public handlePage(e: any) {
+    this.page = e.pageIndex;
+    this.perPage = e.pageSize;
+    this.fetch();
+  }
+  
   fetch(): void {
     this.api.getSwitchingPlans({
       page: this.page,
@@ -39,6 +46,8 @@ export class ViewSwitchingPlanComponent implements OnInit {
       search: this.search
     }).subscribe((response : any) => {
       console.log(response);
+      
+      this.totalSize = response.total;
       this.dataSource = response.entities;
     });
   }
