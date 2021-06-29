@@ -11,14 +11,14 @@ namespace Web2_Backend.Repository
     {
         public WorkingPlanRepository(Web2Context context) : base(context) { }
 
-        public override PageResponse<WorkingPlan> GetAll(int page, int perPage, string search)
+        public PageResponse<WorkingPlan> GetAll(int page, int perPage, string search, User user)
         {
             string term = search == null ? string.Empty : search.ToLower();
 
-            var query = Web2Context.WorkingPlans.Where(x => x.Street.ToLower().Contains(term)
+            var query = Web2Context.WorkingPlans.Where(x => (x.Street.ToLower().Contains(term)
             || x.Point.ToLower().Contains(term) ||
             x.Notes.ToLower().Contains(term) || x.Company.ToLower().Contains(term) ||
-            x.Number.ToLower().Contains(term));
+            x.Number.ToLower().Contains(term)) && x.Operater.Id == user.Id);
 
             return new PageResponse<WorkingPlan>(query.Skip(page * perPage).Take(perPage).ToList(), query.Count());
         }

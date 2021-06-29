@@ -13,5 +13,6 @@ namespace Web2_Backend.Model
         public string Notes;
         public string PhoneNumber;
         public DateTime CreateDateAndTime;
+        public User Operater { get; set; }
     }
 }

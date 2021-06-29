@@ -35,7 +35,7 @@ export class ApiService {
   }
   public getSafetyDocument(data: any) {
     return this.httpClient.get(this.REST_API_SERVER + '/api/crews?page=' + data.page 
-    + '&perPage=' + data.perPage + '&search=' + data.search);
+    + '&perPage=' + data.perPage + '&search=' + data.search + '&mine=' + data.mine);
   }
   public deleteCrew(id: any) {
     return this.httpClient.delete(this.REST_API_SERVER + '/api/crews/' + id);
@@ -97,7 +97,7 @@ export class ApiService {
 
   public getIncidents(data: any) {
     return this.httpClient.get(this.REST_API_SERVER + '/api/incidents?page=' + data.page 
-    + '&perPage=' + data.perPage + '&search=' + data.search);
+    + '&perPage=' + data.perPage + '&search=' + data.search + "&mine=" + data.mine);
   }
 
   public getIncident(id: any): any {
@@ -131,7 +131,7 @@ export class ApiService {
 
   public getWorkRequests(data: any) {
     return this.httpClient.get(this.REST_API_SERVER + '/api/work-requests?page=' + data.page 
-    + '&perPage=' + data.perPage + '&search=' + data.search);
+    + '&perPage=' + data.perPage + '&search=' + data.search + '&mine=' + data.mine);
   }
 
   public addWorkRequests(data: any) {
@@ -144,7 +144,7 @@ export class ApiService {
 
   public getWorkingPlans(data: any) {
     return this.httpClient.get(this.REST_API_SERVER + '/api/workingPlan?page=/' + data.page 
-    + '&perPage=' + data.perPage + '&search=' + data.search);
+    + '&perPage=' + data.perPage + '&search=' + data.search + '&mine=' + data.mine);
   }
 
   public addWorkingPlan(data: any) {
@@ -153,7 +153,7 @@ export class ApiService {
 
   public getSwitchingPlans(data: any) {
     return this.httpClient.get(this.REST_API_SERVER + '/api/switching-plans?page=/' + data.page 
-    + '&perPage=' + data.perPage + '&search=' + data.search);
+    + '&perPage=' + data.perPage + '&search=' + data.search + '&mine=' + data.mine);
   }
 
   public getSolutions(data: any) {

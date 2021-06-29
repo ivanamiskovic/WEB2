@@ -15,12 +15,23 @@ export class ViewSwitchingPlanComponent implements OnInit {
   perPage = 5;
   search = '';
   totalSize=0;
+  mine = false;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private api: ApiService
   ) {this.dataSource = []; }
+
+  allClick(){
+    this.mine = false;
+    this.fetch();
+  }
+
+  mineClick(){
+    this.mine = true;
+    this.fetch();
+  }
 
   onSearchChange(searhcValue: any): void {
     this.fetch();
@@ -43,7 +54,8 @@ export class ViewSwitchingPlanComponent implements OnInit {
     this.api.getSwitchingPlans({
       page: this.page,
       perPage: this.perPage,
-      search: this.search
+      search: this.search,
+      mine: this.mine
     }).subscribe((response : any) => {
       console.log(response);
       

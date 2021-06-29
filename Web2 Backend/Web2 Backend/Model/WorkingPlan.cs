@@ -7,7 +7,7 @@ namespace Web2_Backend.Model
 {
     public class WorkingPlan : Entity
     {
-        
+
         //public string Status { get; set; }
         //public string Incident { get; set; }
         public string Street { get; set; }
@@ -20,6 +20,7 @@ namespace Web2_Backend.Model
         public string Number { get; set; }
         public DateTime CreateDocument { get; set; }
         public WorkingPlanType Type { get; set; }
+        public User Operater { get; set; }
         
         //public string Team { get; set; }
     }

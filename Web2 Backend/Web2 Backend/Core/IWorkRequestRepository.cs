@@ -5,5 +5,6 @@ namespace Web2_Backend.Core
 {
     public interface IWorkRequestRepository : IRepository<WorkRequest>
     {
+        PageResponse<WorkRequest> GetAll(int page, int perPage, string search, User user);
     }
 }

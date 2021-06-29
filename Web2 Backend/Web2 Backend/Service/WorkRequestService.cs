@@ -25,13 +25,20 @@ namespace Web2_Backend.Service
             return null;
         }
 
-        public PageResponse<WorkRequest> GetAll(int page, int perPage, string search)
+        public PageResponse<WorkRequest> GetAll(int page, int perPage, string search, bool mine, User user)
         {
             try
             {
                 using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
                 {
-                    return unitOfWork.WorkRequests.GetAll(page, perPage, search);
+                    if (!mine)
+                    {
+                        return unitOfWork.WorkRequests.GetAll(page, perPage, search);
+                    }
+                    else
+                    {
+                        return unitOfWork.WorkRequests.GetAll(page, perPage, search, user);
+                    }
                 }
             }
             catch (Exception e)

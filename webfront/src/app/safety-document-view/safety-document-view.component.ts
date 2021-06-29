@@ -16,6 +16,7 @@ export class SafetyDocumentViewComponent implements OnInit {
   perPage = 5;
   search = '';
   totalSize = 0;
+  mine = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,12 +33,23 @@ export class SafetyDocumentViewComponent implements OnInit {
     this.fetch();
   }
   
+  allClick(){
+    this.mine = false;
+    this.fetch();
+  }
+
+  mineClick(){
+    this.mine = true;
+    this.fetch();
+  }
+
   fetch(): void {
     
     this.api.getSafetyDocument({
       page: 0,
       perPage: 5,
       search: '',
+      mine: this.mine
     }).subscribe((response: any) => {     
       console.log(response);
       this.totalSize = response.total;  

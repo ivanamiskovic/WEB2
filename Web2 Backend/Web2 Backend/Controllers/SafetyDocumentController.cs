@@ -11,7 +11,7 @@ namespace Web2_Backend.Controllers
     [ApiController]
     [Route("[controller]")]
 
-    public class SafetyDocumentController : Controller
+    public class SafetyDocumentController : DefaultController
     {
         public SafetyDocumentService safetyDocumentService = new SafetyDocumentService();
 
@@ -25,9 +25,9 @@ namespace Web2_Backend.Controllers
         [Route("/api/safetyDocuments")]
         [HttpGet]
         public PageResponse<SafetyDocument> GetAll([FromQuery(Name = "page")] int page, [FromQuery(Name = "perPage")] int perPage,
-            [FromQuery(Name = "search")] string search)
+            [FromQuery(Name = "search")] string search, [FromQuery(Name = "mine")] bool mine)
         {
-            return safetyDocumentService.GetAll(page, perPage, search);
+            return safetyDocumentService.GetAll(page, perPage, search, mine, GetCurrentUser());
         }
 
         [Route("/api/safetyDocuments")]

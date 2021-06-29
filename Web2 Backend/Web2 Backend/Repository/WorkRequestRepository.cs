@@ -15,14 +15,14 @@ namespace Web2_Backend.Repository
             return Web2Context.WorkRequests.Where(x => x.Deleted == false).ToList();
         }
 
-        public override PageResponse<WorkRequest> GetAll(int page, int perPage, string search)
+        public PageResponse<WorkRequest> GetAll(int page, int perPage, string search, User user)
         {
             string term = search == null ? string.Empty : search.ToLower();
 
             var query = Web2Context.WorkRequests.Where(x => (x.Type.ToLower().Contains(term)
             || x.Status.ToLower().Contains(term) || x.Address.ToLower().Contains(term) ||
             x.Cause.ToLower().Contains(term) || x.Note.ToLower().Contains(term) ||
-            x.Company.ToLower().Contains(term) || x.PhoneNumber.ToLower().Contains(term)) && x.Deleted == false);
+            x.Company.ToLower().Contains(term) || x.PhoneNumber.ToLower().Contains(term)) && x.Deleted == false && x.Operater.Id == user.Id);
 
             return new PageResponse<WorkRequest>(query.Skip(page * perPage).Take(perPage).ToList(), query.Count());
         }

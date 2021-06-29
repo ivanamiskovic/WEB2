@@ -8,5 +8,6 @@ namespace Web2_Backend.Core
 {
     public interface ISafetyDocumentRepository : IRepository<SafetyDocument>
     {
+        PageResponse<SafetyDocument> GetAll(int page, int perPage, string search, User user);
     }
 }

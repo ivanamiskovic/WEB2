@@ -11,7 +11,7 @@ namespace Web2_Backend.Controllers
 
     [ApiController]
     [Route("[controller]")]
-    public class SwitchingPlanController : Controller
+    public class SwitchingPlanController : DefaultController
     {
         public SwitchingPlanService switchingPlanService = new SwitchingPlanService();
 
@@ -25,9 +25,9 @@ namespace Web2_Backend.Controllers
         [Route("/api/switchingPlans")]
         [HttpGet]
         public PageResponse<SwitchingPlan> GetAll([FromQuery(Name = "page")] int page, [FromQuery(Name = "perPage")] int perPage,
-            [FromQuery(Name = "search")] string search)
+            [FromQuery(Name = "search")] string search, [FromQuery(Name = "mine")] bool mine)
         {
-            return switchingPlanService.GetAll(page, perPage, search);
+            return switchingPlanService.GetAll(page, perPage, search, mine, GetCurrentUser());
         }
 
         [Route("/api/switchingPlans")]

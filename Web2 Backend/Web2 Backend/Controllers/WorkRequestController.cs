@@ -22,9 +22,9 @@ namespace Web2_Backend.Controllers
         [Route("/api/work-requests")]
         [HttpGet]
         public PageResponse<WorkRequest> GetAll([FromQuery(Name = "page")] int page, [FromQuery(Name = "perPage")] int perPage,
-            [FromQuery(Name = "search")] string search)
+            [FromQuery(Name = "search")] string search, [FromQuery(Name = "mine")] bool mine)
         {
-            return service.GetAll(page, perPage, search);
+            return service.GetAll(page, perPage, search, mine, GetCurrentUser());
         }
 
         [Route("/api/work-requests")]

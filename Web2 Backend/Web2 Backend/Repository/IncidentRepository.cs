@@ -18,10 +18,19 @@ namespace Web2_Backend.Repository
 
         public override PageResponse<Incident> GetAll(int page, int perPage, string search)
         {
-            string term = search == null ? string.Empty : search.ToLower();
-
+            string term = search == null ? "" : search.ToLower();
 
             var query = Web2Context.Incidents.Where(x => x.Description.ToLower().Contains(term));
+
+            return new PageResponse<Incident>(query.Skip(page * perPage).Take(perPage).ToList(), query.Count());
+        }
+
+        public PageResponse<Incident> GetAll(int page, int perPage, string search, User user)
+        {
+            string term = search == null ? "" : search.ToLower();
+
+            var query = Web2Context.Incidents.Where(x => x.Description.ToLower().Contains(term)
+            && x.Operater.Id == user.Id);
 
             return new PageResponse<Incident>(query.Skip(page * perPage).Take(perPage).ToList(), query.Count());
         }

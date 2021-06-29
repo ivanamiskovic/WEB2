@@ -16,6 +16,7 @@ export class ViewWorkrequestComponent implements OnInit {
   perPage = 5;
   search = '';
   totalSize = 0;
+  mine = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,6 +24,16 @@ export class ViewWorkrequestComponent implements OnInit {
     private api: ApiService
   ) {
 
+  }
+
+  allClick() {
+    this.mine = false;
+    this.fetch();
+  }
+
+  mineClick() {
+    this.mine = true;
+    this.fetch();
   }
 
   onNew(): void {
@@ -49,7 +60,8 @@ export class ViewWorkrequestComponent implements OnInit {
     this.api.getWorkRequests({
       page: this.page,
       perPage: this.perPage,
-      search: this.search
+      search: this.search,
+      mine: this.mine
     }).subscribe((response : any) => {
       console.log(response);
       this.totalSize = response.total;

@@ -18,5 +18,6 @@ namespace Web2_Backend.Model
         public string CreatedBy { get; set; }
         public string Purpose { get; set; }
         public DateTime Created { get; set; }
+        public User Operater { get; set; }
     }
 }

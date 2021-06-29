@@ -11,7 +11,7 @@ namespace Web2_Backend.Controllers
 
     [ApiController]
     [Route("[controller]")]
-    public class WorkingPlanController : Controller
+    public class WorkingPlanController : DefaultController
     {
         public WorkingPlanService workingPlanService = new WorkingPlanService();
 
@@ -25,9 +25,9 @@ namespace Web2_Backend.Controllers
         [Route("/api/workingPlan")]
         [HttpGet]
         public PageResponse<WorkingPlan> GetAll([FromQuery(Name = "page")] int page, [FromQuery(Name = "perPage")] int perPage,
-            [FromQuery(Name = "search")] string search)
+            [FromQuery(Name = "search")] string search, [FromQuery(Name = "mine")] bool mine)
         {
-            return workingPlanService.GetAll(page, perPage, search);
+            return workingPlanService.GetAll(page, perPage, search, mine, GetCurrentUser());
         }
 
         [Route("/api/workingPlan")]

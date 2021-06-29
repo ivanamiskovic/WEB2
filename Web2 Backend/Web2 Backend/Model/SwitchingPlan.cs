@@ -21,5 +21,6 @@ namespace Web2_Backend.Model
         public User UserCreate { get; set; }
         public string Team { get; set; }
         public SwitchingPlanType Type {get; set;}
+        public User Operater { get; set; }
     }
 }
