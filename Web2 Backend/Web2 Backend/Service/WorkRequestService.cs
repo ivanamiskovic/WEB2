@@ -40,7 +40,7 @@ namespace Web2_Backend.Service
             }
         }
 
-        public WorkRequest Add(WorkRequest workRequest)
+        public WorkRequest Add(WorkRequest workRequest, User user)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace Web2_Backend.Service
                     WorkRequest newWorkRequest = new WorkRequest();
 
                     newWorkRequest.Type = workRequest.Type;
-                    newWorkRequest.Status = workRequest.Status;
+                    newWorkRequest.Status = "Draft";
                     newWorkRequest.Address = workRequest.Address;
                     newWorkRequest.Start = workRequest.Start;
                     newWorkRequest.Company = workRequest.Company;
@@ -58,10 +58,17 @@ namespace Web2_Backend.Service
                     newWorkRequest.Note = workRequest.Note;
                     newWorkRequest.Urgent = workRequest.Urgent;
                     newWorkRequest.PhoneNumber = workRequest.PhoneNumber;
+                    newWorkRequest.Incident = workRequest.Incident;
+                    newWorkRequest.CreatedBy = workRequest.CreatedBy;
+                    newWorkRequest.Purpose = workRequest.Purpose;
+                    newWorkRequest.Created = DateTime.Now;
 
 
                     unitOfWork.WorkRequests.Add(newWorkRequest);
                     unitOfWork.Complete();
+
+                    unitOfWork.WorkRequests.Update(newWorkRequest);
+                    newWorkRequest.CreatedBy = user.Name + " " + user.LastName;
 
                     return newWorkRequest;
                 }
@@ -84,7 +91,7 @@ namespace Web2_Backend.Service
                     unitOfWork.WorkRequests.Update(workRequestDb);
 
                     workRequestDb.Type = workRequest.Type;
-                    workRequestDb.Status = workRequest.Status;
+                    workRequestDb.Status = "Draft";
                     workRequestDb.Address = workRequest.Address;
                     workRequestDb.Start = workRequest.Start;
                     workRequestDb.Company = workRequest.Company;
@@ -93,6 +100,11 @@ namespace Web2_Backend.Service
                     workRequestDb.Note = workRequest.Note;
                     workRequestDb.Urgent = workRequest.Urgent;
                     workRequestDb.PhoneNumber = workRequest.PhoneNumber;
+                    workRequestDb.Incident = workRequest.Incident;
+                    workRequestDb.CreatedBy = workRequest.CreatedBy;
+                    workRequestDb.Purpose = workRequest.Purpose;
+                    workRequestDb.Created = DateTime.Now;
+
 
                     unitOfWork.Complete();
                 }
@@ -112,7 +124,9 @@ namespace Web2_Backend.Service
                 using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
                 {
                     WorkRequest workRequest = Get(id);
-                    unitOfWork.WorkRequests.Remove(workRequest);
+                    unitOfWork.WorkRequests.Update(workRequest);
+                    workRequest.Deleted = true;
+                    unitOfWork.Complete();
                 }
             }
             catch (Exception e)

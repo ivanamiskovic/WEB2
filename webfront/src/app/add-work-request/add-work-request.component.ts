@@ -20,6 +20,7 @@ export class AddWorkRequestComponent implements OnInit {
   displayedColumnsCalls: string[] = ['comment', 'breakdownName', 'reason', 'breakdownPriority'];
   dataSourceCrews: any;
   displayedColumnsCrews: string[] = ['name'];
+  dataSourceIncidents: any;
 
   constructor(
     private fb: FormBuilder,
@@ -37,6 +38,9 @@ export class AddWorkRequestComponent implements OnInit {
       company: ['', Validators.required],
       address: ['', Validators.required],
       phoneNumber: ['', Validators.required],
+      status: ['', Validators.required],
+      incident: [''],
+      purpose: [''],
     });
   }
 
@@ -81,6 +85,17 @@ export class AddWorkRequestComponent implements OnInit {
     });
   }
 
+  fetchIncidents(): void {
+    this.api.getIncidents({
+      page: 0,
+      perPage: 500,
+      search: ''
+    }).subscribe(response => {
+      console.log(response);
+      this.dataSourceIncidents = response;
+    });
+  }
+
   ngOnInit(): void {
 
     this.route.queryParams.subscribe(params => {
@@ -97,6 +112,11 @@ export class AddWorkRequestComponent implements OnInit {
           this.form.controls['urgent'].setValue(this.data.urgent);
           this.form.controls['phoneNumber'].setValue(this.data.phoneNumber);
           this.form.controls['cause'].setValue(this.data.cause);
+          this.form.controls['status'].setValue(this.data.status);
+          this.form.controls['incident'].setValue(this.data.incident);
+          this.form.controls['purpose'].setValue(this.data.purpose);
+          this.form.controls['created'].setValue(this.data.created);
+          this.form.controls['createdBy'].setValue(this.data.createdBy);
         });
       }
     });
@@ -104,6 +124,7 @@ export class AddWorkRequestComponent implements OnInit {
     this.fetchDevices();
     this.fetchCalls();
     this.fetchCrews();
+    this.fetchIncidents();
   }
 
   onSubmit(): void {
@@ -117,6 +138,11 @@ export class AddWorkRequestComponent implements OnInit {
       phoneNumber: this.form.get('phoneNumber')?.value,
       address: this.form.get('address')?.value,
       caause: this.form.get('cause')?.value,
+      status: this.form.get('status')?.value, 
+      incident: this.form.get('incident')?.value,
+      purpose: this.form.get('purpose')?.value,
+      created: this.form.get('created')?.value,
+      createdBy: this.form.get('createdBy')?.value,
     }).subscribe((response: any) => {
       this.data = response;
     });

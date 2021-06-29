@@ -14,6 +14,7 @@ export class ViewCrewComponent implements OnInit {
   page = 0;
   perPage = 5;
   search = '';
+  totalSize = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +26,12 @@ export class ViewCrewComponent implements OnInit {
 
   onNew(): void {
     this.router.navigateByUrl('/add-crew');
+  }
+
+  public handlePage(e: any) {
+    this.page = e.pageIndex;
+    this.perPage = e.pageSize;
+    this.fetch();
   }
 
   delete(id: number): void {
@@ -40,6 +47,7 @@ export class ViewCrewComponent implements OnInit {
       search: this.search
     }).subscribe((response : any) => {
       console.log(response);
+      this.totalSize = response.total;
       this.dataSource = response.entities;
     });
   }

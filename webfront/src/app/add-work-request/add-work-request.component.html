@@ -25,6 +25,31 @@
             </mat-error>
           </mat-form-field>
 
+
+          <mat-form-field class="full-width-input">
+            <label>Status:</label>
+            <mat-select matNativeControl required formControlName="status">
+              <mat-option value="1">Draft</mat-option>
+              <mat-option value="2">Subbmited</mat-option>
+              <mat-option value="3">Deny</mat-option>
+              <mat-option value="4">Allow</mat-option>
+            </mat-select>
+            <mat-error>
+              Please provide a valid status
+            </mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field class="full-width-input">
+            <label>Incident</label>
+            <mat-select matNativeControl formControlName="incident">
+              <mat-option *ngFor="let item of dataSourceIncidents;" value="{{item.id}}">{{item.description}}</mat-option>
+            </mat-select>
+            <mat-error>
+              Please provide a valid incident 
+            </mat-error>
+          </mat-form-field>
+
           <section class="urgent" required>
             <mat-checkbox matInput formControlName="urgent" >Urgent</mat-checkbox>
           </section>
@@ -32,7 +57,14 @@
           <mat-form-field class="full-width-input">
             <input matInput placeholder="Note" formControlName="note" required>
             <mat-error>
-              Please provide a valid details
+              Please provide a valid notes
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width-input">
+            <input matInput placeholder="Purpose" formControlName="purpose" required>
+            <mat-error>
+              Please provide a valid purpose
             </mat-error>
           </mat-form-field>
 
@@ -53,23 +85,24 @@
           <mat-form-field class="full-width-input">
             <input matInput placeholder="Cause" formControlName="cause"  required>
             <mat-error>
-              Please provide a valid details
+              Please provide a valid cause
             </mat-error>
           </mat-form-field>
 
           <mat-form-field class="full-width-input">
             <input matInput placeholder="Company" formControlName="company" required>
             <mat-error>
-              Please provide a valid details
+              Please provide a valid company
             </mat-error>
           </mat-form-field>
 
           <mat-form-field class="full-width-input">
             <input matInput placeholder="Phone number" formControlName="phoneNumber" required>
             <mat-error>
-              Please provide a valid details
+              Please provide a valid phone number
             </mat-error>
           </mat-form-field>
+
 
           <button mat-raised-button color="primary">Add</button>
 

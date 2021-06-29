@@ -8,7 +8,7 @@ namespace Web2_Backend.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WorkRequestController : Controller
+    public class WorkRequestController : DefaultController
     {
         public WorkRequestService service = new WorkRequestService();
 
@@ -31,7 +31,7 @@ namespace Web2_Backend.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(WorkRequest workRequest)
         {
-            return Ok(service.Add(workRequest));
+            return Ok(service.Add(workRequest, GetCurrentUser()));
         }
 
         [Route("/api/work-requests/{id}")]
