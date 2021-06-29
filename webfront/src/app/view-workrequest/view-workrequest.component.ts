@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {ApiService} from '../api.service';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-view-workrequest',
@@ -22,7 +24,7 @@ export class ViewWorkrequestComponent implements OnInit {
     private router: Router,
     private api: ApiService
   ) {
-
+    
   }
 
   onNew(): void {

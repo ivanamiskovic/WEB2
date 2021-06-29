@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {ApiService} from '../api.service';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-add-work-request',
@@ -14,6 +16,7 @@ export class AddWorkRequestComponent implements OnInit {
   public addIncidentInvalid = false;
   public state = 'BASIC';
   data: any;
+  allData: any;
   dataSourceDevice: any;
   displayedColumnsDevice: string[] = ['name', 'address', 'type', 'lat', 'lng'];
   dataSourceCalls: any;
@@ -26,7 +29,8 @@ export class AddWorkRequestComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private api: ApiService
+    private api: ApiService,
+    private dialog: MatDialog
   ) {
     this.form = this.fb.group({
       type: ['', Validators.required],
@@ -42,6 +46,21 @@ export class AddWorkRequestComponent implements OnInit {
       incident: [''],
       purpose: [''],
     });
+  }
+
+  cancel() {
+
+    const dialogRef = this.dialog.open(DialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+
+      if(result) {
+        this.router.navigateByUrl('/dashboard');
+      }
+      else {
+        this.onSubmit();
+      }
+
+    })
   }
 
   onNewCrew(): void {
@@ -96,6 +115,54 @@ export class AddWorkRequestComponent implements OnInit {
     });
   }
 
+  isEqual(): boolean {
+    if(this.data.type != this.allData.type){
+    return false;
+    }
+    else if(this.data.note != this.allData.note){
+      return false;
+    }
+    else if(this.data.start != this.allData.start){
+      return false;
+    }
+    else if(this.data.end != this.allData.end){
+      return false;
+    }
+    else if(this.data.company != this.allData.company){
+      return false;
+    }
+    else if(this.data.address != this.allData.address){
+      return false;
+    }
+    else if(this.data.urgent != this.allData.urgent){
+      return false;
+    }
+    else if(this.data.phoneNumber != this.allData.phoneNumber){
+      return false;
+    }
+    else if(this.data.cause != this.allData.cause){
+      return false;
+    }
+    else if(this.data.status != this.allData.status){
+      return false;
+    }
+    else if(this.data.incident != this.allData.incident){
+      return false;
+    }
+    else if(this.data.purpose != this.allData.purpose){
+      return false;
+    }
+    else if(this.data.created != this.allData.created){
+      return false;
+    }
+    else if(this.data.createdBy != this.allData.createdBy){
+      return false;
+    }
+    else{
+    return true;
+    }
+  }
+
   ngOnInit(): void {
 
     this.route.queryParams.subscribe(params => {
@@ -103,6 +170,7 @@ export class AddWorkRequestComponent implements OnInit {
       if(params['id']) {
         this.api.getIncident(params['id']).subscribe((response: any) => {
           this.data = response;
+          this.allData = response;
           this.form.controls['type'].setValue(this.data.type);
           this.form.controls['note'].setValue(this.data.note);
           this.form.controls['pickerStart'].setValue(this.data.start);
