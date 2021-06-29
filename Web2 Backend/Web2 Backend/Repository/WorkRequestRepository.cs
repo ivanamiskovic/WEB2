@@ -17,7 +17,7 @@ namespace Web2_Backend.Repository
 
         public override PageResponse<WorkRequest> GetAll(int page, int perPage, string search)
         {
-            string term = search.ToLower();
+            string term = search == null ? string.Empty : search.ToLower();
 
             var query = Web2Context.WorkRequests.Where(x => x.Type.ToLower().Contains(term)
             || x.Status.ToLower().Contains(term) || x.Address.ToLower().Contains(term) ||
