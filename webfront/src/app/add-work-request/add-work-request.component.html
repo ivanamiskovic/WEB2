@@ -102,11 +102,9 @@
               Please provide a valid phone number
             </mat-error>
           </mat-form-field>
-
-
-          <button mat-raised-button color="primary">Add</button>
-
         </form>
+        <button mat-raised-button color="primary" (click)="onSubmit()">Add</button>
+          <button mat-raised-button color="primary" (click)="cancel()">Cancel</button>
         <div *ngIf="state=='EQUIPMENT'">
           <h1>Devices</h1>
           <div class="controls">

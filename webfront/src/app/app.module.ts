@@ -61,6 +61,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { ViewWorkrequestComponent } from './view-workrequest/view-workrequest.component';
 import {AddWorkRequestComponent} from './add-work-request/add-work-request.component';
 import { ViewSolutionsComponent } from './view-solutions/view-solutions.component';
+import { DialogComponent } from './dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -92,7 +94,8 @@ import { ViewSolutionsComponent } from './view-solutions/view-solutions.componen
     NotificationsComponent,
     ViewWorkrequestComponent,
     AddWorkRequestComponent,
-    ViewSolutionsComponent
+    ViewSolutionsComponent,
+    DialogComponent
   ],
   imports: [
     MatPaginatorModule,
@@ -121,7 +124,8 @@ import { ViewSolutionsComponent } from './view-solutions/view-solutions.componen
     MatOptionModule,
     MatProgressSpinnerModule,
     HttpClientModule,
-    ChartsModule
+    ChartsModule,
+    MatDialogModule
   ],
 exports: [ MatFormFieldModule, MatInputModule ],
   providers: [
