@@ -13,7 +13,7 @@ namespace Web2_Backend.Repository
 
         public override PageResponse<WorkingPlan> GetAll(int page, int perPage, string search)
         {
-            string term = search.ToLower();
+            string term = search == null ? string.Empty : search.ToLower();
 
             var query = Web2Context.WorkingPlans.Where(x => x.Street.ToLower().Contains(term)
             || x.Point.ToLower().Contains(term) ||

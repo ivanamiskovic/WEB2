@@ -18,7 +18,7 @@ namespace Web2_Backend.Repository
 
         public override PageResponse<SwitchingPlan> GetAll(int page, int perPage, string search)
         {
-            string term = search.ToLower();
+            string term = search == null ? string.Empty : search.ToLower();
 
             var query = Web2Context.SwitchingPlans.Where(x => x.Street.ToLower().Contains(term)
             || x.Notes.ToLower().Contains(term) || x.Company.ToLower().Contains(term) || x.Number.ToLower().Contains(term) || x.Point.ToLower().Contains(term) || x.Team.ToLower().Contains(term));
