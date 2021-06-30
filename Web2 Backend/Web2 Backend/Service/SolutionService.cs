@@ -33,7 +33,7 @@ namespace Web2_Backend.Service
             {
                 using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
                 {
-                    return unitOfWork.Solutions.GetAll(page, perPage, search);
+                    return unitOfWork.Solutions.GetAll(page, perPage, search, "ASC");
                 }
             }
             catch (Exception e)

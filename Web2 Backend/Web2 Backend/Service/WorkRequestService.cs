@@ -25,7 +25,7 @@ namespace Web2_Backend.Service
             return null;
         }
 
-        public PageResponse<WorkRequest> GetAll(int page, int perPage, string search, bool mine, User user)
+        public PageResponse<WorkRequest> GetAll(int page, int perPage, string search, bool mine, User user, string sort)
         {
             try
             {
@@ -33,11 +33,11 @@ namespace Web2_Backend.Service
                 {
                     if (!mine)
                     {
-                        return unitOfWork.WorkRequests.GetAll(page, perPage, search);
+                        return unitOfWork.WorkRequests.GetAll(page, perPage, search, sort);
                     }
                     else
                     {
-                        return unitOfWork.WorkRequests.GetAll(page, perPage, search, user);
+                        return unitOfWork.WorkRequests.GetAll(page, perPage, search, user, sort);
                     }
                 }
             }

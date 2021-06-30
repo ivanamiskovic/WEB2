@@ -16,6 +16,7 @@ export class ViewSwitchingPlanComponent implements OnInit {
   search = '';
   totalSize=0;
   mine = false;
+  sort = "ASC"
 
   constructor(
     private route: ActivatedRoute,
@@ -55,7 +56,8 @@ export class ViewSwitchingPlanComponent implements OnInit {
       page: this.page,
       perPage: this.perPage,
       search: this.search,
-      mine: this.mine
+      mine: this.mine,
+      sort: this.sort
     }).subscribe((response : any) => {
       console.log(response);
       

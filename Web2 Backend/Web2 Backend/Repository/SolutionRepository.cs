@@ -16,7 +16,7 @@ namespace Web2_Backend.Repository
             return Web2Context.Solutions.Where(x => x.Deleted == false).ToList();
         }
 
-        public override PageResponse<Solution> GetAll(int page, int perPage, string search)
+        public PageResponse<Solution> GetAll(int page, int perPage, string search)
         {
             string term = search == null ? string.Empty : search.ToLower();
 

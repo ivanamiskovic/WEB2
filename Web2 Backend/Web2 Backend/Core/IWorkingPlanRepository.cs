@@ -8,6 +8,6 @@ namespace Web2_Backend.Core
 {
     public  interface IWorkingPlanRepository: IRepository<WorkingPlan>
     {
-        PageResponse<WorkingPlan> GetAll(int page, int perPage, string search, User user);
+        PageResponse<WorkingPlan> GetAll(int page, int perPage, string search, User user, string sort);
     }
 }

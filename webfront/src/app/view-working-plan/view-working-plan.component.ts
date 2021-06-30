@@ -17,6 +17,7 @@ export class ViewWorkingPlanComponent implements OnInit {
   search = '';
   totalSize = 0;
   mine = false;
+  sort = "ASC"
 
   constructor(
     private route: ActivatedRoute,
@@ -62,7 +63,8 @@ export class ViewWorkingPlanComponent implements OnInit {
       page: this.page,
       perPage: this.perPage,
       search: this.search,
-      mine: this.mine
+      mine: this.mine,
+      sort: this.sort
     }).subscribe((response : any) => {
       console.log(response);
       this.totalSize = response.total;

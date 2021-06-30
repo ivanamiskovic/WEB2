@@ -12,7 +12,7 @@ namespace Web2_Backend.Core
         TEntity Get(long d);
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
 
-        PageResponse<TEntity> GetAll(int page, int perPage, string search);
+        PageResponse<TEntity> GetAll(int page, int perPage, string search, string sort);
         IEnumerable<Entity> Search(string term = "");
 
         PageResponse<TEntity> GetPage(PageModel model);

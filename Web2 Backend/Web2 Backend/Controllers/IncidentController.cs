@@ -24,9 +24,9 @@ namespace Web2_Backend.Controllers
         [Route("/api/incidents")]
         [HttpGet]
         public PageResponse<Incident> GetAll([FromQuery(Name = "page")] int page, [FromQuery(Name = "perPage")] int perPage,
-            [FromQuery(Name = "search")] string search, [FromQuery(Name = "mine")] bool mine) 
+            [FromQuery(Name = "search")] string search, [FromQuery(Name = "mine")] bool mine, [FromQuery(Name = "sort")] string sort) 
         {
-            return incidentService.GetAll(page, perPage, search, mine, GetCurrentUser());
+            return incidentService.GetAll(page, perPage, search, mine, GetCurrentUser(), sort);
         }
 
         [Route("/api/incidents")]

@@ -8,10 +8,17 @@
       </div>
 
       <div class="right">
-        <button mat-raised-button color="primary">Filter</button>
+        <button mat-raised-button color="primary" (click)="fetch()">Filter</button>
         <input matInput type="text" placeholder="Search" 
         [(ngModel)]="search" 
         (input)="onSearchChange($event)">
+        <mat-form-field class="full-width-input">
+          <label>Sort:</label>
+            <mat-select matNativeControl [(ngModel)]="sort">
+              <mat-option value="ASC">ASC</mat-option>
+              <mat-option value="DESC">DESC</mat-option>
+            </mat-select>
+        </mat-form-field>
       </div>
     </div>
     <div class="mat-elevation-z8">

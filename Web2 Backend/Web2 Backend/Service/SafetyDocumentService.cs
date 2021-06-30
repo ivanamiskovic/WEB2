@@ -26,7 +26,7 @@ namespace Web2_Backend.Service
             return null;
         }
 
-        public PageResponse<SafetyDocument> GetAll(int page, int perPage, string search, bool mine, User user)
+        public PageResponse<SafetyDocument> GetAll(int page, int perPage, string search, bool mine, User user, string sort)
         {
             try
             {
@@ -34,11 +34,11 @@ namespace Web2_Backend.Service
                 {
                     if (!mine)
                     {
-                        return unitOfWork.SafetyDocument.GetAll(page, perPage, search);
+                        return unitOfWork.SafetyDocument.GetAll(page, perPage, search, sort);
                     }
                     else
                     {
-                        return unitOfWork.SafetyDocument.GetAll(page, perPage, search, user);
+                        return unitOfWork.SafetyDocument.GetAll(page, perPage, search, user, sort);
                     }
                 }
             }
