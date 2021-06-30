@@ -8,6 +8,6 @@ namespace Web2_Backend.Core
 {
     public interface ISwitchingPlanRepository : IRepository<SwitchingPlan>
     {
-        PageResponse<SwitchingPlan> GetAll(int page, int perPage, string search, User user);
+        PageResponse<SwitchingPlan> GetAll(int page, int perPage, string search, User user, string sort);
     }
 }

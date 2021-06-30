@@ -27,7 +27,7 @@ namespace Web2_Backend.Service
             return null;
         }
 
-        public PageResponse<Incident> GetAll(int page, int perPage, string search, bool mine, User user)
+        public PageResponse<Incident> GetAll(int page, int perPage, string search, bool mine, User user, string sort)
         {
             try
             {
@@ -35,11 +35,11 @@ namespace Web2_Backend.Service
                 {
                     if (!mine)
                     {
-                        return unitOfWork.Incidents.GetAll(page, perPage, search);
+                        return unitOfWork.Incidents.GetAll(page, perPage, search, sort);
                     }
                     else
                     {
-                        return unitOfWork.Incidents.GetAll(page, perPage, search, user);
+                        return unitOfWork.Incidents.GetAll(page, perPage, search, user, sort);
                     }
 
                     

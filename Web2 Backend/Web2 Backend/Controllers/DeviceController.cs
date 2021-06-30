@@ -22,9 +22,9 @@ namespace Web2_Backend.Controllers
         [Route("/api/devices")]
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery(Name = "page")] int page, [FromQuery(Name = "perPage")] int perPage,
-            [FromQuery(Name = "search")] string search)
+            [FromQuery(Name = "search")] string search, [FromQuery(Name = "sort")] string sort)
         {
-            return Ok(service.GetAll(page, perPage, search));
+            return Ok(service.GetAll(page, perPage, search, sort));
         }
 
         [Route("/api/devices")]

@@ -83,7 +83,7 @@ namespace Web2_Backend.Repository
             Context.Entry(entity).State = EntityState.Modified;
         }
 
-        public virtual PageResponse<TEntity> GetAll(int page, int perPage, string search)
+        public virtual PageResponse<TEntity> GetAll(int page, int perPage, string search, string sort)
         {
             throw new NotImplementedException();
         }

@@ -17,13 +17,23 @@ namespace Web2_Backend.Repository
             return Web2Context.Cosumers.Where(x => x.Deleted == false).ToList();
         }
 
-        public override PageResponse<Cosumer> GetAll(int page, int perPage, string search)
+        public override PageResponse<Cosumer> GetAll(int page, int perPage, string search, string sort)
         {
             string term = search == null ? string.Empty : search.ToLower();
 
 
             var query = Web2Context.Cosumers.Where(x => x.Name.ToLower().Contains(term)
             || x.Location.ToLower().Contains(term) || x.LastName.ToLower().Contains(term) || x.PhoneNumber.ToLower().Contains(term) || x.Type.ToLower().Contains(term));
+
+            if (sort == "DESC") 
+            {
+                query = query.OrderByDescending(x => x.Id);
+            }
+            else 
+            {
+                query = query.OrderBy(x => x.Id);
+
+            }
 
             return new PageResponse<Cosumer>(query.Skip(page * perPage).Take(perPage).ToList(), query.Count());
         }

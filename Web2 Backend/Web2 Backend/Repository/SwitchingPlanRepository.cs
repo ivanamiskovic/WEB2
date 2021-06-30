@@ -16,12 +16,21 @@ namespace Web2_Backend.Repository
             return Web2Context.SwitchingPlans.Where(x => x.Deleted == false).ToList();
         }
 
-        public PageResponse<SwitchingPlan> GetAll(int page, int perPage, string search, User user)
+        public PageResponse<SwitchingPlan> GetAll(int page, int perPage, string search, User user, string sort)
         {
             string term = search == null ? string.Empty : search.ToLower();
 
             var query = Web2Context.SwitchingPlans.Where(x => (x.Street.ToLower().Contains(term)
             || x.Notes.ToLower().Contains(term) || x.Company.ToLower().Contains(term) || x.Number.ToLower().Contains(term) || x.Point.ToLower().Contains(term) || x.Team.ToLower().Contains(term)) && x.Operater.Id == user.Id);
+
+            if (sort == "DESC")
+            {
+                query = query.OrderByDescending(x => x.Id);
+            }
+            else
+            {
+                query = query.OrderBy(x => x.Id);
+            }
 
             return new PageResponse<SwitchingPlan>(query.Skip(page * perPage).Take(perPage).ToList(), query.Count());
         }

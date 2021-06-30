@@ -17,6 +17,7 @@ export class SafetyDocumentViewComponent implements OnInit {
   search = '';
   totalSize = 0;
   mine = false;
+  sort = "ASC"
 
   constructor(
     private route: ActivatedRoute,
@@ -49,7 +50,8 @@ export class SafetyDocumentViewComponent implements OnInit {
       page: 0,
       perPage: 5,
       search: '',
-      mine: this.mine
+      mine: this.mine,
+      sort: this.sort
     }).subscribe((response: any) => {     
       console.log(response);
       this.totalSize = response.total;  

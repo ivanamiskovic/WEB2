@@ -15,6 +15,7 @@ export class ViewCrewComponent implements OnInit {
   perPage = 5;
   search = '';
   totalSize = 0;
+  sort = "ASC"
 
   constructor(
     private route: ActivatedRoute,
@@ -41,10 +42,12 @@ export class ViewCrewComponent implements OnInit {
   }
 
   fetch(): void {
+
     this.api.getCrews({
       page: this.page,
       perPage: this.perPage,
-      search: this.search
+      search: this.search,
+      sort: this.sort
     }).subscribe((response : any) => {
       console.log(response);
       this.totalSize = response.total;

@@ -15,13 +15,22 @@ namespace Web2_Backend.Repository
             return Web2Context.Devices.Where(x => x.Deleted == false).ToList();
         }
 
-        public override PageResponse<Device> GetAll(int page, int perPage, string search)
+        public override PageResponse<Device> GetAll(int page, int perPage, string search, string sort)
         {
             string term = search == null ? string.Empty : search.ToLower();
 
 
             var query = Web2Context.Devices.Where(x => x.Type.ToLower().Contains(term)
             || x.Name.ToLower().Contains(term) || x.Address.ToLower().Contains(term));
+
+            if (sort == "DESC")
+            {
+                query = query.OrderByDescending(x => x.Id);
+            }
+            else
+            {
+                query = query.OrderBy(x => x.Id);
+            }
 
             return new PageResponse<Device>(query.Skip(page * perPage).Take(perPage).ToList(), query.Count());
         }
