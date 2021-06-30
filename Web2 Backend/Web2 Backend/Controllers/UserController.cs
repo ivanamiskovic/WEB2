@@ -36,7 +36,7 @@ namespace Web2_Backend.Controllers
         public async Task<IActionResult> GetAll([FromQuery(Name = "page")] int page, [FromQuery(Name = "perPage")] int perPage,
             [FromQuery(Name = "search")] string search)
         { 
-            return null;
+            return Ok(userService.GetAll(page, perPage, search));
         }
 
         [Route("/api/users")]
