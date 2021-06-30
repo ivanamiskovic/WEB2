@@ -28,11 +28,20 @@ export class ApiService {
    public addCrew(data: any) {
     return this.httpClient.post(this.REST_API_SERVER + '/api/crews', data); //
   }
+  public addCrewMember(data: any) {
+    return this.httpClient.post(this.REST_API_SERVER + '/api/crewMembers', data); 
+  }
 
   public getCrews(data: any) {
     return this.httpClient.get(this.REST_API_SERVER + '/api/crews?page=' + data.page 
     + '&perPage=' + data.perPage + '&search=' + data.search);
   }
+
+  public getCrewMembers(data: any) {
+    return this.httpClient.get(this.REST_API_SERVER + '/api/crewMembers?page=' + data.page 
+    + '&perPage=' + data.perPage + '&search=' + data.search);
+  }
+
   public getSafetyDocument(data: any) {
     return this.httpClient.get(this.REST_API_SERVER + '/api/crews?page=' + data.page 
     + '&perPage=' + data.perPage + '&search=' + data.search + '&mine=' + data.mine);
@@ -80,6 +89,11 @@ export class ApiService {
 
   public addDevice(data: any) {
     return this.httpClient.post(this.REST_API_SERVER + '/api/devices', data);
+  }
+
+  public getUsers(data: any) {
+    return this.httpClient.get(this.REST_API_SERVER + '/api/users?page=' + data.page 
+    + '&perPage=' + data.perPage + '&search=' + data.search);
   }
 
   public getDevices(data: any) {

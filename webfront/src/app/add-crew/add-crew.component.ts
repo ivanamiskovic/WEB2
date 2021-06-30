@@ -14,6 +14,7 @@ export class AddCrewComponent implements OnInit {
   public addCrewInvalid = false;
   private formSubmitAttempt = false;
   private returnUrl: string;
+  public users: any;
 
   constructor(
     private fb: FormBuilder,

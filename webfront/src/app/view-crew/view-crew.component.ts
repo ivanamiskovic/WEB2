@@ -40,6 +40,9 @@ export class ViewCrewComponent implements OnInit {
     });
   }
 
+  edit(id: number): void {
+    this.router.navigateByUrl('/add-crew?id=' + id);
+  }
   fetch(): void {
     this.api.getCrews({
       page: this.page,
