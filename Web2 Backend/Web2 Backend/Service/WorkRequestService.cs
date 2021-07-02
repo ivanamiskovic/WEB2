@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Web2_Backend.Model;
+using Web2_Backend.Model.Request;
 using Web2_Backend.Repository;
 
 namespace Web2_Backend.Service
@@ -133,6 +134,42 @@ namespace Web2_Backend.Service
                     WorkRequest workRequest = Get(id);
                     unitOfWork.WorkRequests.Update(workRequest);
                     workRequest.Deleted = true;
+                    unitOfWork.Complete();
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool ChangeState(WorkRequestChangeStatusRequest data, User user)
+        {
+            try
+            {
+                using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
+                {
+                    WorkRequest workRequest = unitOfWork.WorkRequests.Get(data.WorkRequestId);
+
+                    unitOfWork.WorkRequests.Update(workRequest);
+                    workRequest.DocumentStatus = data.Status;
+
+                    unitOfWork.Complete();
+
+                    DocumentHistory documentHistory = new DocumentHistory();
+                    documentHistory.DateTime = DateTime.Now;
+                    documentHistory.DocumentStatus = data.Status;
+
+                    unitOfWork.DocumentHistories.Add(documentHistory);
+                    unitOfWork.Complete();
+
+                    unitOfWork.DocumentHistories.Update(documentHistory);
+
+                    documentHistory.User = user;
+                    documentHistory.WorkRequest = workRequest;
+
                     unitOfWork.Complete();
                 }
             }

@@ -16,7 +16,7 @@ namespace Web2_Backend.Repository
             return Web2Context.CrewMembers.Where(x => x.Deleted == false).ToList();
         }
 
-        public override PageResponse<CrewMember> GetAll(int page, int perPage, string search)
+        public override PageResponse<CrewMember> GetAll(int page, int perPage, string search, string sort)
         {
             string term = search == null ? string.Empty : search.ToLower();
 

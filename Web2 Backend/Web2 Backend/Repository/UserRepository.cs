@@ -32,7 +32,7 @@ namespace Web2_Backend.Repository
             return query.ToList();
         }
 
-        public override PageResponse<User> GetAll(int page, int perPage, string search)
+        public override PageResponse<User> GetAll(int page, int perPage, string search, string sort)
         {
             string term = search == null ? string.Empty : search.ToLower();
 

@@ -19,5 +19,7 @@ namespace Web2_Backend.Model
         public string Purpose { get; set; }
         public DateTime Created { get; set; }
         public User Operater { get; set; }
+
+        public DocumentStatus DocumentStatus { get; set; }
     }
 }

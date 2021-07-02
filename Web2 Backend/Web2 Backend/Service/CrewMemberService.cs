@@ -21,18 +21,18 @@ namespace Web2_Backend.Service
             catch (Exception e)
             {
                 return null;
-            }s
+            }
             return null;
         }
 
-        public PageResponse<CrewMember> GetAll(int page, int perPage, string search)
+        public PageResponse<CrewMember> GetAll(int page, int perPage, string search, string sort)
         {
             try
             {
                 using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
                 {
 
-                    return unitOfWork.CrewMembers.GetAll(page, perPage, search);
+                    return unitOfWork.CrewMembers.GetAll(page, perPage, search, sort);
                 } 
             }
             catch (Exception e)

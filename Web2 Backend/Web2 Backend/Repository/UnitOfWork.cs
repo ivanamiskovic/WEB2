@@ -24,6 +24,7 @@ namespace Web2_Backend.Repository
         public IWorkRequestRepository WorkRequests { get; private set; }
 
         public ICrewMemberRepository CrewMembers { get; private set; }
+        public IDocumentHistoryRepository DocumentHistories { get; private set; }
 
         public UnitOfWork(Web2Context context) 
         {
@@ -40,6 +41,7 @@ namespace Web2_Backend.Repository
             Devices = new DeviceRepository(this.context);
             WorkRequests = new WorkRequestRepository(this.context);
             CrewMembers = new CrewMemberRepository(this.context);
+            DocumentHistories = new DocumentHistoryRepository(this.context);
         }
 
         public Web2Context Context
