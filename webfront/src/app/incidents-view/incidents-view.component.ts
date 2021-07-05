@@ -10,7 +10,7 @@ import {ApiService} from '../api.service';
 export class IncidentsViewComponent implements OnInit {
 
   dataSource: any;
-  displayedColumns: string[] = ['description', 'eta', 'etr', 'ata', 'calls', 'affectedCustomers', 'id'];
+  displayedColumns: string[] = ['operater', 'description', 'eta', 'etr', 'ata', 'calls', 'affectedCustomers', 'id'];
 
   page = 0;
   perPage = 5;
@@ -78,6 +78,12 @@ export class IncidentsViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetch();
+  }
+
+  take(id:any) {
+    this.api.setOperator(id).subscribe((response: any) => {
+      this.fetch();
+    });
   }
 }
 
