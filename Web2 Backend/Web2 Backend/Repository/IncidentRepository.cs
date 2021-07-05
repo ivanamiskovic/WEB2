@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,14 +14,24 @@ namespace Web2_Backend.Repository
 
         public override IEnumerable<Incident> GetAll()
         {
-            return Web2Context.Incidents.Where(x => x.Deleted == false).ToList();
+            return Web2Context.Incidents.Include(x => x.Operater).Where(x => x.Deleted == false).ToList();
         }
 
-        public PageResponse<Incident> GetAll(int page, int perPage, string search)
+        public override PageResponse<Incident> GetAll(int page, int perPage, string search, string sort)
         {
             string term = search == null ? "" : search.ToLower();
 
-            var query = Web2Context.Incidents.Where(x => x.Description.ToLower().Contains(term));
+            var query = Web2Context.Incidents.Include(x => x.Operater).Where(x => x.Description.ToLower().Contains(term));
+
+            if (sort == "DESC")
+            {
+                query = query.OrderByDescending(x => x.Id);
+            }
+            else
+            {
+                query = query.OrderBy(x => x.Id);
+            }
+
 
             return new PageResponse<Incident>(query.Skip(page * perPage).Take(perPage).ToList(), query.Count());
         }
@@ -29,7 +40,7 @@ namespace Web2_Backend.Repository
         {
             string term = search == null ? "" : search.ToLower();
 
-            var query = Web2Context.Incidents.Where(x => x.Description.ToLower().Contains(term)
+            var query = Web2Context.Incidents.Include(x => x.Operater).Where(x => x.Description.ToLower().Contains(term)
             && x.Operater.Id == user.Id);
 
             if (sort == "DESC")

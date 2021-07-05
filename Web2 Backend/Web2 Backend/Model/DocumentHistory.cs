@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Web2_Backend.Model
 {
-    public class DocumentHistory
+    public class DocumentHistory : Entity
     {
         public User User { get; set; }
         public  DocumentStatus DocumentStatus { get; set; }
