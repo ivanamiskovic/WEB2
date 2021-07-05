@@ -79,5 +79,11 @@ export class IncidentsViewComponent implements OnInit {
   ngOnInit(): void {
     this.fetch();
   }
+
+  take(id:any) {
+    this.api.setOperator(id).subscribe((response: any) => {
+      this.fetch();
+    });
+  }
 }
 

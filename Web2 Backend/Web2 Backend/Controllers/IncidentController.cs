@@ -50,5 +50,12 @@ namespace Web2_Backend.Controllers
         {
             return Ok(incidentService.Delete(id));
         }
+
+        [Route("/api/incidents/operater/{id}")]
+        [HttpPut]
+        public async Task<IActionResult> SetOperater(int id)
+        {
+            return Ok(incidentService.SetOperater(id, GetCurrentUser()));
+        }
     }
 }

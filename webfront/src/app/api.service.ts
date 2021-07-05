@@ -160,4 +160,8 @@ export class ApiService {
     return this.httpClient.get(this.REST_API_SERVER + '/api/switching-plans?page=/' + data.page 
     + '&perPage=' + data.perPage + '&search=' + data.search);
   }
+
+  public setOperator(id: any) {
+    return this.httpClient.put(this.REST_API_SERVER + '/api/incidents/operater/' + id, {});
+  }
 }

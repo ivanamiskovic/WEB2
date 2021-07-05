@@ -145,5 +145,34 @@ namespace Web2_Backend.Service
 
             return true;
         }
+
+        public bool SetOperater(int id, User operater)
+        {
+            try
+            {
+                using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
+                {
+                    Incident incident = Get(id);
+                    
+                    if (incident == null)
+                    {
+                        return false;
+                    }
+
+                    unitOfWork.Incidents.Update(incident);
+
+                    incident.Operater = operater;
+
+                    unitOfWork.Complete();
+
+                    return true;
+
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
     }
 }
