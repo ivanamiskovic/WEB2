@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Web2_Backend.Model;
+using Web2_Backend.Model.Request;
 using Web2_Backend.Service;
 
 namespace Web2_Backend.Controllers
@@ -47,6 +48,15 @@ namespace Web2_Backend.Controllers
         {
             return Ok(service.Delete(id));
         }
+
+        [Route("/api/work-requests-change-state/{id}")]
+        [HttpPost]
+        public async Task<IActionResult> ChangeState(WorkRequestChangeStatusRequest data)
+        {
+            return Ok(service.ChangeState(data, GetCurrentUser()));
+        }
+
+
     }
-    
+
 }

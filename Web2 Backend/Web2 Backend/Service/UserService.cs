@@ -18,6 +18,23 @@ namespace Web2_Backend.Service
 
         }
 
+        public PageResponse<User> GetAll(int page, int perPage, string search, string sort) 
+        {
+            try
+            {
+                using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
+                {
+                    return unitOfWork.Users.GetAll(page, perPage, search, sort);
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
+            return null;
+        }
+
         public bool VerifyUser(long id)
         {
             try

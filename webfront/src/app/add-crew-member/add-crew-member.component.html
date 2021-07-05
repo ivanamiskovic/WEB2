@@ -1,1 +1,29 @@
-<p>add-crew-member works!</p>
+<mat-card>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <mat-form-field class="full-width-input">
+          <label>User:</label>
+          <mat-select matNativeControl required formControlName="crew">
+            <mat-option *ngFor="let member of users" value="{{member.id}}">{{member.name}}</mat-option>
+          </mat-select>
+          <mat-error>
+            Please provide a valid crew member
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input">
+          <label>Crew:</label>
+          <mat-select matNativeControl required formControlName="user">
+            <mat-option *ngFor="let member of crews" value="{{member.id}}">{{member.name}}</mat-option>
+          </mat-select>
+          <mat-error>
+            Please provide a valid crew member
+          </mat-error>
+        </mat-form-field>
+
+
+          <button mat-raised-button color="primary">Add</button>
+        </form>
+    </mat-card-content>
+  </mat-card>

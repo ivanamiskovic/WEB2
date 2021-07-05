@@ -27,5 +27,7 @@ namespace Web2_Backend.Controllers
 
             return userService.GetUserWithEmail(email);
         }
+
+
     }
 }

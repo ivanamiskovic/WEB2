@@ -5,11 +5,10 @@ using System.Threading.Tasks;
 
 namespace Web2_Backend.Model
 {
-    public enum DocumentStatus
+    public class CrewMember : Entity
     {
-        Draft = 1,
-        Approve = 2,
-        Deny = 3, 
-        Cancel = 4
+        public User User { get; set; }
+
+        public Crew Crew { get; set; }
     }
 }

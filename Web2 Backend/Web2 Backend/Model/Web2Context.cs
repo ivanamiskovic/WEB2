@@ -28,6 +28,8 @@ namespace Web2_Backend.Model
         public DbSet<SafetyDocument> SafetyDocuments { get; set; }
         public DbSet<SwitchingPlan> SwitchingPlans { get; set; }
         public DbSet<Cosumer> Cosumers { get; set; }
+        public DbSet<CrewMember> CrewMembers { get; set; }
+        public DbSet<DocumentHistory> DocumentHistories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
         {

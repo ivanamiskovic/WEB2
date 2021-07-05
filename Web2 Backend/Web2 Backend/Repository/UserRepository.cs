@@ -31,5 +31,16 @@ namespace Web2_Backend.Repository
 
             return query.ToList();
         }
+
+        public override PageResponse<User> GetAll(int page, int perPage, string search, string sort)
+        {
+            string term = search == null ? string.Empty : search.ToLower();
+
+            var query = Web2Context.Users.Where(x => (x.Username.ToLower().Contains(term)
+            || x.Email.ToLower().Contains(term) || x.Name.ToLower().Contains(term) ||
+            x.LastName.ToLower().Contains(term) || x.Address.ToLower().Contains(term)) && x.Deleted == false);
+
+            return new PageResponse<User>(query.Skip(page * perPage).Take(perPage).ToList(), query.Count());
+        }
     }
 }

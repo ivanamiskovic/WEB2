@@ -26,6 +26,7 @@ import {ChangePasswordComponent} from './change-password/change-password.compone
 import {NotificationsComponent} from './notifications/notifications.component';
 import {ViewWorkrequestComponent} from './view-workrequest/view-workrequest.component';
 import {AddWorkRequestComponent} from './add-work-request/add-work-request.component';
+import { AddCrewMemberComponent } from './add-crew-member/add-crew-member.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -55,6 +56,8 @@ const routes: Routes = [
   { path: 'notifications', component: NotificationsComponent },
   { path: 'work-requests', component: ViewWorkrequestComponent },
   { path: 'add-work-requests', component: AddWorkRequestComponent },
+  { path: 'add-crew-member', component: AddCrewMemberComponent },
+  
 ];
 
 @NgModule({
