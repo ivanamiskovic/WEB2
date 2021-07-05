@@ -118,6 +118,13 @@ export class ApiService {
     return this.httpClient.get(this.REST_API_SERVER + '/api/incidents/' + id);
   }
 
+  public getDocumentHistories(data:any){
+    return this.httpClient.get(this.REST_API_SERVER + '/api/documentHistory?workRequestId=' + data.workRequestId);
+  }
+  public getDocumentHistory(id: any): any {
+    return this.httpClient.get(this.REST_API_SERVER + '/api/documentHistory/' + id);
+  }
+
   public addIncident(data: any): any {
     return this.httpClient.post(this.REST_API_SERVER + '/api/incidents', data);
   }

@@ -23,9 +23,9 @@ namespace Web2_Backend.Controllers
         [Route("/api/documentHistory")]
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery(Name = "page")] int page, [FromQuery(Name = "perPage")] int perPage,
-            [FromQuery(Name = "search")] string search, [FromQuery(Name = "sort")] string sort)
+            [FromQuery(Name = "search")] string search, [FromQuery(Name = "sort")] string sort, [FromQuery(Name = "workRequestId")] int workRequestId)
         {
-            return Ok(service.GetAll(page, perPage, search, sort));
+            return Ok(service.GetAll(page, perPage, search, sort, workRequestId));
         }
 
         [Route("/api/documentHistory")]

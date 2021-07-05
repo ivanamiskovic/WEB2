@@ -24,6 +24,8 @@ export class AddWorkRequestComponent implements OnInit {
   dataSourceCrews: any;
   displayedColumnsCrews: string[] = ['name'];
   dataSourceIncidents: any;
+  dataSourceDocumentHistory: any
+  displayedColumnsDocumentHistory: string[] = ['username', 'email', 'status', 'dateTime']
 
   constructor(
     private fb: FormBuilder,
@@ -99,6 +101,13 @@ export class AddWorkRequestComponent implements OnInit {
 
   fetchCrews(): void {
     this.api.getCrews({}).subscribe(response => {
+      console.log(response);
+      this.dataSourceCrews = response;
+    });
+  }
+
+  fetchDocumentHistory(): void{
+    this.api.getDocumentHistories({}).subscribe(response => {
       console.log(response);
       this.dataSourceCrews = response;
     });
@@ -193,6 +202,7 @@ export class AddWorkRequestComponent implements OnInit {
     this.fetchCalls();
     this.fetchCrews();
     this.fetchIncidents();
+    this.fetchDocumentHistory();
   }
 
   onSubmit(): void {

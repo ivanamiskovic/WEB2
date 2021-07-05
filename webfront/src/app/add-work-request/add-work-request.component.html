@@ -4,9 +4,9 @@
     <div class="form-container">
       <div class="navigation">
         <a (click)="selectNavigation('BASIC')">Basic info</a>
-        <a [ngClass]="linkClass()" (click)="selectNavigation('HISTORY')">History of changes</a>
-        <a [ngClass]="linkClass()" (click)="selectNavigation('MULTIMEDIA')">Multimedia attachments</a>
-        <a [ngClass]="linkClass()" (click)="selectNavigation('EQUIPMENT')">Equipment</a>
+        <a (click)="selectNavigation('HISTORY')">History of changes</a>
+        <a (click)="selectNavigation('MULTIMEDIA')">Multimedia attachments</a>
+        <a (click)="selectNavigation('EQUIPMENT')">Equipment</a>
       </div>
       <div class="form-content">
         <form *ngIf="state=='BASIC'" [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -101,10 +101,13 @@
             <mat-error>
               Please provide a valid phone number
             </mat-error>
+            
           </mat-form-field>
-        </form>
+          
         <button mat-raised-button color="primary" (click)="onSubmit()">Add</button>
-          <button mat-raised-button color="primary" (click)="cancel()">Cancel</button>
+        <button mat-raised-button color="primary" (click)="cancel()">Cancel</button>
+        </form>
+        
         <div *ngIf="state=='EQUIPMENT'">
           <h1>Devices</h1>
           <div class="controls">
@@ -151,11 +154,49 @@
             <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
           </div>
         </div>
-
       </div>
+
+        <div class="form-content">
+          <form *ngIf="state=='HISTORY'" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <mat-form-field class="full-width-input">
+              <div class="mat-elevation-z8">
+               
+                <table mat-table [dataSource]="dataSourceDocumentHistory">
+                  
+                  <ng-container matColumnDef="username">
+                    <th mat-header-cell *matHeaderCellDef> Username </th>
+                    <td mat-cell *matCellDef="let element"> {{element.User.username}} </td>
+                  </ng-container>
+    
+                
+                  <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef> Email </th>
+                    <td mat-cell *matCellDef="let element"> {{element.User.email}} </td>
+                  </ng-container>
+    
+                  <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef> Status </th>
+                    <td mat-cell *matCellDef="let element"> {{element.DocumentStatus}} </td>
+                  </ng-container>
+
+
+                  <ng-container matColumnDef="dateTime">
+                    <th mat-header-cell *matHeaderCellDef> dateTime </th>
+                    <td mat-cell *matCellDef="let element"> {{element.DateTime}} </td>
+                  </ng-container>
+    
+    
+                  <tr mat-header-row *matHeaderRowDef="displayedColumnsDocumentHistory"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumnsDocumentHistory;"></tr>
+                  
+                </table>
+          
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+              </div>
+            </mat-form-field>
+          </form>>
+        </div>
+
     </div>
-
-
-
   </mat-card-content>
 </mat-card>

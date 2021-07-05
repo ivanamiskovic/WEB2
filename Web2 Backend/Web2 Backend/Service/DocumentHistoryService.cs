@@ -27,13 +27,13 @@ namespace Web2_Backend.Service
             return null;
         }
 
-        public PageResponse<DocumentHistory> GetAll(int page, int perPage, string search, string sort)
+        public PageResponse<DocumentHistory> GetAll(int page, int perPage, string search, string sort, int workRequestId)
         {
             try
             {
                 using (UnitOfWork unitOfWork = new UnitOfWork(new Web2Context()))
                 {
-                    return unitOfWork.DocumentHistories.GetAll(page, perPage, search, sort);
+                    return unitOfWork.DocumentHistories.GetAll(page, perPage, search, sort, workRequestId);
                 }
             }
             catch (Exception e)
@@ -41,6 +41,7 @@ namespace Web2_Backend.Service
                 return null;
             }
         }
+
 
         public bool Add(DocumentHistory documentHistory)
         {

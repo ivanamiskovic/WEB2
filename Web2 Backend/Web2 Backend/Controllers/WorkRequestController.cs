@@ -23,9 +23,9 @@ namespace Web2_Backend.Controllers
         [Route("/api/work-requests")]
         [HttpGet]
         public PageResponse<WorkRequest> GetAll([FromQuery(Name = "page")] int page, [FromQuery(Name = "perPage")] int perPage,
-            [FromQuery(Name = "search")] string search, [FromQuery(Name = "mine")] bool mine, [FromQuery(Name = "sort")] string sort)
+            [FromQuery(Name = "search")] string search, [FromQuery(Name = "mine")] bool mine, [FromQuery(Name = "sort")] string sort, [FromQuery(Name = "workRequestId")] int workRequestId)
         {
-            return service.GetAll(page, perPage, search, mine, GetCurrentUser(), sort);
+            return service.GetAll(page, perPage, search, mine, GetCurrentUser(), sort, workRequestId);
         }
 
         [Route("/api/work-requests")]

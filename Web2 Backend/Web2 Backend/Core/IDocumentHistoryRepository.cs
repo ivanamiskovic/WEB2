@@ -8,5 +8,7 @@ namespace Web2_Backend.Core
 {
     public interface IDocumentHistoryRepository : IRepository<DocumentHistory>
     {
+        PageResponse<DocumentHistory> GetAll(int page, int perPage, string search, string sort, int workRequestId);
+
     }
 }

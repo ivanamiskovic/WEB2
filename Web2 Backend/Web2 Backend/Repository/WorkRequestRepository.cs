@@ -15,7 +15,7 @@ namespace Web2_Backend.Repository
             return Web2Context.WorkRequests.Where(x => x.Deleted == false).ToList();
         }
 
-        public PageResponse<WorkRequest> GetAll(int page, int perPage, string search, User user, string sort)
+        public PageResponse<WorkRequest> GetAll(int page, int perPage, string search, User user, string sort, int workRequestId)
         {
             string term = search == null ? string.Empty : search.ToLower();
 
@@ -23,6 +23,9 @@ namespace Web2_Backend.Repository
             || x.Status.ToLower().Contains(term) || x.Address.ToLower().Contains(term) ||
             x.Cause.ToLower().Contains(term) || x.Note.ToLower().Contains(term) ||
             x.Company.ToLower().Contains(term) || x.PhoneNumber.ToLower().Contains(term)) && x.Deleted == false && x.Operater.Id == user.Id);
+
+            
+            
 
             if (sort == "DESC")
             {
@@ -33,6 +36,7 @@ namespace Web2_Backend.Repository
                 query = query.OrderBy(x => x.Id);
             }
 
+            
             return new PageResponse<WorkRequest>(query.Skip(page * perPage).Take(perPage).ToList(), query.Count());
         }
     }
