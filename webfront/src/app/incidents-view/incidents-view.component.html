@@ -24,6 +24,11 @@
       <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource">
 
+          <ng-container matColumnDef="operater">
+            <th mat-header-cell *matHeaderCellDef> Operater </th>
+            <td mat-cell *matCellDef="let element"> {{element.operater.email}} </td>
+          </ng-container>
+
           <ng-container matColumnDef="description">
             <th mat-header-cell *matHeaderCellDef> Description </th>
             <td mat-cell *matCellDef="let element"> {{element.description}} </td>
@@ -58,7 +63,7 @@
             <th mat-header-cell *matHeaderCellDef> Controls </th>
             <td mat-cell *matCellDef="let element">
               <button mat-raised-button color="primary" (click)="delete(element.id)">Delete</button>
-              <button mat-raised-button color="primary" [disabled]="!element.operator"  (click)="take(element.id)">Take</button>
+              <button mat-raised-button color="primary" (click)="take(element.id)">Take</button>
               <button mat-raised-button color="primary" (click)="edit(element.id)">Edit</button>
             </td>
           </ng-container>
