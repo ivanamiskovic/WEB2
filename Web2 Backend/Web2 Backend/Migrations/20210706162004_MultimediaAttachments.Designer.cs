@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Web2_Backend.Model;
 
 namespace Web2_Backend.Migrations
 {
     [DbContext(typeof(Web2Context))]
-    partial class Web2ContextModelSnapshot : ModelSnapshot
+    [Migration("20210706162004_MultimediaAttachments")]
+    partial class MultimediaAttachments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -258,12 +260,7 @@ namespace Web2_Backend.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long?>("WorkRequestId")
-                        .HasColumnType("bigint");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("WorkRequestId");
 
                     b.ToTable("MultimediaAttachments");
                 });
@@ -572,15 +569,6 @@ namespace Web2_Backend.Migrations
                         .HasForeignKey("OperaterId");
 
                     b.Navigation("Operater");
-                });
-
-            modelBuilder.Entity("Web2_Backend.Model.MultimediaAttachments", b =>
-                {
-                    b.HasOne("Web2_Backend.Model.WorkRequest", "WorkRequest")
-                        .WithMany()
-                        .HasForeignKey("WorkRequestId");
-
-                    b.Navigation("WorkRequest");
                 });
 
             modelBuilder.Entity("Web2_Backend.Model.SafetyDocument", b =>

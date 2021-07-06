@@ -25,6 +25,7 @@ namespace Web2_Backend.Repository
 
         public ICrewMemberRepository CrewMembers { get; private set; }
         public IDocumentHistoryRepository DocumentHistories { get; private set; }
+        public IMultimediaAttachmentsRepository MultimediaAttachments { get; private set; }
 
         public UnitOfWork(Web2Context context) 
         {
@@ -42,6 +43,7 @@ namespace Web2_Backend.Repository
             WorkRequests = new WorkRequestRepository(this.context);
             CrewMembers = new CrewMemberRepository(this.context);
             DocumentHistories = new DocumentHistoryRepository(this.context);
+            MultimediaAttachments = new MultimediaAttachmentsRepository(this.context);
         }
 
         public Web2Context Context
