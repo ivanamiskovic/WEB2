@@ -22,6 +22,7 @@ namespace Web2_Backend.Repository
         public ICrewRepository Crews { get; private set; }
         public IDeviceRepository Devices { get; private set; }
         public IWorkRequestRepository WorkRequests { get; private set; }
+        public IInstructionRepository Instructions{ get; private set; }
 
         public ICrewMemberRepository CrewMembers { get; private set; }
         public IDocumentHistoryRepository DocumentHistories { get; private set; }
