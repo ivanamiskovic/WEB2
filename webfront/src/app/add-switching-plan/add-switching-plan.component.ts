@@ -26,6 +26,8 @@ export class AddSwitchingPlanComponent implements OnInit {
 
   {
     this.form = this.fb.group({
+      name: ['', Validators.required],
+      order: ['', Validators.required],
       type: ['', Validators.required],
       status: ['', Validators.required],
       typeOfWork: ['', Validators.required],
@@ -64,6 +66,8 @@ export class AddSwitchingPlanComponent implements OnInit {
    this.api.addSwitchingPlan({
       type: this.form.get('type')?.value,
       status: this.form.get('status')?.value,
+      name: this.form.get('name')?.value,
+      order: this.form.get('order')?.value,
       typeOfWork: this.form.get('typeOfWork')?.value,
       createdBy: this.form.get('createdBy')?.value,
       purpose: this.form.get('purpose')?.value,

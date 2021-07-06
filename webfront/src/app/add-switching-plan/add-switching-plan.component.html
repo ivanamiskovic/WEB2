@@ -6,7 +6,7 @@
         <a>History of state changes</a>
         <a>Multimedia attachments</a>
         <a>Equipment</a>
-        <a>Switching instructions</a>
+        <a>Instructions</a>
   
       </mat-card-content>
     </div>
@@ -28,16 +28,32 @@
           </mat-error>
       </mat-form-field>
 
-   
+      <form  (ngSubmit)="onSubmit()">
+        <h2>Add switching plan</h2>
+        <mat-error *ngIf="addSwitchingPlanInvalid">
+            Error adding work request
+        </mat-error>
+  
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="Name" formControlName="name" required>
+          <mat-error>
+            Please provide a valid name
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="Order" formControlName="order" required>
+          <mat-error>
+            Please provide a valid order
+          </mat-error>
+        </mat-form-field>
+        
+      </form>
 
       <mat-form-field class="full-width-input">
           <input matInput placeholder="Status" formControlName="status" required>
      
             <option value="Draft">Draft</option>
-      
-
-
-
           <mat-error>
             Please provide a valid status
           </mat-error>
