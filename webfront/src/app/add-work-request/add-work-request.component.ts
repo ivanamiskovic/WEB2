@@ -15,6 +15,8 @@ export class AddWorkRequestComponent implements OnInit {
   form: FormGroup;
   public addIncidentInvalid = false;
   public state = 'BASIC';
+  formMultimedia: FormGroup;
+
   data: any;
   allData: any;
   dataSourceDevice: any;
@@ -26,7 +28,7 @@ export class AddWorkRequestComponent implements OnInit {
   dataSourceIncidents: any;
   dataSourceDocumentHistory: any
   displayedColumnsDocumentHistory: string[] = ['username', 'email', 'status', 'dateTime']
-
+  
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -48,7 +50,15 @@ export class AddWorkRequestComponent implements OnInit {
       incident: [''],
       purpose: [''],
     });
+    
+      this.formMultimedia = this.fb.group({
+        name: ['', Validators.required],
+        multimediaFile: ['', Validators.required],
+    });
+    
   }
+
+   
 
   cancel() {
 
@@ -194,6 +204,8 @@ export class AddWorkRequestComponent implements OnInit {
           this.form.controls['purpose'].setValue(this.data.purpose);
           this.form.controls['created'].setValue(this.data.created);
           this.form.controls['createdBy'].setValue(this.data.createdBy);
+          this.formMultimedia.controls['name'].setValue(this.data.type);
+          this.formMultimedia.controls['multimediaFile'].setValue(this.data.note);
         });
       }
     });
@@ -221,6 +233,8 @@ export class AddWorkRequestComponent implements OnInit {
       purpose: this.form.get('purpose')?.value,
       created: this.form.get('created')?.value,
       createdBy: this.form.get('createdBy')?.value,
+      name:this.formMultimedia.get('name')?.value,
+      multimediaFile:this.formMultimedia.get('multimediaFile')?.value
     }).subscribe((response: any) => {
       this.data = response;
     });

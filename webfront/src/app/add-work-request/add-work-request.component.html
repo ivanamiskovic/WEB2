@@ -156,6 +156,21 @@
         </div>
       </div>
 
+      <div class="form-content">
+      <form *ngIf="state=='MULTIMEDIA'" [formGroup]="formMultimedia" (ngSubmit)="onSubmit()">
+              <mat-form-field class="full-width-input">
+                <input matInput placeholder="Name" formControlName="name" required>
+                <mat-error>
+                  Please provide a valid name
+                </mat-error>
+              </mat-form-field>
+
+               <input type="file" formControlName='multimediaFile' required>
+         
+        <button mat-raised-button color="primary">Subbmit</button>
+        </form>
+      </div>
+
         <div class="form-content">
           <form *ngIf="state=='HISTORY'" [formGroup]="form" (ngSubmit)="onSubmit()">
             <mat-form-field class="full-width-input">

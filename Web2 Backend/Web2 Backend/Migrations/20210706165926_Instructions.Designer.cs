@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Web2_Backend.Model;
 
 namespace Web2_Backend.Migrations
 {
     [DbContext(typeof(Web2Context))]
-    partial class Web2ContextModelSnapshot : ModelSnapshot
+    [Migration("20210706165926_Instructions")]
+    partial class Instructions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -242,46 +244,25 @@ namespace Web2_Backend.Migrations
                     b.ToTable("Incidents");
                 });
 
-<<<<<<< HEAD
-            modelBuilder.Entity("Web2_Backend.Model.MultimediaAttachments", b =>
-=======
             modelBuilder.Entity("Web2_Backend.Model.Instructions", b =>
->>>>>>> fdfdeea4d9d1417e2996331dd173ae6f711875e4
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-<<<<<<< HEAD
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-=======
->>>>>>> fdfdeea4d9d1417e2996331dd173ae6f711875e4
                     b.Property<bool>("Deleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-<<<<<<< HEAD
-                    b.Property<long?>("WorkRequestId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("WorkRequestId");
-
-                    b.ToTable("MultimediaAttachments");
-=======
                     b.Property<string>("Order")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Instructions");
->>>>>>> fdfdeea4d9d1417e2996331dd173ae6f711875e4
                 });
 
             modelBuilder.Entity("Web2_Backend.Model.SafetyDocument", b =>
@@ -588,15 +569,6 @@ namespace Web2_Backend.Migrations
                         .HasForeignKey("OperaterId");
 
                     b.Navigation("Operater");
-                });
-
-            modelBuilder.Entity("Web2_Backend.Model.MultimediaAttachments", b =>
-                {
-                    b.HasOne("Web2_Backend.Model.WorkRequest", "WorkRequest")
-                        .WithMany()
-                        .HasForeignKey("WorkRequestId");
-
-                    b.Navigation("WorkRequest");
                 });
 
             modelBuilder.Entity("Web2_Backend.Model.SafetyDocument", b =>

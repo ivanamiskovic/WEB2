@@ -125,6 +125,14 @@ export class ApiService {
     return this.httpClient.get(this.REST_API_SERVER + '/api/documentHistory/' + id);
   }
 
+  public getMultimediaAttachments(data:any){
+    return this.httpClient.get(this.REST_API_SERVER + '/api/multimediaAttachments?page=' + data.page 
+    + '&perPage=' + data.perPage + '&search=' + data.search + '&sort=' + data.sort);
+  }
+  public getMultimediaAttachment(id: any): any {
+    return this.httpClient.get(this.REST_API_SERVER + '/api/multimediaAttachments/' + id);
+  }
+
   public addIncident(data: any): any {
     return this.httpClient.post(this.REST_API_SERVER + '/api/incidents', data);
   }
