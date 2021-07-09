@@ -30,11 +30,11 @@ namespace Web2_Backend.Model
         public DbSet<Cosumer> Cosumers { get; set; }
         public DbSet<CrewMember> CrewMembers { get; set; }
         public DbSet<DocumentHistory> DocumentHistories { get; set; }
-<<<<<<< HEAD
+
         public DbSet<MultimediaAttachments> MultimediaAttachments { get; set; }
-=======
+
         public DbSet<Instructions> Instructions { get; set; }
->>>>>>> fdfdeea4d9d1417e2996331dd173ae6f711875e4
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
         {
